@@ -1,0 +1,41 @@
+{% extends '@App/user_base.html.twig' %}
+
+    {% block title %} {{ parent() }} Bienvenue {% endblock %}
+  {% block main %}
+    <h1>Abscent</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ abscent.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if abscent.date %}{{ abscent.date|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Enfant</th>
+                <td>{{ abscent.enfant }}</td>
+            </tr>
+            <tr>
+                <th>Motif</th>
+                <td>{{ abscent.motif }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('abscent_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('abscent_edit', { 'id': abscent.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

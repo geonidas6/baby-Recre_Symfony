@@ -1,0 +1,178 @@
+{% extends '@App/user_base.html.twig' %}
+
+    {% block title %} {{ parent() }} Bienvenue {% endblock %}
+  {% block main %}
+
+
+      <div class="">
+          <div class="page-title">
+              <div class="title_left">
+                  <h3>Crèche Récré | Bienvenue </h3>
+              </div>
+          </div>
+          <div class="clearfix"></div>
+
+          <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="x_panel">
+                      <div class="x_title">
+                          <h2><i class="fa fa-bars"></i> Parametre <small>User panel</small></h2>
+                          <ul class="nav navbar-right panel_toolbox">
+                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                              </li>
+                              <li class="dropdown">
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                  <ul class="dropdown-menu" role="menu">
+                                      <a href="{{ path('enfant_index') }}">Liste Série</a>
+                                      </li>
+                                      <li><a href="#">Settings 2</a>
+                                      </li>
+                                  </ul>
+                              </li>
+                              <li><a class="close-link"><i class="fa fa-close"></i></a>
+                              </li>
+                          </ul>
+                          <div class="clearfix"></div>
+                      </div>
+
+                      <div class="x_content">
+
+                          <div class="content">
+                              <div class="row">
+                                  <div class="col-md-12 col-xs-12 blue">
+                                      <div class="col-md-4">
+                                          <div class="content-box p-20 info-bg white f-s-16 text-center">
+                                              <div class="text-right">
+                                                  <span class="current-date"></span>
+                                              </div>
+                                              <span class="time"></span>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="row">
+                                  <div class="row top_tiles">
+                                      <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                          <div class="tile-stats">
+                                              <div class="icon"><i class="fa fa-user"></i></div>
+                                              <div class="count">{{nbruser}}</div>
+                                              <h3>Employer</h3>
+                                              <p></p>
+                                          </div>
+                                      </div>
+                                      <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                          <div class="tile-stats">
+                                              <div class="icon"><i class="fa fa-user"></i></div>
+                                              <div class="count">{{nbrenfant}}</div>
+                                              <h3>Enfant</h3>
+                                              <p></p>
+                                          </div>
+                                      </div>
+                                      <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                          <div class="tile-stats">
+                                              <div class="icon"><i class="fa fa-user"></i></div>
+                                              <div class="count">{{nbruserlock}}</div>
+                                              <h3>Utilisateur bloquer</h3>
+                                              <p></p>
+                                          </div>
+                                      </div>
+                                      <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                          <div class="tile-stats">
+                                              <div class="icon"><i class="fa fa-windows"></i></div>
+                                              <div class="count">Cliquez</div>
+                                              <h3><a href="{{ path('user_profile') }}" >Votre Porfil</a></h3>
+                                              <p></p>
+                                          </div>
+                                      </div>
+                                  </div>
+
+                                  <div class="row">
+                                      <div class="col-md-12">
+                                          <div class="x_panel">
+                                              <div class="x_title">
+                                                  <h2>Liste des enfants par âges <small></small></h2>
+                                                  <div class="filter">
+                                                      <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                                                          <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                                                          <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
+                                                      </div>
+                                                  </div>
+                                                  <div class="clearfix"></div>
+                                              </div>
+                                              <div class="x_content">
+                                                  <div class="col-md-9 col-sm-9 col-xs-9">
+                                                      <div class="x_content">
+                                                          <div class="demo-container" style="height:280px">
+                                                            {# <div id="chart_plot_02" class="demo-placeholder"></div>#}
+                                                              <canvas id="buyers" width="550" height="300"></canvas>
+                                                          </div>
+                                                        </div>
+                                                    </div>
+
+                                                  <div class="col-md-3 col-sm-3 col-xs-3">
+                                                      <div class="x_content">
+                                                          {% for activiter in activiters %}
+                                                              <article class="media event">
+                                                                  <a class="pull-left date">
+                                                                      <p class="month">{{activiter.datedebute |date('M') }}</p>
+                                                                      <p class="day">{{activiter.datedebute |date('d') }}</p>
+                                                                  </a>
+                                                                  <div class="media-body">
+                                                                      <a class="title" href="#">NOTE</a>
+                                                                      <p>{{activiter.description}}</p>
+                                                                  </div>
+                                                              </article>
+                                                          {% endfor %}
+                                                      </div>
+                                                  </div>
+
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      </div>
+    {% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/mychart.js') }}"></script>
+
+
+    <script type="text/javascript">
+        // line chart data
+        /*var buyerData = {
+            labels : ["Baby Junior","Ameganvi kokovi","Sonata chi","Kira foujou","Mikassa uchiwa","Adjovi afivi"],
+            datasets : [
+                {
+                    fillColor : "rgba(172,194,132,0.4)",
+                    strokeColor : "#ACC26D",
+                    pointColor : "#96ca59",
+                    pointStrokeColor : "#9DB86D",
+                    data : [3,1,6,1,4,2]
+                }
+            ]*/
+        var buyerData = {
+            labels : ['{% autoescape %}{{ tab_enfant_age_noms | raw }}{% endautoescape %}'],
+            datasets : [
+                {
+                    fillColor : "rgba(172,194,132,0.4)",
+                    strokeColor : "#ACC26D",
+                    pointColor : "#96ca59",
+                    pointStrokeColor : "#9DB86D",
+                    data : [{{tab_enfant_ages}}]
+                }
+            ]
+        }
+        // get line chart canvas
+        var buyers = document.getElementById('buyers').getContext('2d');
+        // draw line chart
+        new Chart(buyers).Line(buyerData);
+
+    </script>
+{% endblock %}

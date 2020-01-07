@@ -1,0 +1,117 @@
+{% extends '@App/user_base.html.twig' %}
+
+    {% block title %} {{ parent() }} Bienvenue {% endblock %}
+  {% block main %}
+
+
+      <div class="">
+          <div class="page-title">
+              <div class="title_left">
+                  <h3>Crèche </h3>
+              </div>
+          </div>
+          <div class="clearfix"></div>
+
+          <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="x_panel">
+                      <div class="x_title">
+                          <h2><i class="fa fa-bars"></i> Parametre
+                              <small>User panel</small>
+                          </h2>
+                          <ul class="nav navbar-right panel_toolbox">
+                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                              </li>
+                              <li class="dropdown">
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                     aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                  <ul class="dropdown-menu" role="menu">
+                                      <a href="{{ path('enfant_index') }}">Liste enfant</a>
+                                      </li>
+                                      <li><a href="#">Settings 2</a>
+                                      </li>
+                                  </ul>
+                              </li>
+                              <li><a class="close-link"><i class="fa fa-close"></i></a>
+                              </li>
+                          </ul>
+                          <div class="clearfix"></div>
+                      </div>
+
+                      <div class="x_content container" >
+                          {{ form_start(form ,{'attr':{'class': 'form-horizontal form-label-left', 'novalidate': 'novalidate','id':'sendform'}}) }}
+                          <div class="row">
+                              <div class=" col-md-12 col-sm-12 col-xs-12  ">
+                                  <div class="row">
+                                      <div class="col-md-6 col-sm-6 col-xs-6 ">
+                                          {{ form_row(form.nome,{'attr':{'class':'form-control col-md-6 col-lg-6  col-xs-6','placeholder':' Nom de la crèche'}}) }}
+                                      </div>
+                                      <div class="col-md-6 col-sm-6 col-xs-6 ">
+                                          {{ form_row(form.dateCreation,{'attr':{'class':'form-control col-md-6 col-xs-6','placeholder':' Date de création'}}) }}
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col-md-6 col-sm-6 col-xs-6 ">
+                                          {{ form_row(form.heureOuverture,{"attr":{"class":"form-control col-md-7 col-xs-12","placeholder":" Heure d'ouverture"}}) }}
+                                      </div>
+                                      <div class="col-md-6 col-sm-6 col-xs-6 ">
+                                          {{ form_row(form.heurFermeture,{'attr':{'class':'form-control col-md-7 col-xs-12','placeholder':'Heure de fermeture'}}) }}
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col-md-6 col-sm-6 col-xs-6 ">
+                                          {{ form_row(form.assurance,{'attr':{'class':'form-control col-md-7 col-xs-12','placeholder':' Assurance'}}) }}
+                                      </div>
+                                      <div class="col-md-6 col-sm-6 col-xs-6 ">
+                                          {{ form_row(form.scolarite,{'attr':{'class':'form-control col-md-7 col-xs-12','placeholder':' Scolarité'}}) }}
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col-md-6 col-sm-6 col-xs-6 ">
+                                          {{ form_row(form.fraisinscription,{'attr':{'class':'form-control col-md-7 col-xs-12','placeholder':" Frais d'inscription"}}) }}
+                                      </div>
+                                      <div class="col-md-6 col-sm-6 col-xs-6 ">
+                                          {{ form_row(form.tel,{'attr':{'class':'form-control col-md-7 col-xs-12'}}) }}
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col-md-6 col-sm-6 col-xs-6 ">
+                                          {{ form_row(form.situation,{'attr':{'class':'form-control col-md-7 col-xs-12','placeholder':' Situation'}}) }}
+                                      </div>
+                                      <div class="col-md-6 col-sm-6 col-xs-6 ">
+                                          {{ form_row(form.email,{'attr':{'class':'form-control col-md-7 col-xs-12','placeholder':' Email'}}) }}
+                                      </div>
+                                  </div>
+                                  <br>
+                                  <input type="submit" class="btn btn-success" value="Create"/>
+                                  {{ form_end(form) }}
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  {% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js') }}"></script>
+    <script type="text/javascript">
+        $('#appbundle_creche_heureOuverture').datetimepicker({
+            format: 'H:m:s'
+        });
+        $(document).ready(function () {
+            var appbundle_creche_tel =  $('#appbundle_creche_tel');
+            var im = new Inputmask("(999)99999999");
+            im.mask(appbundle_creche_tel);
+        })
+
+        $('#appbundle_creche_heurFermeture').datetimepicker({
+            format: 'H:m:s'
+        });
+        $('#appbundle_creche_dateCreation').datetimepicker({
+            format: 'YYYY/MM/DD',
+        });
+    </script>
+
+{% endblock %}
+

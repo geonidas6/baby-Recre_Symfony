@@ -1,0 +1,262 @@
+Mbkw93_5
+
+
+http://74.207.224.67/api/http/sendmsg.php?user=magmatel2&password=SMSmagmatel2@2015&from=STEP+ALL&to=+22896559823&text=Ann%C3%A9e+scolaire+%3A2019+-+2020Username%3A+christType%3A+interoClasse%3A+Terminale+A4+2Mati%C3%A8re%3A+Mat%C3%A9matiqueNotecoeficier%3A+42Remarque%3A+peut+mieux+faire&api=6355
+
+
+
+http://74.207.224.67/api/http/sendmsg.php?user=magmatel2&password=SMSmagamatelys2@2017&from=STEP%20ALL&to=+22967361565&text=A&api=6355
+
+
+<?php
+
+namespace AppBundle\Controller;
+
+use AppBundle\Entity\Presence;
+use AppBundle\Entity\Relation;
+use AppBundle\Service\UtilService;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+
+/**
+ * Presence controller.
+ *
+ * @Route("presence")
+ */
+class PresenceController extends Controller
+{
+    /**
+     * Lists all presence entities.
+     *
+     * @Route("/", name="presence_index")
+     * @Method("GET")
+     */
+    public function indexAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $presences = $em->getRepository('AppBundle:Presence')->findAll();
+
+        return $this->render('@App/presence/index.html.twig', array(
+            'presences' => $presences,
+        ));
+    }
+
+    /**
+     * @param $PersoncanCheckControl
+     * @param $enseigne
+     * @param $etudiant
+     * @param $type
+     * @param $mode
+     * @param null $enseigneClasseserie
+     * @return bool
+     */
+    public function AddPresence($PersoncanCheckControl,$enseigne,$etudiant,$type,$mode,$enseigneClasseserie = null)
+    {
+        $date = new \DateTime();
+        $em = $this->getDoctrine()->getManager();
+        $presence = new Presence();
+        if ($type == Presence::CLASSE_CONTROLE){
+            //il s'agit d'un controle de classe donc nous avont besoin de recuperer la clase
+            $presence->setEnseigneclasseserie($enseigneClasseserie);
+
+        }else{
+            $presence->setEnseigneclasseserie(null);
+        }
+        $presence->setType($mode);
+        $presence->setEnseigne($enseigne);
+        $presence->setEtudient($etudiant);
+        $presence->setUserwhocheck($PersoncanCheckControl);
+        $presence->setDatecheck($date);
+        $em->persist($presence);
+        $em->flush();
+
+        return true;
+
+    }
+
+
+
+    /**
+     * Finds and displays a presence entity.
+     *
+     * @Route("/", name="presence_qrcodescaninterface")
+     * @Method("POST")
+     */
+    public function qrcodescaninterfaceAction(Request $request)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        //recuper email du user et le id_enseigne
+        //requet enseigne
+        $idEnseigne = $request->request->get("id_enseigne");
+        $email = $request->request->get("email");
+        $type = $request->request->get("type");
+        $mode = $request->request->get("mode");
+        $id_enseigneclasseserie = $request->request->get("id_enseigneclasseserie");
+        $enseigne = $em->getRepository('AppBundle:Enseigne')->find($idEnseigne);
+
+        //verifier si ce user est etudiant dans cet ensiegne
+        $email = str_replace("Email:","",$email);
+        $etudiant = $em->getRepository('AppBundle:User')->findOneBy(["email"=>$email]);
+        $relation = $em->getRepository('AppBundle:Relation')->findOneBy([
+            "user"=>$etudiant,
+            "enseigne"=>$enseigne,
+        ]);
+
+
+        //return $this->json(['message' => "cette personne ne fait pas partie de l'enseigne $email"], '200');
+
+        if ($relation != false){
+            //il fait partie de l'ensiegne
+            $PosProfileEtudiant = strpos($relation->getProfile(), Relation::Etudiant);
+            if ($PosProfileEtudiant !== false){
+                //c'est un etudiant
+                if ($id_enseigneclasseserie != "null"){
+
+                    $enseigneclasseserie = $em->getRepository('AppBundle:Enseigne_classe_serie')->find($id_enseigneclasseserie);
+
+                //verifiions si l'étudiant fait rellement partie de cette classe
+
+                $verrifEtudiantInClasse = $em->getRepository('AppBundle:Etudiant_Enseigne_classe_serie')->findOneBy([
+                    "etudiant"=>$relation,
+                    "enseigne"=>$enseigne,
+                    "enseigneclasseserie"=>$enseigneclasseserie
+                    ]);
+
+                    $this->AddPresence( $this->getUser(),$enseigne,$etudiant,$type,$mode,$enseigneclasseserie);
+                    $message['resultat'] ['message']= "Enregistrement effectuer avec successt";
+                    $message['resultat'] ['Error']= false;
+                    return $this->json($message,200) ;
+
+                }else{
+
+                    $this->AddPresence( $this->getUser(),$enseigne,$etudiant,$type,$mode);
+                    $message['resultat'] ['message']= "Enregistrement effectuer avec successt";
+                    $message['resultat'] ['Error']= false;
+                    return $this->json($message,200) ;
+                }
+                //faire les control eventuellle
+                //si tout bon appelle la foction d'insertion  s'insertion de presence
+
+
+
+
+
+
+            }else{
+                $message['resultat'] ['message']= "il ne sagit pas d'un etudiant";
+                $message['resultat'] ['Error']= true;
+                return $this->json($message,200) ;
+            }
+
+        }else{
+            //personne inconnue a l'enseigne
+            $message['resultat'] ['message']= "cette personne ne fait pas partie de l'enseigne";
+            $message['resultat'] ['Error']= true;
+            return $this->json($message,200) ;
+        }
+
+
+    }
+
+
+
+    /**
+     * Finds and displays a presence entity.
+     *
+     * @Route("/Scan/{id_enseigne}", name="presence_Scan")
+     * @Method("GET")
+     */
+    public function Scan(Request $request,UtilService $utilService)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $idEnseigne = $request->get("id_enseigne");
+        $id_enseigneclasseserie = $request->get("id_enseigneclasseserie");
+        $enseigne = $em->getRepository('AppBundle:Enseigne')->find($idEnseigne);
+
+
+        $relation_user_enseigne = $em->getRepository('AppBundle:Relation')->findOneBy(
+            [
+                "enseigne"=>$enseigne,
+                "user"=>$this->getUser(),
+            ]
+        );
+
+        $PosProfileEnseignants = ($relation_user_enseigne != null)?strpos($relation_user_enseigne->getProfile(), Relation::Enseignants):false;
+
+        if ($PosProfileEnseignants !== false){
+            $professeur_classe_matiers =  $utilService->AllClasseOfProfByEnseigne($this->getUser(),$enseigne);
+        }else
+            $professeur_classe_matiers = false;
+
+
+        return $this->render('@App/presence/qrcodescaneinterface', array(
+            "enseigne"=>$enseigne,
+            "liste_classes"=>$professeur_classe_matiers
+
+        ));
+    }
+
+    /**
+     * Displays a form to edit an existing presence entity.
+     *
+     * @Route("/{id}/edit", name="presence_edit")
+     * @Method({"GET", "POST"})
+     */
+    public function editAction(Request $request, Presence $presence)
+    {
+        $deleteForm = $this->createDeleteForm($presence);
+        $editForm = $this->createForm('AppBundle\Form\PresenceType', $presence);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('presence_edit', array('id' => $presence->getId()));
+        }
+
+        return $this->render('@App/presence/edit.html.twig', array(
+            'presence' => $presence,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
+     * Deletes a presence entity.
+     *
+     * @Route("/{id}", name="presence_delete")
+     * @Method("DELETE")
+     */
+    public function deleteAction(Request $request, Presence $presence)
+    {
+        $form = $this->createDeleteForm($presence);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($presence);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('presence_index');
+    }
+
+    /**
+     * Creates a form to delete a presence entity.
+     *
+     * @param Presence $presence The presence entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm(Presence $presence)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('presence_delete', array('id' => $presence->getId())))
+            ->setMethod('DELETE')
+            ->getForm()
+        ;
+    }
+}

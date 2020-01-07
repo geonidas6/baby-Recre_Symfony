@@ -1,0 +1,157 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Enseigne_classe_serie
+ *
+ * @ORM\Table(name="enseigne_classe_serie")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\Enseigne_classe_serieRepository")
+ */
+class Enseigne_classe_serie
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Classe_Serie" )
+     * @ORM\JoinColumn(name="classe", referencedColumnName="id", nullable=false)
+     */
+    private $classe;
+
+    /**
+     * @var integer
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Serie" )
+     * @ORM\JoinColumn(name="serie", referencedColumnName="id", nullable=true)
+     */
+    private $serie;
+
+    /**
+     * @var integer
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Enseigne" )
+     * @ORM\JoinColumn(name="enseigne_id", referencedColumnName="id", nullable=false)
+     */
+    private $enseigne;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="numberClasse", type="integer")
+     */
+    private $numberClasse;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set classe
+     *
+     * @param integer $classe
+     *
+     * @return Enseigne_classe_serie
+     */
+    public function setClasse($classe)
+    {
+        $this->classe = $classe;
+
+        return $this;
+    }
+
+    /**
+     * Get classe
+     *
+     * @return int
+     */
+    public function getClasse()
+    {
+        return $this->classe;
+    }
+
+    /**
+     * Set serie
+     *
+     * @param integer $serie
+     *
+     * @return Enseigne_classe_serie
+     */
+    public function setSerie($serie=null)
+    {
+        $this->serie = $serie;
+
+        return $this;
+    }
+
+    /**
+     * Get serie
+     *
+     * @return int
+     */
+    public function getSerie()
+    {
+        return $this->serie;
+    }
+
+    /**
+     * Set enseigneId
+     *
+     * @param integer $enseigne
+     *
+     * @return Enseigne_Classe
+     */
+    public function setEnseigne($enseigne)
+    {
+        $this->enseigne = $enseigne;
+
+        return $this;
+    }
+
+    /**
+     * Get enseigne
+     *
+     * @return int
+     */
+    public function getEnseigne()
+    {
+        return $this->enseigne;
+    }
+    /**
+     * Set numberClasse
+     *
+     * @param integer $numberClasse
+     *
+     * @return Enseigne_classe_serie
+     */
+    public function setNumberClasse($numberClasse)
+    {
+        $this->numberClasse = $numberClasse;
+
+        return $this;
+    }
+
+    /**
+     * Get numberClasse
+     *
+     * @return int
+     */
+    public function getNumberClasse()
+    {
+        return $this->numberClasse;
+    }
+}
+

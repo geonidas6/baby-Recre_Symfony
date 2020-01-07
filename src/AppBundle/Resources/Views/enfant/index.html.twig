@@ -1,0 +1,85 @@
+{% extends '@App/user_base.html.twig' %}
+
+{% block title %} {{ parent() }} Consulter Enfants {% endblock %}
+{% block main %}
+
+
+
+    <!-- page content -->
+    <div class="" role="main">
+        <div class="">
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>Liste Enfant</h3>
+                </div>
+
+                <div class="title_right">
+                    <form method="post" action="{{ path('enfant_index') }}" class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                        <div class="input-group">
+                            <input type="text" name="data[enfant]" class="form-control" placeholder="Search for...">
+                            <span class="input-group-btn" >
+                      <button class="btn btn-default" type="submit">RECHERCHER</button>
+                    </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="x_panel">
+                        <div class="x_content">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                                    {{ knp_pagination_render(enfants) }}
+                                </div>
+
+                                <div class="clearfix"></div>
+
+                                {% for enfant in enfants %}
+                                        <div class="col-md-4 col-sm-4 col-xs-12 profile_details">
+                                            <div class="well profile_view">
+                                                <div class="col-sm-12">
+                                                    <h4 class="brief"><i>Nom complet: {{ enfant.nom }}  {{ enfant.prenom }}</i></h4>
+                                                    <div class="left col-xs-7">
+                                                        <ul class="list-unstyled">
+                                                            <li><i class="fa fa-calendar"></i>  {{ enfant.datenaissance |date('Y-m-d') }}</li>
+                                                            <li><i class="fa fa-user"></i> Sexe: {{ enfant.sexe }}</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="right col-xs-5 text-center">
+                                                        <img id="profile-pic" class="img-responsive avatar-view"
+                                                             src="{% if enfant.image is null %} {{ asset('images/user.png') }}
+                                                                {% else %} {{ asset('uploads/enfant/'~enfant.image.name) }} {% endif %}" alt="Avatar"
+                                                             title="Photo de profil">
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 bottom text-center">
+                                                    <div class="col-xs-12 col-sm-6 emphasis">
+                                                        <p class="ratings">
+                                                            <a href="{{ path('enfant_edit',{'id':enfant.id}) }}" class="btn btn-primary btn-xs" ><i class="fa fa-edit"></i></a>|
+                                                            <a href="{{ path('enfant_show',{'id':enfant.id}) }}" class="btn btn-primary btn-xs" ><i class="fa fa-eye"></i></a>|
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-6 emphasis">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /page content -->
+{% endblock %}
+
+

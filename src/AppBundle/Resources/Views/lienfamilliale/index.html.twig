@@ -1,0 +1,38 @@
+{% extends '@App/user_base.html.twig' %}
+
+{% block title %} {{ parent() }} Consulter Utilisateurs {% endblock %}
+{% block main %}
+    <h1>Lienfamilliales list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for lienfamilliale in lienfamilliales %}
+            <tr>
+                <td><a href="{{ path('lienfamilliale_show', { 'id': lienfamilliale.id }) }}">{{ lienfamilliale.id }}</a></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('lienfamilliale_show', { 'id': lienfamilliale.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('lienfamilliale_edit', { 'id': lienfamilliale.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('lienfamilliale_new') }}">Create a new lienfamilliale</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,65 @@
+body {
+	background-color: $color--light;
+	color: $color--text-on-light;
+	font-family: 'futura-pt', sans-serif;
+	font-size: 1.25em;
+	line-height: 1.25;
+	position: relative;
+}
+
+em {
+	color: $color--secondary;
+	font-family: 'Times New Roman', serif;
+	font-weight: bold;
+}
+
+code {
+	background-color: $color--light-dark;
+	color: $color--text-on-light-dark;
+	cursor: text;
+	display: inline-block;
+	font-family: monospace;
+	font-size: 90%;
+	font-weight: bold;
+	padding: 0.1em 0.4em;
+	position: relative;
+	top: -1px;
+	vertical-align: baseline;
+}
+
+a,
+button {
+	font-family: 'futura-pt-bold', sans-serif;
+	font-weight: 900;
+}
+
+table {
+	background-color: $color--light;
+	border: 1px solid $color--light-dark;
+	color: $color--text-on-light;
+
+	th {
+		background-color: $color--light;
+		border-bottom: 4px solid $color--light-dark;
+		color: $color--text-on-light;
+		font-family: 'futura-pt-bold', sans-serif;
+		font-weight: 900;
+		padding: 16px;
+		text-align: left;
+	}
+
+	td {
+		border-top: 1px solid $color--light-dark;
+		padding: 12px 16px;
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'futura-pt-bold', sans-serif;
+	font-weight: 900;
+}

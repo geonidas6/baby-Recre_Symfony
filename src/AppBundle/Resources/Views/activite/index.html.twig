@@ -1,0 +1,119 @@
+{% extends '@App/user_base.html.twig' %}
+
+    {% block title %} {{ parent() }} Vaccin {% endblock %}
+  {% block main %}
+
+
+      <div class="">
+          <div class="page-title">
+              <div class="title_left">
+                  <h3>Liste des Activités</h3>
+              </div>
+          </div>
+          <div class="clearfix"></div>
+
+          <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="x_panel">
+                      <div class="x_title">
+                          <h2><i class="fa fa-bars"></i> Parametre <small>User panel</small></h2>
+                          <ul class="nav navbar-right panel_toolbox">
+                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                              </li>
+                              <li class="dropdown">
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                  <ul class="dropdown-menu" role="menu">
+                                      <li><a href="{{ path('activite_new') }}">Ajouter vaccin</a>
+                                      </li>
+                                  </ul>
+                              </li>
+                              <li><a class="close-link"><i class="fa fa-close"></i></a>
+                              </li>
+                          </ul>
+                          <div class="clearfix"></div>
+                      </div>
+
+                      <div class="x_content">
+
+    <table id="activiter" class="table table-striped table-bordered dt-responsive nowrap table-condensed" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Datedebute</th>
+                <th>Datefin</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for activite in activites %}
+            <tr>
+                <td>{% if activite.datedebute %}{{ activite.datedebute|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if activite.datefin %}{{ activite.datefin|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ activite.description }}</td>
+                <td>
+                    <a  class=" fa fa-trash js-sweetalert" href="#"  data-type="ajax-loader" onclick="Confirm('{{ path('activite_delete', { 'id': activite.id }) }}')"></a> |
+                    <a  class="fa fa-edit" href="{{ path('activite_edit', { 'id': activite.id }) }}" ></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  {% endblock %}
+
+{% block javascripts %}
+    <script>
+
+        $(document).ready(function () {
+            var table =   $("#activiter").DataTable({
+                responsive: true,
+                "iDisplayLength": 5,
+            });
+
+        });
+
+
+        function Confirm(url) {
+            showAjaxLoaderMessage(url);
+        }
+
+        function showAjaxLoaderMessage(url) {
+            swal({
+                title: "êtes-vous sûr?",
+                text: "",
+                type: "warning",
+                showCancelButton: true,
+                closeOnConfirm: false,
+                showLoaderOnConfirm: true,
+            }, function () {
+                $.ajax({
+                    url: url,
+                    type: "DELETE",
+                    processData: false,
+                    contentType: false,
+                    success: function(data){
+
+                        location.reload();
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) {
+                        console.log(xhr);
+                        $.notify("Echec de supresion d'activiter", "error");
+                    }
+                });
+                setTimeout(function () {
+
+                }, 2000);
+            });
+        }
+
+
+
+
+    </script>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends '@App/user_base.html.twig' %}
+
+    {% block title %} {{ parent() }} Bienvenue {% endblock %}
+  {% block main %}
+    <h1>Creche</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ creche.id }}</td>
+            </tr>
+            <tr>
+                <th>Heureouverture</th>
+                <td>{% if creche.heureOuverture %}{{ creche.heureOuverture|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Heurfermeture</th>
+                <td>{% if creche.heurFermeture %}{{ creche.heurFermeture|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Nome</th>
+                <td>{{ creche.nome }}</td>
+            </tr>
+            <tr>
+                <th>Datecreation</th>
+                <td>{% if creche.dateCreation %}{{ creche.dateCreation|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('creche_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('creche_edit', { 'id': creche.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

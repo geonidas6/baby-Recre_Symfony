@@ -1,0 +1,18 @@
+# See https://docs.npmjs.com/misc/developers#keeping-files-out-of-your-package for more about ignoring files.
+
+# Dependencies
+/node_modules
+
+# Docs
+/docs
+
+# Build
+gulpfile.js
+.sasslintrc
+.eslintrc
+
+# Logs
+*.log
+
+# Misc
+.DS_Store

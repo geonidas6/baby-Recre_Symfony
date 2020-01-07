@@ -1,0 +1,126 @@
+<div class="left_col scroll-view">
+   {# <div class="navbar nav_title" style="border: 0;">
+        <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+    </div>
+
+    <div class="clearfix"></div> #}
+
+    <!-- menu profile quick info -->
+    <div class="profile clearfix">
+        <div class="profile_pic">
+            <img src="{% if userinfo.image is null %} {{ asset('images/user.png') }} {% else %} {{ asset('uploads/profile/'~userinfo.image.name) }} {% endif %}" alt="..." class="img-circle profile_img">
+        </div>
+        <div class="profile_info">
+            <span>{% trans  from 'aside' into  app.session.get('Langue') %} Bienvenue  {% endtrans %}</span>
+            <h2>{{ app.user.username }}</h2>
+        </div>
+    </div>
+    <!-- /menu profile quick info -->
+
+    <br />
+
+    <!-- sidebar menu -->
+    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+        <div class="menu_section">
+            <h3>General</h3>
+            <ul class="nav side-menu">
+                <li><a><i class="fa fa-user"></i> {% trans  from 'aside' into  app.session.get('Langue') %} Accueil  {% endtrans %} <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+{#
+						<li><a href="#">{% trans  from 'aside' into  app.session.get('Langue') %} Mémo  {% endtrans %}</a></li>
+#}
+						<li><a href="{{ path('user_profile') }}">{% trans  from 'aside' into  app.session.get('Langue') %} Profil  {% endtrans %}</a></li>
+						<li><a href="{{ path('user_home') }}">{% trans  from 'aside' into  app.session.get('Langue') %} Acceuil  {% endtrans %}</a></li>
+                    </ul>
+                </li>
+            </ul>
+            {%  if userinfo.user_role  == "ROLE_ADMIN" %}
+                <ul class="nav side-menu">
+                    <li><a><i class="fa fa-cog"></i> {% trans  from 'aside' into  app.session.get('Langue') %} Paramètre  {% endtrans %} <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="{{ path('listuser') }}">{% trans  from 'aside' into  app.session.get('Langue') %}  Employé  {% endtrans %}</a></li>
+                            <li><a href="{{ path('userSave') }}">{% trans  from 'aside' into  app.session.get('Langue') %} Ajouter Employé  {% endtrans %}</a></li>
+                            <li><a href="{{ path('attribuer_profil') }}">{% trans  from 'aside' into  app.session.get('Langue') %} Attribué poste  {% endtrans %}</a></li>
+                            <li><a href="{{ path('attribuer_role') }}">{% trans  from 'aside' into  app.session.get('Langue') %} Attribution Role  {% endtrans %}</a></li>
+                            <li><a href="{{ path('poste_new') }}">{% trans  from 'aside' into  app.session.get('Langue') %} Poste  {% endtrans %}</a></li>
+                            <li><a href="{{ path('vaccin_index') }}">{% trans  from 'aside' into  app.session.get('Langue') %} Vaccin  {% endtrans %}</a></li>
+                            <li><a href="{{ path('creche_index',{'id':1}) }}">{% trans  from 'aside' into  app.session.get('Langue') %} Crèche  {% endtrans %}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            {% endif %}
+
+            <ul class="nav side-menu">
+                <li><a><i class="fa fa-desktop"></i> {% trans  from 'aside' into  app.session.get('Langue') %} Média  {% endtrans %} <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+{#
+                        <li><a href="{{ path('file_manager',{'conf':'default'}) }}">{% trans  from 'aside' into  app.session.get('Langue') %} Gallerie  {% endtrans %}</a></li>
+#}
+                        <li><a href="{{ path('media',{'element':'enfant'}) }}">{% trans  from 'aside' into  app.session.get('Langue') %} Gallerie  {% endtrans %}</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav side-menu">
+                <li><a><i class="fa fa-child"></i> {% trans  from 'aside' into  app.session.get('Langue') %} Enfant  {% endtrans %} <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+						<li><a href="{{ path('enfant_index') }}">{% trans  from 'aside' into  app.session.get('Langue') %} Consulter  {% endtrans %}</a></li>
+						<li><a href="{{ path('enfant_new') }}">{% trans  from 'aside' into  app.session.get('Langue') %} Pré-inscription  {% endtrans %}</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav side-menu">
+                <li><a><i class="fa fa-child"></i> {% trans  from 'aside' into  app.session.get('Langue') %} Tuteur  {% endtrans %} <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+						<li><a href="{{ path('tuteur_index') }}">{% trans  from 'aside' into  app.session.get('Langue') %} Consulter  {% endtrans %}</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav side-menu">
+                <li><a><i class="fa fa-cogs"></i> {% trans  from 'aside' into  app.session.get('Langue') %} Activité  {% endtrans %} <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+						<li><a href="{{ path('activite_new') }}">{% trans  from 'aside' into  app.session.get('Langue') %} Vos activités  {% endtrans %}</a></li>
+						<li><a href="{{ path('activite_index') }}">{% trans  from 'aside' into  app.session.get('Langue') %} Liste activités  {% endtrans %}</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav side-menu">
+                <li><a><i class="fa fa-money"></i> {% trans  from 'aside' into  app.session.get('Langue') %} Paiement  {% endtrans %} <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+						<li><a href="{{ path('paiement_new') }}">{% trans  from 'aside' into  app.session.get('Langue') %} Nouveau Règlement  {% endtrans %}</a></li>
+						<li><a href="{{ path('paiement_index') }}">{% trans  from 'aside' into  app.session.get('Langue') %} Consulter Règlement  {% endtrans %}</a></li>
+                    </ul>
+                </li>
+            </ul>
+            {#<ul class="nav side-menu">
+                <li><a><i class="fa fa-user"></i> {% trans  from 'aside' into  app.session.get('Langue') %} Présence  {% endtrans %} <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+						<li><a href="#">{% trans  from 'aside' into  app.session.get('Langue') %} Présence  {% endtrans %}</a></li>
+						<li><a href="#">{% trans  from 'aside' into  app.session.get('Langue') %} Consulter Présence  {% endtrans %}</a></li>
+                    </ul>
+                </li>
+            </ul>
+#}
+
+        </div>
+
+    </div>
+    <!-- /sidebar menu -->
+
+    <!-- /menu footer buttons -->
+    <div class="sidebar-footer hidden-small">
+        <a data-toggle="tooltip" data-placement="top" title="Settings" >
+            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+        </a>
+        <a data-toggle="tooltip" data-placement="top" title="FullScreen" >
+            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+        </a>
+        <a data-toggle="tooltip" data-placement="top" title="Lock"  onclick="openNav()">
+            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+        </a>
+        <a data-toggle="tooltip" data-placement="top" title="Déconnexion" href="{{ path('logout') }}">
+            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+        </a>
+    </div>
+    <!-- /menu footer buttons -->
+</div>

@@ -1,0 +1,51 @@
+<div class="row top_tiles" >
+    <div class="animated flipInY col-lg-2 col-md-4 col-sm-6 col-xs-12">
+        <div class="tile-stats">
+            <div class="icon"><i class="fa fa-bars"></i></div>
+            <div class="count">{{ tabNbr[0].couche }}</div>
+            <h3>{{ 'couche'|trans }}</h3>
+            <p> <a href="{{ path('enfant_edit',{'id':enfant.id}) }}">Modifier.</a></p>
+
+        </div>
+    </div>
+    <div class="animated flipInY col-lg-2 col-md-4 col-sm-6 col-xs-12">
+        <div class="tile-stats">
+            <div class="icon"><i class="fa fa-bars"></i></div>
+            <div class="count">{% if tabNbr[0].changeqte == null %}0{% else %}{{ tabNbr[0].changeqte }}{% endif %}</div>
+            <h3>{{ 'Change'|trans }}</h3>
+            <p> <a href="{{ path('enfant_edit',{'id':enfant.id}) }}">Modifier.</a></p>
+        </div>
+    </div>
+    <div class="animated flipInY col-lg-2 col-md-4 col-sm-6 col-xs-12">
+        <div class="tile-stats">
+            <div class="icon"><i class="fa fa-bars"></i></div>
+            <div class="count">{{ tabNbr[0].doudouqte }}</div>
+            <h3>{{ 'Doudou'|trans }}</h3>
+            <p> <a href="{{ path('enfant_edit',{'id':enfant.id}) }}">Modifier.</a></p>
+        </div>
+    </div>
+    <div class="animated flipInY col-lg-2 col-md-4 col-sm-6 col-xs-12">
+        <div class="tile-stats">
+            <div class="icon"><i class="fa fa-umbrella"></i></div>
+            <div class="count">{{ tabNbr[0].cqqte }}</div>
+            <h3>{{ 'Casquette'|trans }}</h3>
+            <p> <a href="{{ path('enfant_edit',{'id':enfant.id}) }}">Modifier.</a></p>
+        </div>
+    </div>
+    <div class="animated flipInY col-lg-2 col-md-4 col-sm-6 col-xs-12">
+        <div class="tile-stats">
+            <div class="icon"><i class="fa fa-medkit"></i></div>
+            <div class="count">{{ tabNbr[0].mdqte }}</div>
+            <h3>{{ 'Médicament'|trans }}</h3>
+            <p> <a href="{{ path('enfant_edit',{'id':enfant.id}) }}">Modifier.</a></p>
+        </div>
+    </div>
+    <div class="animated flipInY col-lg-2 col-md-4 col-sm-6 col-xs-12">
+        <div class="tile-stats">
+            <div class="icon"><i class="fa fa-beer"></i></div>
+            <div class="count">{% if tabNbr[0].biberonqte == null %}0{% else %}{{ tabNbr[0].biberonqte }}{% endif %}</div>
+            <h3>{{ 'Biberon'|trans }}</h3>
+            <p> <a href="{{ path('enfant_edit',{'id':enfant.id}) }}">Modifier.</a></p>
+        </div>
+    </div>
+</div>

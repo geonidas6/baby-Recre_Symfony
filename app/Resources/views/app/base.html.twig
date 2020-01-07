@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block metas %} {% endblock %}
+
+    <title>{% block title %} Recré Crèche | {% endblock %}</title>
+
+    <link href="{{ asset('vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/pnotify/dist/pnotify.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/pnotify/dist/pnotify.buttons.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/pnotify/dist/pnotify.nonblock.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('vendors/iCheck/skins/flat/green.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/datatables.net-bs/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/switchery/dist/switchery.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/nprogress/nprogress.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/intl-tel-input/build/css/intlTelInput.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/country-select-js-master/build/css/countrySelect.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/bootstrap-progressbar/css/bootstrap-progressbar-2.0.0.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/light-gallery/css/lightgallery.css') }}" rel="stylesheet">
+
+
+    <link href="{{ asset('vendors/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/normalize-css/normalize.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/ion.rangeSlider/css/ion.rangeSlider.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/ion.rangeSlider/css/ion.rangeSlider.skinFlat.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css') }}" rel="stylesheet">
+
+   <!---- full calendrea ---->
+    <link href="{{ asset('vendors/fullcalendar/dist/fullcalendar.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/fullcalendar/dist/fullcalendar.print.css') }}" rel="stylesheet" media="print">
+    <link href="{{ asset('vendors/sweetalert/sweetalert.css') }}" rel="stylesheet">
+
+
+
+    <link href="{{ asset('vendors/PostItAll-master/dist/jquery.postitall.css') }}" rel="stylesheet">
+
+
+
+
+
+
+
+    <link href="{{ asset('style.css') }}" rel="stylesheet">
+
+    <style>
+
+
+
+        {#start css lock#}
+        .overlaylock {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0, 0.9);
+            overflow-x: hidden;
+            transition: 0.5s;
+        }
+
+        .overlaylock-content {
+            position: relative;
+            top: 25%;
+            width: 100%;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .overlaylock div {
+            margin-left: 25%;
+            width: 52%;
+        }
+
+        .overlaylock a:hover, .overlay a:focus {
+            color: #f1f1f1;
+        }
+
+        .overlaylock .closebtn {
+            position: absolute;
+            top: 20px;
+            right: 45px;
+            font-size: 60px;
+        }
+
+        @media screen and (max-height: 450px) {
+            .overlaylock a {font-size: 20px}
+            .overlaylock .closebtn {
+                font-size: 40px;
+                top: 15px;
+                right: 35px;
+            }
+        {#end css lock#}
+
+
+            .iti-flag {background-image: url("{{ asset('vendors/intl-tel-input/build/img/flags.png') }}");}
+
+            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+                .iti-flag {background-image: url("{{ asset('vendors/intl-tel-input/build/img/flags@2x.png') }}");}
+            }
+
+            .country-select {
+
+                position: relative;
+                display: inline-block;
+                width: 100%;
+
+            }
+
+
+
+
+    </style>
+
+
+
+    <!-- Custom Theme Style -->
+    <link href="{{ asset('css/custom.min.css') }}" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.jpg') }}" />
+</head>
+
+<body class="nav-md footer_fixed">
+<div id="preloader">
+    <div class="refresh-preloader"><div class="preloader"><i>.</i><i>.</i><i>.</i></div></div>
+</div>
+<div class="container body">
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+            {% block aside %}
+
+            {% endblock %}
+        </div>
+
+        <!-- top navigation -->
+
+        <div class="top_nav ">
+            {% block top %}
+
+            {% endblock %}
+        </div>
+
+        <!-- /top navigation -->
+
+        <!-- page content -->
+
+        <div class="right_col" role="main"  >
+            {% block main %}
+
+            {% endblock %}
+        </div>
+
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer class="footer_fixed">
+            {% block footer %}
+                <div class="pull-right">
+
+                </div>
+                <div class="clearfix"></div>
+            {% endblock %}
+        </footer>
+        <!-- /footer content -->
+    </div>
+</div>
+
+
+<!---deverouller--->
+
+
+
+<div id="mylock" class="overlaylock">
+    <div class="overlaylock-content">
+        <div class="input-group">
+            <input type="password" class="form-control">
+            <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-user"></span>
+             </span>
+        </div>
+        <a class="btn btn-success fa fa-eye" href="javascript:void(0)"  onclick="closeNav()"> Dévérouller</a>
+    </div>
+</div>
+<!---end deverouller-->
+
+<!-- jQuery -->
+<script src="{{ asset('vendors/jquery/dist/jquery.min.js') }}"></script>
+
+<!-- Bootstrap -->
+<script src="{{ asset('vendors/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('vendors/moment/min/moment.min.js') }}"></script>
+<script src="{{ asset('vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
+<script src="{{ asset('vendors/fastclick/lib/fastclick.js') }}"></script>
+<script src="{{ asset('vendors/bootstrap-progressbar/bootstrap-progressbar.min.js') }}"></script>
+<script src="{{ asset('js/custom.min.js') }}"></script>
+<script src="{{ asset('vendors/pnotify/dist/pnotify.js') }}"></script>
+<script src="{{ asset('vendors/pnotify/dist/pnotify.buttons.js') }}"></script>
+<script src="{{ asset('vendors/pnotify/dist/pnotify.nonblock.js') }}"></script>
+<script src="{{ asset('vendors/notify/notify.js') }}"></script>
+<script src="{{ asset('vendors/jquery-qrcode-master/jquery.qrcode.min.js') }}"></script>
+
+<script src="{{ asset('vendors/iCheck/icheck.min.js') }}"></script>
+<script src="{{ asset('vendors/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('vendors/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+<script src="{{ asset('vendors/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js') }}"></script>
+<script src="{{ asset('vendors/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+<script src="{{ asset('vendors/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('vendors/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+<script src="{{ asset('vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js') }}"></script>
+<script src="{{ asset('vendors/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
+<script src="{{ asset('vendors/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js') }}"></script>
+<script src="{{ asset('vendors/datatables.net-scroller/js/dataTables.scroller.min.js') }}"></script>
+<script src="{{ asset('vendors/switchery/dist/switchery.min.js') }}"></script>
+<script src="{{ asset('vendors/nprogress/nprogress.js') }}"></script>
+<script src="{{ asset('vendors/intl-tel-input/build/js/intlTelInput.js') }}"></script>
+<script src="{{ asset('vendors/country-select-js-master/build/js/countrySelect.min.js') }}"></script>
+
+<script src="{{ asset('vendors/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+<script src="{{ asset('vendors/ion.rangeSlider/js/ion.rangeSlider.min.js') }}"></script>
+<script src="{{ asset('vendors/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js') }}"></script>
+<script src="{{ asset('vendors/jquery-knob/dist/jquery.knob.min.js') }}"></script>
+<script src="{{ asset('vendors/sweetalert/sweetalert.min.js') }}"></script>
+
+
+
+<script src="{{ asset('vendors/Chart.js/dist/Chart.min.js') }}"></script>
+<script src="{{ asset('vendors/jquery-sparkline/dist/jquery.sparkline.min.js') }}"></script>
+<script src="{{ asset('vendors/Flot/jquery.flot.js') }}"></script>
+<script src="{{ asset('vendors/Flot/jquery.flot.pie.js') }}"></script>
+<script src="{{ asset('vendors/Flot/jquery.flot.time.js') }}"></script>
+<script src="{{ asset('vendors/Flot/jquery.flot.stack.js') }}"></script>
+<script src="{{ asset('vendors/Flot/jquery.flot.resize.js') }}"></script>
+
+
+<script src="{{ asset('vendors/flot.orderbars/js/jquery.flot.orderBars.js') }}"></script>
+<script src="{{ asset('vendors/flot-spline/js/jquery.flot.spline.min.js') }}"></script>
+<script src="{{ asset('vendors/flot.curvedlines/curvedLines.js') }}"></script>
+<script src="{{ asset('vendors/DateJS/build/date.js') }}"></script>
+
+
+
+
+<!---qrdecod--->
+
+
+{##}<script src="{{ asset('common.js') }}"></script>
+{##}<script src="{{ asset('vendors/instascan-master/instascan.min.js') }}"></script>
+{##}<script src="{{ asset('vendors/validator/validator.js') }}"></script>
+{##}<script src="{{ asset('vendors/light-gallery/js/lightgallery-all.js') }}"></script>
+{##}<script src="{{ asset('vendors/light-gallery/image-gallery.js') }}"></script>
+
+
+{##}<script src="{{ asset('vendors/PostItAll-master/dist/jquery.postitall.js') }}"></script>
+
+
+<script>
+
+
+    {#start lock script#}
+    function openNav() {
+        document.getElementById("mylock").style.width = "100%";
+    }
+
+    function closeNav() {
+        //TODO: ajax pour verifier le password
+        document.getElementById("mylock").style.width = "0%";
+    }
+
+    {#start lock script#}
+
+
+    $('body').show();
+    $('.version').text(NProgress.version);
+    NProgress.configure({ showSpinner: false });
+    NProgress.start();
+    setTimeout(function() { NProgress.done(); $('.fade').removeClass('out'); }, 1000);
+
+    $(document).ready(function (){
+
+
+        var idNewNote = null;
+        $('#newNote').click(function(e) {
+            if(idNewNote != null) {
+                $.PostItAll.destroy(idNewNote);
+                idNewNote = null;
+            }
+            $.PostItAll.new({
+                content: 'This is a <b>new</b> note!',
+                onCreated: function(id, options, obj) {
+                    idNewNote = id;
+                },
+                onDelete: function() {
+                    idNewNote = null;
+                }
+            });
+            e.preventDefault();
+        });
+        $('#idShowCreated').click(function(e) {
+            $.PostItAll.show();
+            e.preventDefault();
+        });
+        $('#idHideCreated').click(function(e) {
+            $.PostItAll.hide();
+            e.preventDefault();
+        });
+        $('#idDeleteCreated').click(function(e) {
+            $.PostItAll.remove();
+            e.preventDefault();
+        });
+
+
+        $('.ui-pnotify').remove();
+        {% for notice in app.session.flashBag.get('notice') %}
+        new PNotify({
+            title: '{{ notice.title }}',
+            type: '{{ notice.type }}',
+            text: '{{ notice.message }}',
+            nonblock: {
+                nonblock: true
+            },
+            styling: 'bootstrap3'
+        });
+        {% endfor %}
+
+
+
+
+
+        $('#datatable-checkbox').dataTable(
+            {
+                destroy: true,
+                "language": {
+                    "sProcessing": "Traitement en cours ...",
+                    "sLengthMenu": "Afficher _MENU_ lignes",
+                    "sZeroRecords": "Aucun résultat trouvé",
+                    "sEmptyTable": "Aucune donnée disponible",
+                    "sInfo": "Lignes _START_ à _END_ sur _TOTAL_",
+                    "sInfoEmpty": "Aucune ligne affichée",
+                    "sInfoFiltered": "(Filtrer un maximum de_MAX_)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Chercher:",
+                    "sUrl": "",
+                    "sInfoThousands": ",",
+                    "sLoadingRecords": "Chargement...",
+                    "oPaginate": {
+                        "sFirst": "Premier", "sLast": "Dernier", "sNext": "Suivant", "sPrevious": "Précédent"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Trier par ordre croissant", "sSortDescending": ": Trier par ordre décroissant"
+                    }
+                }
+            }
+        );
+
+
+        $('#datatable-responsive').dataTable(
+            {
+                destroy: true,
+                "language": {
+                    "sProcessing": "Traitement en cours ...",
+                    "sLengthMenu": "Afficher _MENU_ lignes",
+                    "sZeroRecords": "Aucun résultat trouvé",
+                    "sEmptyTable": "Aucune donnée disponible",
+                    "sInfo": "Lignes _START_ à _END_ sur _TOTAL_",
+                    "sInfoEmpty": "Aucune ligne affichée",
+                    "sInfoFiltered": "(Filtrer un maximum de_MAX_)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Chercher:",
+                    "sUrl": "",
+                    "sInfoThousands": ",",
+                    "sLoadingRecords": "Chargement...",
+                    "oPaginate": {
+                        "sFirst": "Premier", "sLast": "Dernier", "sNext": "Suivant", "sPrevious": "Précédent"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Trier par ordre croissant", "sSortDescending": ": Trier par ordre décroissant"
+                    }
+                }
+            }
+        );
+
+    });
+</script>
+
+{% block javascripts %} {% endblock %}
+
+
+</body>
+</html>

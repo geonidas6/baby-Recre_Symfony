@@ -1,0 +1,272 @@
+{% extends '@App/user_base.html.twig' %}
+{% form_theme form 'app/form/profile_theme.html.twig' %}
+
+{% block title %} {{ parent() }} {% trans  from 'user' into  app.session.get('Langue') %} Profil  {% endtrans %}  {% endblock %}
+{% block main %}
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>{% trans  from 'user' into  app.session.get('Langue') %} Informations du profil  {% endtrans %} </h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
+                    <div class="profile_img">
+                        <div id="crop-avatar">
+                            <!-- Current avatar -->
+                            <img id="profile-pic" class="img-responsive avatar-view" src="{% if userinfo.image is null %} {{ asset('images/user.png') }} {% else %} {{ asset('uploads/profile/'~userinfo.image.name) }} {% endif %}" alt="Avatar" title="Photo de profil">
+                        </div>
+                    </div>
+                    <h3>{{ userinfo.firstName ~" "~ userinfo.lastName }}</h3>
+
+                    <ul class="list-unstyled user_data">
+                        <li>
+                            <i class="fa fa-briefcase user-profile-icon"></i>  {% trans  from 'user' into  app.session.get('Langue') %} Identifiant  {% endtrans %} : {{ userinfo.username }}
+                        </li>
+
+                        <li class="m-top-xs">
+                            <i class="fa fa-external-link user-profile-icon"></i>
+                            {{ userinfo.email }}
+                        </li>
+                    </ul>
+
+                    <a id="change_photo" class="btn btn-info"><i class="fa fa-edit m-right-xs"></i> {% trans  from 'user' into  app.session.get('Langue') %} Changer la photo de profil  {% endtrans %}</a>
+                    <a id="submit_photo" style="display: none" class="btn btn-success"><i class="fa fa-edit m-right-xs"></i> {% trans  from 'user' into  app.session.get('Langue') %} Soumettre  {% endtrans %}</a>
+                    <a id="cancel_photo" style="display: none"  class="btn btn-warning"><i class="fa fa-edit m-right-xs"></i> {% trans  from 'user' into  app.session.get('Langue') %} Annuler  {% endtrans %}</a>
+                    <form id="input_form" style="display: none" >
+                        <input type="file"   id="image_input" name="image" />
+                    </form>
+
+                    <br>
+                    {#
+                            <!-- start skills -->
+                            <h4>Skills</h4>
+                            <ul class="list-unstyled user_data">
+                                <li>
+                                    <p>Web Applications</p>
+                                    <div class="progress progress_sm">
+                                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50" aria-valuenow="49" style="width: 50%;"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>Website Design</p>
+                                    <div class="progress progress_sm">
+                                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="70" aria-valuenow="69" style="width: 70%;"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>Automation &amp; Testing</p>
+                                    <div class="progress progress_sm">
+                                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="30" aria-valuenow="29" style="width: 30%;"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>UI / UX</p>
+                                    <div class="progress progress_sm">
+                                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50" aria-valuenow="49" style="width: 50%;"></div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <!-- end of skills --> #}
+
+                </div>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>{% trans  from 'user' into  app.session.get('Langue') %} Modifier le profil  {% endtrans %}</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content" style="display: block;">
+                            <br>
+
+                            <form data-parsley-validate=""  action="{{ path('user_profile') }}" method="post" class="form-horizontal form-label-left" novalidate="" id="userprofileform">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">{% trans  from 'user' into  app.session.get('Langue') %} Nom  {% endtrans %}  <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        {{ form_widget(form.lastName,{'class':'form-control col-md-7 col-xs-12'}) }}
+                                        {{ form_errors(form.lastName) }}
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">{% trans  from 'user' into  app.session.get('Langue') %} Prénoms  {% endtrans %} <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        {{ form_widget(form.firstName,{'class':'form-control col-md-7 col-xs-12'}) }}
+                                        {{ form_errors(form.firstName) }}
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">{% trans  from 'user' into  app.session.get('Langue') %} sexe  {% endtrans %}  <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        {{ form_widget(form.sexe,{'class':'form-control col-md-7 col-xs-12'}) }}
+                                        {{ form_errors(form.sexe) }}
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">{% trans  from 'user' into  app.session.get('Langue') %} Tel  {% endtrans %}   <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <span id="error-msg"></span>
+                                        <span id="valid-msg"></span>
+                                        {{ form_widget(form.tel,{'class':'form-control col-md-7 col-xs-12'}) }}
+                                        {{ form_errors(form.tel) }}
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">{% trans  from 'user' into  app.session.get('Langue') %} Email  {% endtrans %}</label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        {{ form_widget(form.email,{'class':'form-control col-md-7 col-xs-12'}) }}
+                                        {{ form_errors(form.email) }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">{% trans  from 'user' into  app.session.get('Langue') %} Identifiant  {% endtrans %} <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        {{ form_widget(form.username,{'class':'form-control col-md-7 col-xs-12'}) }}
+                                        {{ form_errors(form.username) }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">{% trans  from 'user' into  app.session.get('Langue') %} Mot de passe  {% endtrans %} </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        {{ form_row(form.plainPassword,{'class':'form-control col-md-7 col-xs-12'}) }}
+                                        {# {{ form_errors(form.plainPassword) }} #}
+                                    </div>
+                                </div>
+                                {{ form_rest(form) }}
+                                <div class="ln_solid"></div>
+                                <div class="form-group">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                        <button class="btn btn-primary" type="button"> {% trans  from 'user' into  app.session.get('Langue') %} Annuler  {% endtrans %}</button>
+                                        <button class="btn btn-primary" type="reset"> {% trans  from 'user' into  app.session.get('Langue') %} Reset  {% endtrans %}</button>
+                                        <button type="submit" id="Envoyer" class="btn btn-success"> {% trans  from 'user' into  app.session.get('Langue') %} Envoyer  {% endtrans %}</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+
+
+
+        $(function(){
+
+            var img_div= $('#crop-avatar');
+            var img_old_src= $('#profile-pic').prop('src');
+            var change_photo= $("#change_photo");
+            var submit_photo = $("#submit_photo");
+            var cancel_photo = $("#cancel_photo");
+            var img_file ;
+
+            change_photo.click(function(){
+                $("input[id='image_input']").trigger('click');
+            });
+
+            cancel_photo.click(function(){
+                console.log(img_old_src);
+                $('#profile-pic').prop('src',img_old_src);
+                img_file= undefined;
+                resetButtons();
+            });
+
+            submit_photo.click(function(){
+                if(img_file !== undefined ){
+                    $.notify("Mise à jour de la photo de profil en cours","warning");
+                    sendImage();
+                }
+            });
+
+            function resetButtons(){
+                change_photo.show();
+                submit_photo.hide();
+                cancel_photo.hide();
+                img_file= undefined;
+                $("form[id='input_form']").trigger('reset');
+            }
+
+            $("input:file").on('change', function() {
+
+                var countFiles = $(this)[0].files.length;
+                var imgPath = $(this)[0].value;
+                var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
+                if (extn === "gif" || extn === "png" || extn === "jpg" || extn === "jpeg" ) {
+                    if (typeof(FileReader) !== "undefined") {
+                        //loop for each file selected for uploaded.
+                        var that = $(this);
+                        for (var i = 0; i < countFiles; i++) {
+                            var reader = new FileReader();
+                            reader.onload = function (e) {
+                                img_div.empty();
+                                img_div.append(($("<img />", {
+                                    "src": e.target.result,
+                                    "class": "img-responsive avatar-view",
+                                    //  "style": "max-height : 60px; margin-top:20px"
+                                    "alt": "Avatar",
+                                    "title": "Photo de profil",
+                                    'id': "profile-pic"
+                                })));
+                                img_file =that[0].files[0];
+                                change_photo.hide();
+                                submit_photo.show();
+                                cancel_photo.show();
+                            };
+                            reader.readAsDataURL($(this)[0].files[i]);
+                        }
+                    } else {
+                        $.notify("Votre navigateur ne supporte pas FileReader.","error");
+                    }
+                } else {
+                    $.notify("Sélectionnez uniquement des images","warning");
+                }
+            });
+
+            // Fonction pour charger l'image , et cacher le span, en cas d'echec, on supprime la div
+            function sendImage()
+            {
+                var data = new FormData();
+                data.append("picture", img_file);
+                $.ajax({
+                    url: "{{ path('user_profile_pic_change') }}",
+                    type: "POST",
+                    data : data,
+                    processData: false,
+                    contentType: false,
+                    success: function(data){
+                        console.log(data);
+                        $.notify("Mise à jour effectuée avec succès", "success");
+                        location.reload();
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) {
+                        console.log(xhr);
+                        $.notify("Echec de la mise à jour", "error");
+                    }
+                });
+            }
+        });
+    </script>
+{% endblock %}

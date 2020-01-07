@@ -1,0 +1,243 @@
+{% form_theme form 'app/form/register_custom_theme.html.twig' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title> Crèche Recré | Inscription </title>
+
+  <!-- Bootstrap -->
+  <link href="{{ asset('vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="{{  asset('css/font-awesome.min.css') }}" rel="stylesheet">
+  <!-- NProgress -->
+  <link href="{{  asset('css/nprogress.css') }}" rel="stylesheet">
+  <!-- Animate.css -->
+  <link href="{{  asset('css/animate.min.css') }}" rel="stylesheet">
+
+  <!-- Custom Theme Style -->
+  <link href="{{  asset('css/custom.min.css') }}" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+  <link href="{{ asset('style.css') }}" rel="stylesheet">
+  <style>
+
+    body {
+      background-image: url("{{ asset('images/background-2633962_960_720.jpg') }}");
+
+    }
+
+  </style>
+  <style type="text/css">
+    h1.ml8 {
+      font-weight: 900;
+      font-size: 4.5em;
+      color: #fff;
+      width: 3em;
+      height: 3em;
+    }
+
+    .ml8 .letters-container {
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      height: 1em;
+    }
+
+    .ml8 .letters {
+      position: relative;
+      z-index: 2;
+      display: inline-block;
+      line-height: 0.7em;
+      right: -0.12em;
+      top: -0.2em;
+    }
+
+    .ml8 .bang {
+      font-size: 1.4em;
+      top: auto;
+      left: -0.06em;
+    }
+
+    .ml8 .circle {
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+    }
+
+    .ml8 .circle-white {
+      width: 3em;
+      height: 3em;
+      border: 2px dashed white;
+      border-radius: 2em;
+    }
+
+    .ml8 .circle-dark {
+      width: 2.2em;
+      height: 2.2em;
+      background-color: #4f7b86;
+      border-radius: 3em;
+      z-index: 1;
+    }
+
+    .ml8 .circle-dark-dashed {
+      border-radius: 2.4em;
+      background-color: transparent;
+      border: 2px dashed #4f7b86;
+      width: 2.3em;
+      height: 2.3em;
+    }
+  </style>
+</head>
+{#
+<body class="">
+<div id="preloader">
+  <div class="refresh-preloader"><div class="preloader"><i>.</i><i>.</i><i>.</i></div></div>
+</div>#}
+<body style="background-color: cadetblue">
+<h1 class="ml8 ">
+  <span class="letters-container">
+    <span class="letters letters-rigth" style="color: white; margin-left:46%">Hi</span>
+    <span class="letters bang">!</span>
+  </span>
+  <span class="circle circle-white"></span>
+  <span class="circle circle-dark"></span>
+  <span class="circle circle-container"><span class="circle circle-dark-dashed"></span></span>
+</h1>
+<div>
+  <a class="hiddenanchor" id="signin"></a>
+
+  <div class="login_wrapper hide" style="margin-top:5px;">
+    <div  class="animate form login_form">
+      <section class="login_content panel">
+        <form class="panel-body form-horizontal form-label-left input_mask" id="register_form" action="{{ path('register') }}" method="post">
+          <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+              {{ form_row(form.lastName,{'attr':{'id':'inputSuccess2','class':'form-control has-feedback-left','placeholder':'Nom de famille'}}) }}
+              <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+              {{ form_row(form.firstName,{'attr':{'id':'inputSuccess2','class':'form-control has-feedback-left','placeholder':'prenom'}}) }}
+               <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+          </div>
+
+         <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
+              {{ form_row(form.tel,{'attr':{'id':'inputSuccess2','class':'form-control has-feedback-left','placeholder':'tel'}}) }}
+               <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
+          </div>
+
+          <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
+              {{ form_row(form.email,{'attr':{'id':'inputSuccess2','class':'form-control has-feedback-left','placeholder':'Email'}}) }}
+               <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+          </div>
+
+          <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
+              {{ form_row(form.sexe,{'attr':{'id':'inputSuccess2','class':'form-control has-feedback-left','placeholder':'Sexe'}}) }}
+              <span class="fa fa-list form-control-feedback left" aria-hidden="true"></span>
+          </div>
+
+          <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
+              {{ form_row(form.username,{'attr':{'id':'inputSuccess2','class':'form-control has-feedback-left','placeholder':'Username'}}) }}
+               <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+          </div>
+
+         <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
+              {{ form_row(form.plainPassword,{'attr':{'id':'inputSuccess2','class':'form-control has-feedback-rigth'}}) }}
+          </div>
+          <button type="submit" class="btn btn-block btn-lg btn-info">Register</button>
+            {{ form_end(form) }}
+
+          <div   align="center">
+              <p class="change_link">Déjà membre ?
+                <a href="{{ path('login') }}" class="to_register" id="title_login"> S'identifier </a>
+              </p>
+            </div>
+        </form>
+      </section>
+    </div>
+  </div>
+</div>
+<script src="{{ asset('vendors/jquery/dist/jquery.min.js') }}"></script>
+<script src="{{ asset('js/anime.min.js') }}"></script>
+<script type="text/javascript">
+
+    $(window).on('load', function(){
+
+        anime.timeline({loop: true})
+            .add({
+                targets: '.ml8 .circle-white',
+                scale: [0, 3],
+                opacity: [1, 0],
+                easing: "easeInOutExpo",
+                rotateZ: 360,
+                duration: 1100
+            }).add({
+            targets: '.ml8 .circle-container',
+            scale: [0, 1],
+            duration: 1100,
+            easing: "easeInOutExpo",
+            offset: '-=1000'
+        }).add({
+            targets: '.ml8 .circle-dark',
+            scale: [0, 1],
+            duration: 1100,
+            easing: "easeOutExpo",
+            offset: '-=600'
+        }).add({
+            targets: '.ml8 .letters-left',
+            scale: [0, 1],
+            duration: 1200,
+            offset: '-=550'
+        }).add({
+            targets: '.ml8 .bang',
+            scale: [0, 1],
+            rotateZ: [45, 15],
+            duration: 1200,
+            offset: '-=1000'
+        }).add({
+            targets: '.ml8',
+            opacity: 0,
+            duration: 1000,
+            easing: "easeOutExpo",
+            delay: 1400
+        });
+
+        anime({
+            targets: '.ml8 .circle-dark-dashed',
+            rotateZ: 360,
+            duration: 8000,
+            easing: "linear",
+            loop: true
+        });
+
+    });
+    setTimeout(function(){
+        $('.ml8').hide()
+        $('.login_wrapper').removeClass('hide')
+
+        }, 5000);
+
+</script>
+{#
+<script>
+
+    $('#preloader').height($(window).height() + "px");
+    $(window).on('load', function(){
+        setTimeout(function(){
+            $('body').css("overflow-y","visible");
+            $('#preloader').fadeOut(400);
+        }, 800);
+    });
+    </script>#}
+</body>
+</html>

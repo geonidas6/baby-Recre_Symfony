@@ -1,0 +1,44 @@
+{% extends '@App/user_base.html.twig' %}
+
+{% block title %} {{ parent() }} Consulter Utilisateurs {% endblock %}
+{% block main %}
+    <h1>Historiquepaiements list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Datedebut</th>
+                <th>Datefin</th>
+                <th>Regler</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for historiquepaiement in historiquepaiements %}
+            <tr>
+                <td><a href="{{ path('historiquepaiement_show', { 'id': historiquepaiement.id }) }}">{{ historiquepaiement.id }}</a></td>
+                <td>{% if historiquepaiement.datedebut %}{{ historiquepaiement.datedebut|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if historiquepaiement.datefin %}{{ historiquepaiement.datefin|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ historiquepaiement.regler }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('historiquepaiement_show', { 'id': historiquepaiement.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('historiquepaiement_edit', { 'id': historiquepaiement.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('historiquepaiement_new') }}">Create a new historiquepaiement</a>
+        </li>
+    </ul>
+{% endblock %}

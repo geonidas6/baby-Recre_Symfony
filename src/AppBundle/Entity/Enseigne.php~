@@ -1,0 +1,389 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Enseigne
+ *
+ * @ORM\Table(name="enseigne")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\EnseigneRepository")
+ */
+class Enseigne
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @var string
+     * @ORM\ManyToOne(targetEntity="User" )
+     * @ORM\JoinColumn(name="admin_id", referencedColumnName="id", nullable=false)
+     */
+    private $administrator;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dat_ecreation", type="datetime")
+     */
+    private $creationDate;
+
+    /**
+     * @var string
+     *
+     * @ORM\OneToOne(targetEntity="Country" )
+     * @ORM\JoinColumn(name="country_id", referencedColumnName="id" )
+     * @ORM\Column(name="pays", type="string", length=25)
+     */
+    private $country;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="slogan", type="string", length=255)
+     */
+    private $slogan;
+
+    /**
+     * @var string
+     *
+     * @ORM\OneToOne(targetEntity="Image", cascade={"persist","remove"})
+     * @ORM\JoinColumn(name="logo_id", referencedColumnName="id", nullable=true)
+     */
+    private $logo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="site_web", type="string", length=255)
+     */
+    private $website;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse", type="string", length=255)
+     */
+    private $address;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tel_un", type="string", length=255)
+     */
+    private $phone1;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tel_deux", type="string", length=255)
+     */
+    private $phone2;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="gps", type="string", length=255)
+     */
+    private $gps;
+
+    public function __construct(){
+        $this->creationDate = new \DateTime();
+
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Enseigne
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set creationDate
+     *
+     * @param \DateTime $creationDate
+     *
+     * @return Enseigne
+     */
+    public function setCreationDate($creationDate)
+    {
+        $this->creationDate = $creationDate;
+
+        return $this;
+    }
+
+    /**
+     * Get creationDate
+     *
+     * @return \DateTime
+     */
+    public function getCreationDate()
+    {
+        return $this->creationDate;
+    }
+
+    /**
+     * Set country
+     *
+     * @param string $country
+     *
+     * @return Enseigne
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return string
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * Set slogan
+     *
+     * @param string $slogan
+     *
+     * @return Enseigne
+     */
+    public function setSlogan($slogan)
+    {
+        $this->slogan = $slogan;
+
+        return $this;
+    }
+
+    /**
+     * Get slogan
+     *
+     * @return string
+     */
+    public function getSlogan()
+    {
+        return $this->slogan;
+    }
+
+    /**
+     * Set website
+     *
+     * @param string $website
+     *
+     * @return Enseigne
+     */
+    public function setWebsite($website)
+    {
+        $this->website = $website;
+
+        return $this;
+    }
+
+    /**
+     * Get website
+     *
+     * @return string
+     */
+    public function getWebsite()
+    {
+        return $this->website;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     *
+     * @return Enseigne
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set address
+     *
+     * @param string $address
+     *
+     * @return Enseigne
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * Get address
+     *
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * Set phone1
+     *
+     * @param string $phone1
+     *
+     * @return Enseigne
+     */
+    public function setPhone1($phone1)
+    {
+        $this->phone1 = $phone1;
+
+        return $this;
+    }
+
+    /**
+     * Get phone1
+     *
+     * @return string
+     */
+    public function getPhone1()
+    {
+        return $this->phone1;
+    }
+
+    /**
+     * Set phone2
+     *
+     * @param string $phone2
+     *
+     * @return Enseigne
+     */
+    public function setPhone2($phone2)
+    {
+        $this->phone2 = $phone2;
+
+        return $this;
+    }
+
+    /**
+     * Get phone2
+     *
+     * @return string
+     */
+    public function getPhone2()
+    {
+        return $this->phone2;
+    }
+
+    /**
+     * Set gps
+     *
+     * @param string $gps
+     *
+     * @return Enseigne
+     */
+    public function setGps($gps)
+    {
+        $this->gps = $gps;
+
+        return $this;
+    }
+
+    /**
+     * Get gps
+     *
+     * @return string
+     */
+    public function getGps()
+    {
+        return $this->gps;
+    }
+
+    /**
+     * Set logo
+     *
+     * @param \AppBundle\Entity\Image $logo
+     *
+     * @return Enseigne
+     */
+    public function setLogo(\AppBundle\Entity\Image $logo = null)
+    {
+        $this->logo = $logo;
+
+        return $this;
+    }
+
+    /**
+     * Get logo
+     *
+     * @return \AppBundle\Entity\Image
+     */
+    public function getLogo()
+    {
+        return $this->logo;
+    }
+}

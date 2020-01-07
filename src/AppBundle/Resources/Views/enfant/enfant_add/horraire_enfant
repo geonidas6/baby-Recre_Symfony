@@ -1,0 +1,132 @@
+<h3>Horraire</h3>
+<fieldset>
+
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <input id="lundidepart" name="lundidepart" type="text" class="form-control" required>
+                    <label class="form-label">Lundi depart*</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <input id="lundifin" name="lundifin" type="text" class="form-control" required>
+                    <label class="form-label">Lundi fin*</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <input id="mardidepart" name="mardidepart" type="text" class="form-control" required>
+                    <label class="form-label">Mardi depart*</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <input id="mardifin" name="mardifin" type="text" class="form-control" required>
+                    <label class="form-label">Mardi depart*</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <input id="mercredidepart" name="mercredidepart" type="text" class="form-control" required>
+                    <label class="form-label">Mercredi depart*</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <input id="mercredifin" name="mercredifin" type="text" class="form-control" required>
+                    <label class="form-label">Mercredi fin*</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <input id="jeudidepart" name="jeudidepart" type="text" class="form-control" required>
+                    <label class="form-label">Jeudi depart*</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <input id="jeudifin" name="jeudifin" type="text" class="form-control" required>
+                    <label class="form-label">Jeudi fin*</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <input id="vendredidepart" name="vendredidepart" type="text" class="form-control" required>
+                    <label class="form-label">Vendredi depart*</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <input id="vendredifin" name="vendredifin"  type="text" class="form-control" required>
+                    <label class="form-label">Vendredi fin*</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <input id="samedidepart" name="samedidepart"  type="text" class="form-control" required>
+                    <label class="form-label">Samedi depart*</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <input id="samedifin" name="samedifin"   type="text" class="form-control" required>
+                    <label class="form-label">Samedi fin*</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <input id="dimanchedepart" name="dimanchedepart"   type="text" class="form-control" required>
+                    <label class="form-label">Dimanche depart*</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <input id="dimanchefin" name="dimanchefin" type="text" class="form-control" required>
+                    <label class="form-label">Dimanche fin*</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</fieldset>

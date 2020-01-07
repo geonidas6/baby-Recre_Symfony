@@ -1,0 +1,405 @@
+{% extends '@App/user_base.html.twig' %}
+
+    {% block title %} {{ parent() }} Bienvenue {% endblock %}
+  {% block main %}
+
+      <div class="">
+          <div class="page-title">
+              <div class="title_left">
+                  <h3>PAIEMENT NUMERO: #<strong id="numpaiement"></strong></h3>
+                  <h4 align="center" style="color: white" class="label-info white" id="periode"></h4>
+              </div>
+          </div>
+          <div class="clearfix"></div>
+
+          <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="x_panel">
+                      <div class="x_title">
+                          <h2><i class="fa fa-bars"></i> Parametre <small>User panel</small></h2>
+                          <ul class="nav navbar-right panel_toolbox">
+                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                              </li>
+                              <li class="dropdown">
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                  <ul class="dropdown-menu" role="menu">
+                                      <a href="{{ path('enfant_index') }}">Liste Série</a>
+                                      </li>
+                                      <li><a href="#">Settings 2</a>
+                                      </li>
+                                  </ul>
+                              </li>
+                              <li><a class="close-link"><i class="fa fa-close"></i></a>
+                              </li>
+                          </ul>
+                          <div class="clearfix"></div>
+                      </div>
+
+                      <div class="x_content">
+
+                         <form action="{{ path('paiement_new') }}" method="post" class="row" >
+
+      <fieldset class="col-sm-3">
+          <legend>ENFANT:</legend>
+          <div class="form-group col-sm-6" align="center">
+              {{ form_row(form.enfant,{'attr':{'class':'form-control'}}) }}
+          </div>
+      </fieldset>
+      <fieldset class="col-sm-9">
+          <legend>TYPE:</legend>
+          <div class="form-group">
+              <label id="label_type">Type</label>
+              {{ form_row(form.type,{'attr':{'class':'form-control'}}) }}
+          </div>
+          <div class="form-group">
+              <label id="label_datepaiement">datepaiement</label>
+              {{ form_row(form.datepaiement,{'attr':{'class':'datepicker form-control','placeholder':'date paiement'}}) }}
+          </div>
+      <fieldset>
+          <legend>OPTION:</legend>
+
+          <div class="form-group">
+              <label id="label_sommeapayer">sommeapayer</label>
+              {{ form_row(form.sommeapayer,{'attr':{'class':'form-control'}}) }}
+          </div>
+
+          <div class="form-group">
+              <label id="label_montantregler">montantregler</label>
+              {{ form_row(form.montantregler,{'attr':{'class':'form-control'}}) }}
+              <span class="label label-danger" id="error_montant"></span>
+          </div>
+
+          <div class="form-group">
+              <label id="label_restapayer">restapayer</label>
+              {{ form_row(form.restapayer,{'attr':{'class':'form-control'}}) }}
+          </div>
+
+          <div class="form-group" >
+              {{ form_row(form.numeropaiement,{'attr':{'class':'form-control hide'}}) }}
+          </div>
+
+
+          <button  id="btnsave" class="btn btn-block btn-lg btn-info" >PAYER</button>
+      </fieldset>
+
+      </fieldset>
+                          {{ form_end(form) }}
+
+
+  </form>
+
+
+
+             </div>
+    </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+
+    <script type="text/javascript">
+
+        var appbundle_paiement_enfant = $('#appbundle_paiement_enfant');
+        var appbundle_paiement_type = $('#appbundle_paiement_type');
+        var numpaiement = $('#numpaiement');
+        var error_montant = $('#error_montant');
+        var appbundle_paiement_numeropaiement = $('#appbundle_paiement_numeropaiement');
+        var appbundle_paiement_enfant = $('#appbundle_paiement_enfant');
+        var appbundle_paiement_sommeapayer = $('#appbundle_paiement_sommeapayer');
+        var appbundle_paiement_montantregler = $('#appbundle_paiement_montantregler');
+        var appbundle_paiement_restapayer = $('#appbundle_paiement_restapayer');
+        var label_restapayer = $('#label_restapayer');
+        var label_montantregler = $('#label_montantregler');
+        var label_sommeapayer = $('#label_sommeapayer');
+        var label_datepaiement = $('#label_datepaiement');
+        var btnsave = $('#btnsave');
+        var periode = $('#periode')
+        var appbundle_paiement_datepaiement = $('#appbundle_paiement_datepaiement');
+        var label_type = $('#label_type');
+
+        $(document).ready(function () {
+            label_datepaiement.hide()
+            label_type.hide()
+            periode.hide()
+            appbundle_paiement_datepaiement.hide()
+            appbundle_paiement_type.hide()
+                appbundle_paiement_numeropaiement.attr('value',{{ Numeropaiement }})
+                numpaiement.text({{ Numeropaiement }})
+                appbundle_paiement_sommeapayer.attr('readonly',true)
+                appbundle_paiement_restapayer.attr('readonly',true)
+                btnsave.attr("disabled","disabled")
+
+                //hide
+                appbundle_paiement_montantregler.hide()
+                appbundle_paiement_restapayer.hide()
+                appbundle_paiement_sommeapayer.hide()
+                label_sommeapayer.hide()
+                label_montantregler.hide()
+                label_restapayer.hide()
+                error_montant.hide()
+                appbundle_paiement_datepaiement.datetimepicker({
+                    format: 'YYYY/MM/DD H:m:s',
+                });
+            })
+        appbundle_paiement_montantregler.on('keyup',function () {
+            var restapairer = appbundle_paiement_sommeapayer.val() - appbundle_paiement_montantregler.val();
+            if (restapairer < 0){
+                error_montant.text("Error Montant invalid!")
+                error_montant.show()
+                btnsave.attr("disabled","disabled")
+                appbundle_paiement_restapayer.attr('value',0)
+            } else {
+                error_montant.hide()
+                appbundle_paiement_restapayer.attr('value',restapairer)
+                btnsave.removeAttr("disabled")
+            }
+        })
+
+        appbundle_paiement_montantregler.on('change',function () {
+            var restapairer = appbundle_paiement_sommeapayer.val() - appbundle_paiement_montantregler.val();
+            if (restapairer < 0){
+                error_montant.text("Error Montant invalid!")
+                error_montant.show()
+                btnsave.attr("disabled","disabled")
+                appbundle_paiement_restapayer.attr('value',0)
+            } else {
+                error_montant.hide()
+                appbundle_paiement_restapayer.attr('value',restapairer)
+                btnsave.removeAttr("disabled")
+            }
+        })
+
+        appbundle_paiement_type.on('change',function () {
+            appbundle_paiement_montantregler.show()
+            appbundle_paiement_restapayer.show()
+            appbundle_paiement_sommeapayer.show()
+            label_sommeapayer.show()
+            label_montantregler.show()
+            label_restapayer.show()
+            appbundle_paiement_montantregler.val(0)
+            if (appbundle_paiement_type.val() == 'ASSURANCE') {
+                periode.show()
+                    Periode()
+                appbundle_paiement_sommeapayer.attr('value',{{ cherinfo.assurance }})
+            }else if (appbundle_paiement_type.val() == 'INSCRIPTION') {
+                periode.hide()
+                appbundle_paiement_sommeapayer.attr('value',{{ cherinfo.fraisinscription }})
+            }else if (appbundle_paiement_type.val() == 'SCOLARITE') {
+                periode.show()
+                PeriodeSco()
+                appbundle_paiement_sommeapayer.attr('value',{{ cherinfo.scolarite }})
+            }
+        })
+
+        btnsave.on('click',function () {
+            if ((appbundle_paiement_type.val() == 'ASSURANCE') && ( appbundle_paiement_restapayer.val() != 0 )) {
+                swal({
+                    title: "Error",
+                    text: "Vous devez payer la totalité des frais d'assurance!",
+                    type: "error",
+                    timer: 2000,
+                    confirmButtonClass: 'btn-danger',
+                    confirmButtonText: 'Danger!'
+                });
+                return false;
+            }
+            if ((appbundle_paiement_type.val() == 'INSCRIPTION') && ( appbundle_paiement_restapayer.val() != 0 )) {
+                swal({
+                    title: "Error",
+                    text: "Vous devez payer la totalité des frais d'inscription!",
+                    type: "error",
+                    timer: 2000,
+                    //confirmButtonClass: 'btn-danger',
+                    confirmButtonText: 'Danger!'
+                });
+                return false;
+            }
+            if (appbundle_paiement_type.val() == ""){
+                swal({
+                    title: "Error",
+                    text: "Vous devez selectionnez un type de règlement!",
+                    type: "error",
+                    timer: 2000,
+                    //confirmButtonClass: 'btn-danger',
+                    confirmButtonText: 'Danger!'
+                });
+                return false;
+            }
+
+            if (appbundle_paiement_enfant.val() == ""){
+                swal({
+                    title: "Error",
+                    text: "Vous devez selectionnez un enfant!",
+                    type: "error",
+                    timer: 2000,
+                    //confirmButtonClass: 'btn-danger',
+                    confirmButtonText: 'Danger!'
+                });
+                return false;
+            }
+            if (appbundle_paiement_datepaiement.val() == ""){
+                swal({
+                    title: "Error",
+                    text: "Vous devez selectionnez une date!",
+                    type: "error",
+                    timer: 2000,
+                    //confirmButtonClass: 'btn-danger',
+                    confirmButtonText: 'Danger!'
+                });
+                return false;
+            }
+            return true;
+        })
+
+//------------debut ajax recinfo after verification
+        function removeOptions(selectbox)
+        {
+            var i;
+            for(i = selectbox.options.length - 1 ; i >= 0 ; i--)
+            {
+                selectbox.remove(i);
+            }
+        }
+
+        function creatSelectType(){
+            select = document.getElementById('appbundle_paiement_type');
+            for (var i = 0; i<=2; i++){
+                var opt = document.createElement('option');
+                if (i ==  1){
+                    opt.value = 'ASSURANCE';
+                    opt.innerHTML = 'ASSURANCE';
+                }else  if(i ==  2){
+                    opt.value = 'SCOLARITE';
+                    opt.innerHTML = 'SCOLARITE';
+                }
+                select.appendChild(opt);
+            }
+            console.log(select)
+        }
+
+
+        appbundle_paiement_enfant.on('change',function () {
+            var data = new FormData();
+            data.append("id", appbundle_paiement_enfant.val());
+            $.ajax({
+                url: "{{ path('recqcheInfos') }}",
+                type: "POST",
+                data : data,
+                processData: false,
+                contentType: false,
+                success: function(data){
+                    console.log(data)
+                    $.notify("Procésus de récupération des infos", "warring");
+                    //location.reload();
+                    appbundle_paiement_montantregler.val(0)
+                    if (data.reponse.first == false){
+
+                        if (data.reponse.INSCRIPTION == true) {
+                            removeOptions(document.getElementById("appbundle_paiement_type"));
+                            creatSelectType()
+
+                        }else {
+                            removeOptions(document.getElementById("appbundle_paiement_type"));
+                            console.log(data.reponse);
+                            select = document.getElementById('appbundle_paiement_type');
+                            var opt = document.createElement('option');
+                            var opt2 = document.createElement('option');
+                            var opt3 = document.createElement('option');
+
+                            opt3.value = '';
+                            opt3.innerHTML = '-';
+                            select.appendChild(opt3);
+                            opt.value = 'ASSURANCE';
+                            opt.innerHTML = 'ASSURANCE';
+                            select.appendChild(opt);
+                            opt2.value = 'INSCRIPTION';
+                            opt2.innerHTML = 'INSCRIPTION';
+                            select.appendChild(opt2);
+
+                            appbundle_paiement_type.show()
+                            appbundle_paiement_datepaiement.show()
+                        }
+                        appbundle_paiement_type.show()
+                        appbundle_paiement_datepaiement.show()
+                    }else {
+                        removeOptions(document.getElementById("appbundle_paiement_type"));
+                        console.log(data.reponse);
+                        select = document.getElementById('appbundle_paiement_type');
+                        var opt = document.createElement('option');
+                        var opt2 = document.createElement('option');
+                        var opt3 = document.createElement('option');
+
+                        opt3.value = '';
+                        opt3.innerHTML = '-';
+                        select.appendChild(opt3);
+                        opt.value = 'ASSURANCE';
+                        opt.innerHTML = 'ASSURANCE';
+                        select.appendChild(opt);
+                        opt2.value = 'INSCRIPTION';
+                        opt2.innerHTML = 'INSCRIPTION';
+                        select.appendChild(opt2);
+
+                        appbundle_paiement_type.show()
+                        appbundle_paiement_datepaiement.show()
+
+                    }
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    //console.log(xhr);
+                    $.notify("Echec de la système", "error");
+                }
+            });
+        })
+
+        //--------------fin ajax
+
+function PeriodeSco() {
+
+
+    var data = new FormData();
+    data.append("id", appbundle_paiement_enfant.val());
+    $.ajax({
+        url: "{{ path('recqchePeriodScolarite') }}",
+        type: "POST",
+        data : data,
+        processData: false,
+        contentType: false,
+        success: function(data){
+            $.notify("Procésus de récupération des périodes", "warring");
+            console.log(data)
+            periode.text("Periode de : "+data.datedebut+" à "+data.datefin)
+
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+            //console.log(xhr);
+            $.notify("Echec de la mise à jour", "error");
+        }
+    });
+}
+function Periode() {
+
+
+    var data = new FormData();
+    data.append("id", appbundle_paiement_enfant.val());
+    $.ajax({
+        url: "{{ path('recqchePeriodAssurance') }}",
+        type: "POST",
+        data : data,
+        processData: false,
+        contentType: false,
+        success: function(data){
+            $.notify("Procésus de récupération des périodes", "warring");
+            periode.text("Periode de : "+data.datedebut+" à "+data.datefin)
+
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+            //console.log(xhr);
+            $.notify("Echec de la mise à jour", "error");
+        }
+    });
+}
+
+
+    </script>
+{% endblock %}

@@ -1,0 +1,27 @@
+// primary
+$color--primary: #191970;
+$color--primary-dark: #111156;
+$color--primary-light: #a4a4fd;
+$color--text-on-primary: #ffffff;
+$color--text-on-primary-dark: #ffffff;
+$color--text-on-primary-light: #111156;
+// secondary
+$color--secondary: #ff9af3;
+$color--text-on-secondary: #191970;
+// light
+$color--light: #ffffff;
+$color--light-dark: #efefef;
+$color--text-on-light: #000000;
+$color--text-on-light-dark: #000000;
+// dark
+$color--dark: #3c3c3c;
+$color--dark-light: #999999;
+$color--text-on-dark: #ffffff;
+$color--text-on-dark-light: #ffffff;
+// gradients
+$gradient--primary-to-secondary: linear-gradient(135deg, $color--primary 0%, $color--secondary 100%);
+$gradient--secondary-to-primary: linear-gradient(135deg, $color--secondary 0%, $color--primary 100%);
+// gutter
+$gutter--phone: 16px;
+$gutter--tablet: 24px;
+$gutter--desktop: 36px;

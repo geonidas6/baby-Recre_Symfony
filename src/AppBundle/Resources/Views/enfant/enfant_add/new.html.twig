@@ -1,0 +1,885 @@
+{% extends '@App/user_base.html.twig' %}
+
+    {% block title %} {{ parent() }} Bienvenue {% endblock %}
+  {% block main %}
+      <link href="{{ asset('vendors/jquery-steps/jquery.steps.css') }}" rel="stylesheet">
+
+
+
+
+      <div class="center-block"  role="main">
+          <div class="">
+              <div class="page-title">
+                  <div class="title_left">
+                      <h3>Pré-inscription</h3>
+                  </div>
+              </div>
+              <div class="clearfix"></div>
+
+              <div class="row">
+
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="x_panel">
+                          <div class="x_title">
+                              <h2>Formulaire <small>Sessions</small></h2>
+                              <ul class="nav navbar-right panel_toolbox">
+                                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                  </li>
+                                  <li class="dropdown">
+                                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                      <ul class="dropdown-menu" role="menu">
+                                          <li><a href="#">Settings 1</a>
+                                          </li>
+                                          <li><a href="#">Settings 2</a>
+                                          </li>
+                                      </ul>
+                                  </li>
+                                  <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                  </li>
+                              </ul>
+                              <div class="clearfix"></div>
+                          </div>
+                          <div class="x_content">
+
+
+
+                              {{ form_start(form,{'attr':{'class': 'form-horizontal form-label-left', 'novalidate': 'novalidate','id':'wizard_with_validation'}}) }}
+
+
+                              {#<form id="wizard_with_validation" method="POST" action="{{ path('enfant_new') }}">#}
+
+                                              <h3>Enfant</h3>
+                                                              <fieldset>
+
+                                                                      <div class="form-group form-float">
+                                                                          <div class="form-line">
+                                                                              <p class="text-center">
+                                                                                  <img src="{{ asset('images/avatar.jpg') }}" id="preview" alt="..." width="85" height="85" class="img-circle img-thumbnail" style="cursor:pointer"/>
+                                                                              </p>
+                                                                              {{ form_row(form.image, {'attr':{'class': 'form-control fileInput hide'}}) }}
+                                                                              <label class="form-label"></label>
+                                                                          </div>
+                                                                      </div>
+                                                                  <div class="row">
+                                                                      <div class="col-sm-6">
+                                                                          <div class="form-group form-float">
+                                                                              <div class="form-line">
+                                                                                  <input type="text" name="data[nomenfant]"  id="nomenfant" class="form-control" required/>
+                                                                                  <label class="form-label">Nom*</label>
+                                                                              </div>
+                                                                          </div>
+                                                                      </div>
+                                                                      <div class="col-sm-6">
+                                                                          <div class="form-group form-float">
+                                                                              <div class="form-line">
+                                                                                  <input type="text"  value="" name="data[prenomenfant]" class="form-control " placeholder="ex. John f. Kennedy"    required="required">
+                                                                                  <label class="form-label">Prénom*</label>
+                                                                              </div>
+                                                                          </div>
+                                                                      </div>
+                                                                  </div>
+
+                                                                      <div class="form-group form-float">
+                                                                          <div class="form-line">
+                                                                                              <select class="form-control " name="data[sexeenfant]" id="sexeenfant">
+                                                                                                  <option value="Fille">Fille</option>
+                                                                                                  <option value="Garcon">Garçon</option>
+                                                                                              </select>
+                                                                              <label class="form-label">Sexe*</label>
+                                                                          </div>
+                                                                      </div>
+                                                                  <div class=" row">
+                                                                      <div class="col-md-6">
+                                                                          <div class="form-group form-float">
+                                                                              <div class="form-line">
+                                                                                  <input  name="data[datenaissance]" id="datenaissance" type="text"  class="date-picker form-control" placeholder="Date de naissance" required/>
+                                                                                  <label class="form-label">Date de naissance*</label>
+                                                                              </div>
+                                                                          </div>
+                                                                      </div>
+                                                                      <div class="col-md-6">
+                                                                          <div class="form-group form-float">
+                                                                              <div class="form-line">
+                                                                                  <input name="data[dateinscription]" id="dateinscription" type="text" class=" form-control" placeholder="Accueilli à compter du " required/>
+                                                                                  <label class="form-label">Date d'inscription*</label>
+                                                                              </div>
+                                                                          </div>
+                                                                      </div>
+                                                                  </div>
+
+                                                                      <div class="form-group form-float">
+                                                                          <div class="form-line">
+                                                                                      <textarea  id="allergie" name="data[allergie]" class="form-control" placeholder="Allergie au noix de coco et au .."></textarea>
+                                                                              <label class="form-label">Allergie</label>
+                                                                          </div>
+                                                                      </div>
+                                                                  <div class="form-inline">
+                                                                      <div class="form-group form-float">
+                                                                          <div class="form-line">
+                                                                              <label class="form-label">Mange avec aide</label>
+                                                                              <input name="data[mangeavecaide]" id="mangeavecaide"  type="checkbox" >
+                                                                          </div>
+                                                                      </div>
+                                                                      <div class="form-group form-float">
+                                                                          <div class="form-line">
+                                                                              <label class="form-label">Mange de l'oeuf </label>
+                                                                              <input type="checkbox" id="oeuf" name="data[oeuf]">
+                                                                          </div>
+                                                                      </div>
+                                                                      <div class="form-group form-float">
+                                                                          <div class="form-line">
+                                                                              <label class="form-label">Mange du poisson </label>
+                                                                              <input type="checkbox" id="poisson" name="data[poisson]">
+                                                                          </div>
+                                                                      </div>
+                                                                      <div class="form-group form-float">
+                                                                          <div class="form-line">
+                                                                              <label class="form-label">Mange de la viande </label>
+                                                                              <input type="checkbox" id="viande" name="data[viande]">
+                                                                          </div>
+                                                                      </div>
+                                                                  </div>
+
+                                                                  <div class="row">
+                                                                      <div class="col-sm-6">
+                                                                          <div class="form-group form-float">
+                                                                              <div class="form-line">
+                                                                                  <textarea  id="other" name="data[remarque]" class="form-control" placeholder="Autre remarque.."></textarea>
+                                                                                  <label class="form-label">Remarque</label>
+                                                                              </div>
+                                                                          </div>
+                                                                      </div>
+                                                                      <div class="col-sm-6">
+                                                                          <div class="form-group form-float">
+                                                                              <div class="form-line">
+                                                                                  <textarea  id="lesattentes" name="data[lesattentes]" class="form-control"></textarea>
+                                                                                  <label class="form-label">Attentes</label>
+                                                                              </div>
+                                                                          </div>
+                                                                      </div>
+                                                                  </div>
+
+
+                                                                      <div class="form-group form-float">
+                                                                          <div class="form-line">
+                                                                                      <textarea  id="lescraintes" name="data[lescraintes]" class="form-control"></textarea>
+                                                                              <label class="form-label">Les craintes des parents</label>
+                                                                          </div>
+                                                                      </div>
+
+                                                              </fieldset>
+                              {% set pere_enfant = {'pere_enfant':""} %}
+                              {% include '@App/enfant/enfant_add/pere_enfant' with pere_enfant %}
+
+                              {% set mere_enfant = {'mere_enfant':""} %}
+                              {% include '@App/enfant/enfant_add/mere_enfant' with mere_enfant %}
+
+                              {% set periode_enfant = {'periode_enfant':""} %}
+                              {% include '@App/enfant/enfant_add/periode_enfant' with periode_enfant %}
+
+                              {% set horraire_enfant = {'horraire_enfant':""} %}
+                              {% include '@App/enfant/enfant_add/horraire_enfant' with horraire_enfant %}
+
+                              {% set autre_tuteur_enfant = {'autre_tuteur_enfant':""} %}
+                              {% include '@App/enfant/enfant_add/autre_tuteur_enfant' with autre_tuteur_enfant %}
+
+
+                                              {#<h3>Les Matériiels</h3>
+                                                              <fieldset>
+                                                                  <div class="row">
+                                                                      <div class="col-sm-3">
+                                                                          <div class="form-group form-float">
+                                                                              <div class="form-line">
+                                                                                  <input type="number" id="coucheqte" name="data[materiel][coucheqte]" class="form-control" placeholder="Quatité" required>
+                                                                                  <label class="form-label">Couche*</label>
+                                                                              </div>
+                                                                          </div>
+                                                                      </div>
+                                                                      <div class="col-sm-3">
+                                                                          <div class="form-group form-float">
+                                                                              <div class="form-line">
+                                                                                  <input id="laitqte" name="data[materiel][laitqte]" type="number" class="form-control" placeholder="Quatité" required>
+                                                                                  <label class="form-label">Lait en Poudre ou en Brique *</label>
+                                                                              </div>
+                                                                          </div>
+                                                                      </div>
+                                                                      <div class="col-sm-3">
+                                                                          <div class="form-group form-float">
+                                                                              <div class="form-line">
+                                                                                  <input id="changqte" name="data[materiel][changeqte]" type="number" class="form-control" placeholder="Quatité" required>
+                                                                                  <label class="form-label">Nouveau change *</label>
+                                                                              </div>
+                                                                          </div>
+                                                                      </div>
+                                                                      <div class="col-sm-3">
+                                                                          <div class="form-group form-float">
+                                                                              <div class="form-line">
+                                                                                  <input  id="doudouqte" name="data[materiel][doudouqte]" type="number" class="form-control" placeholder="Quatité" required>
+                                                                                  <label class="form-label">Doudou tetine *</label>
+                                                                              </div>
+                                                                          </div>
+                                                                      </div>
+                                                                      <div class="col-sm-3">
+                                                                          <div class="form-group form-float">
+                                                                              <div class="form-line">
+                                                                                  <input  id="medqte" name="data[materiel][mdqte]" type="number" class="form-control" placeholder="Quatité" required>
+                                                                                  <label class="form-label">Antipyrétique (Doliprane ou Efféralgan avec Ordonnance du médecin) *</label>
+                                                                              </div>
+                                                                          </div>
+                                                                      </div>
+                                                                  </div>
+                                                                  <div class="row">
+                                                                      <div class="col-sm-2">
+                                                                          <div class="form-group form-float">
+                                                                              <div class="form-line">
+                                                                                  <input  id="cqqte" name="data[materiel][cqqte]" type="number" class="form-control" placeholder="Quatité" required>
+                                                                                  <label class="form-label">Casquette, chapeaux ou Bob pour le soleil  *</label>
+                                                                              </div>
+                                                                          </div>
+                                                                      </div>
+                                                                      <div class="col-sm-2">
+                                                                          <div class="form-group form-float">
+                                                                              <div class="form-line">
+                                                                                  <input  id="cremeqte" name="data[materiel][cremeqte]" type="number" class="form-control" placeholder="Quatité" required>
+                                                                                  <label class="form-label">Crème pour érythème fessier  *</label>
+                                                                              </div>
+                                                                          </div>
+                                                                      </div>
+                                                                      <div class="col-sm-2">
+                                                                          <div class="form-group form-float">
+                                                                              <div class="form-line">
+                                                                                  <input  id="biberonqte" name="data[materiel][biberonqte]" type="number" class="form-control" placeholder="Quatité" required>
+                                                                                  <label class="form-label">Biberon pour la journée  *</label>
+                                                                              </div>
+                                                                          </div>
+                                                                      </div>
+                                                                  </div>
+
+                                                              </fieldset>#}
+
+                                  <h3> sortie à l'extérieur</h3>
+                                                                <fieldset>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-4">
+                                                                            <div class="form-group form-float">
+                                                                                <div class="form-line">
+                                                                                    <input type="checkbox" id="autoriser" name="data[autoriser]"  >
+                                                                                    <label class="form-label">Autoriser*</label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                </fieldset>
+
+                              {% set les_modales = {'les_modales':""} %}
+                              {% include '@App/enfant/enfant_add/les_modales' with les_modales %}
+
+                              {{ form_end(form) }}
+
+
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+
+
+  {% endblock %}
+{% block javascripts %}
+
+    <script src="{{ asset('vendors/jquery-validation/jquery.validate.js') }}"></script>
+    <script src="{{ asset('vendors/jquery-steps/jquery.steps.js') }}"></script>
+    <script src="{{ asset('vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js') }}"></script>
+
+
+
+
+
+    <script type="text/javascript">
+
+        $(function () {
+            var option_html = "<option>-</option>";
+            {% for Alltuteur in Alltuteurs %}
+            option_html +="<option value='{{ Alltuteur.id }}'>{{Alltuteur.nom ~' '~ Alltuteur.prenom}}</option>";
+
+            {% endfor %}
+
+            //Horizontal form basic
+            //Advanced form with validation
+            var form = $('#wizard_with_validation').show();
+            form.steps({
+                headerTag: 'h3',
+                bodyTag: 'fieldset',
+                transitionEffect: 'slideLeft',
+                onInit: function (event, currentIndex) {
+
+                    //input tel mask
+                    var telpere = document.getElementById("telpere");
+                    var telmere = document.getElementById("telmere");
+                    var telfam1 = document.getElementById("telfam1");
+                    var telfam2 = document.getElementById("telfam2");
+                    var telfam3 = document.getElementById("telfam3");
+                    var portablepere = document.getElementById("portablepere");
+                    var portablemere = document.getElementById("portablemere");
+                    var im = new Inputmask("(999)99999999");
+                    im.mask(telpere);
+                    im.mask(telmere);
+                    im.mask(telfam1);
+                    im.mask(telfam2);
+                    im.mask(telfam3);
+                    im.mask(portablepere);
+                    im.mask(portablemere);
+
+
+
+                    $(function(){
+                        function readURL(input) {
+                            console.log(input.files)
+                            if (input.files && input.files[0]) {
+                                var reader = new FileReader();
+                                reader.onload = function(e) {
+                                    $('#preview').attr('src', e.target.result);
+                                }
+                                reader.readAsDataURL(input.files[0]);
+                            }
+                        }
+
+                        $(".fileInput").change(function() {
+                            console.log("file input on change")
+                            readURL(this);
+                        });
+
+                        $("#preview").click(function(){
+                            console.log("image click")
+                            $(".fileInput").click();
+                        });
+                    });
+
+
+                    $('#periode').daterangepicker({
+
+                    });
+                    $('#dateinscription').datetimepicker({
+                        format: 'YYYY/MM/DD',
+
+                    });
+                    $('#lundidepart').datetimepicker({
+                        format: 'H:m:s'
+                    });
+                    $('#lundifin').datetimepicker({
+                        format: 'H:m:s'
+                    });
+                    $('#mardifin').datetimepicker({
+                        format: 'H:m:s'
+                    });
+                    $('#mardidepart').datetimepicker({
+                        format: 'H:m:s'
+                    });
+                    $('#mercredidepart').datetimepicker({
+                        format: 'H:m:s'
+                    });
+                    $('#mercredifin').datetimepicker({
+                        format: 'H:m:s'
+                    });
+                    $('#jeudifin').datetimepicker({
+                        format: 'H:m:s'
+                    });
+                    $('#jeudidepart').datetimepicker({
+                        format: 'H:m:s'
+                    });
+                    $('#vendredifin').datetimepicker({
+                        format: 'H:m:s'
+                    });
+                    $('#vendredidepart').datetimepicker({
+                        format: 'H:m:s'
+                    });
+                    $('#samedifin').datetimepicker({
+                        format: 'H:m:s'
+                    });
+                    $('#samedidepart').datetimepicker({
+                        format: 'H:m:s'
+                    });
+                    $('#dimanchefin').datetimepicker({
+                        format: 'H:m:s'
+                    });
+                    $('#dimanchedepart').datetimepicker({
+                        format: 'H:m:s'
+                    });
+                    $('#datenaissance').datetimepicker({
+                        format: 'YYYY/MM/DD'
+                    });
+
+
+
+                    //Set tab width
+                    var $tab = $(event.currentTarget).find('ul[role="tablist"] li');
+                    var tabCount = $tab.length;
+                    $tab.css('width', (100 / tabCount) + '%');
+
+                    //set button waves effect
+                    setButtonWavesEffect(event);
+                },
+                onStepChanging: function (event, currentIndex, newIndex) {
+                    if (currentIndex > newIndex) {
+                        control_tuteur_list(newIndex);
+                        return true;
+
+                    }
+
+                    if (currentIndex < newIndex) {
+                        form.find('.body:eq(' + newIndex + ') label.error').remove();
+                        form.find('.body:eq(' + newIndex + ') .error').removeClass('error');
+                        control_tuteur_list(newIndex);
+                    }
+
+
+
+                    form.validate().settings.ignore = ':disabled,:hidden';
+                    return form.valid();
+                },
+                onStepChanged: function (event, currentIndex, priorIndex) {
+                    setButtonWavesEffect(event);
+                },
+                onFinishing: function (event, currentIndex) {
+                    form.validate().settings.ignore = ':enabled';
+                    return form.valid();
+                },
+                onFinished: function (event, currentIndex) {
+                    return form.submit();
+                }
+            });
+
+            function control_tuteur_list(step){
+                console.log(step)
+                var mere_existe  = $("#mere_existe");
+
+                var pere_existe  = $("#pere_existe");
+                var tuteurotherA_existe  = $("#tuteurotherA_existe");
+                var tuteurotherB_existe  = $("#tuteurotherB_existe");
+                var tuteurotherC_existe  = $("#tuteurotherC_existe");
+                {% for Alltuteur in Alltuteurs %}
+                if(step == 2){
+                    if (pere_existe.val() == {{ Alltuteur.id }}){
+                        mere_existe.html(option_html);
+                        $("#mere_existe option[value='{{Alltuteur.id}}']").remove();
+                    }
+                    tuteurotherA_existe.html(option_html);
+                    tuteurotherB_existe.html(option_html);
+                    tuteurotherC_existe.html(option_html);
+                }
+                if (step == 1){
+                    console.log(mere_existe.val())
+                    if (mere_existe.val() == {{ Alltuteur.id }}){
+                        pere_existe.html(option_html);
+                        $("#pere_existe option[value='{{Alltuteur.id}}']").remove();
+                        console.log(pere_existe)
+                    }
+                    tuteurotherA_existe.html(option_html);
+                    tuteurotherB_existe.html(option_html);
+                    tuteurotherC_existe.html(option_html);
+                }
+
+                {% endfor %}
+                if (step == 5){
+                    tuteurotherA_existe.html(option_html);
+                    tuteurotherB_existe.html(option_html);
+                    tuteurotherC_existe.html(option_html);
+                    $("#tuteurotherA_existe option[value='"+pere_existe.val()+"']").remove();
+                    $("#tuteurotherA_existe option[value='"+mere_existe.val()+"']").remove();
+                    $("#tuteurotherB_existe option[value='"+pere_existe.val()+"']").remove();
+                    $("#tuteurotherB_existe option[value='"+mere_existe.val()+"']").remove();
+                    $("#tuteurotherC_existe option[value='"+pere_existe.val()+"']").remove();
+                    $("#tuteurotherC_existe option[value='"+mere_existe.val()+"']").remove();
+                }
+            }
+
+            form.validate({
+               /*highlight: function (input) {
+                    $(input).parents('.form-line').addClass('error');
+                },
+                unhighlight: function (input) {
+                    $(input).parents('.form-line').removeClass('error');
+                },
+                errorPlacement: function (error, element) {
+                    $(element).parents('.form-group').append(error);
+                },*/
+
+            });
+        });
+
+        function setButtonWavesEffect(event) {
+            $(event.currentTarget).find('[role="menu"] li a').removeClass('waves-effect');
+            $(event.currentTarget).find('[role="menu"] li:not(.disabled) a').addClass('waves-effect');
+        }
+
+//----------------------
+        var tuteurotherA_existe = $("#tuteurotherA_existe")
+        var tuteurotherB_existe = $("#tuteurotherB_existe")
+        var tuteurotherC_existe = $("#tuteurotherC_existe")
+        tuteurotherA_existe.on('change',function () {
+            //console.log('A change')
+            $("#tuteurotherB_existe option[value='"+tuteurotherA_existe.val()+"']").remove();
+            $("#tuteurotherC_existe option[value='"+tuteurotherA_existe.val()+"']").remove();
+
+        });
+        tuteurotherB_existe.on('change',function () {
+            $("#tuteurotherA_existe option[value='"+tuteurotherB_existe.val()+"']").remove();
+            $("#tuteurotherC_existe option[value='"+tuteurotherB_existe.val()+"']").remove();
+
+        });
+        tuteurotherC_existe.on('change',function () {
+            $("#tuteurotherA_existe option[value='"+tuteurotherC_existe.val()+"']").remove();
+            $("#tuteurotherB_existe option[value='"+tuteurotherC_existe.val()+"']").remove();
+
+        })
+
+        function return_new_pere(){
+            var filepere = $("#filepere")
+            var pereinfos = $("#pereinfos")
+            pereinfos.hide()
+            filepere.show()
+        }
+
+        function return_new_mere(){
+            var filemere = $("#filemere")
+            var mereinfos = $("#mereinfos")
+            mereinfos.hide()
+            filemere.show()
+        }
+        function return_new_otherA(){
+            var tuteurotherA = $("#tuteurotherA")
+            var tuteurotherAinfos = $("#tuteurotherAinfos")
+            tuteurotherAinfos.hide()
+            tuteurotherA.show()
+        }
+        function return_new_otherB(){
+            var tuteurotherB = $("#tuteurotherB")
+            var tuteurotherBinfos = $("#tuteurotherBinfos")
+            tuteurotherBinfos.hide()
+            tuteurotherB.show()
+        }
+        function return_new_otherC(){
+            var tuteurotherC = $("#tuteurotherC")
+            var tuteurotherCinfos = $("#tuteurotherCinfos")
+            tuteurotherCinfos.hide()
+            tuteurotherC.show()
+        }
+
+
+
+    </script>
+  <script type="text/javascript">
+      var new_pere = $('#new_pere')
+      new_pere.hide()
+      function validation_tuteur_selecte() {
+          var new_pere = $('#new_pere')
+          new_pere.show()
+          var pere_existe  = $('#pere_existe');
+          var filepere  = $('#filepere');
+          var pereinfos  = $('#pereinfos');
+          filepere.hide();
+          pereinfos.show();
+          ////console.log( pere_existe.val());
+          {% for Alltuteur in Alltuteurs %}
+          if ( pere_existe.val() == {{ Alltuteur.id }}){
+              filepere.hide();
+              pereinfos.show();
+              pereinfos.html("<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\".bs-example-modal-lg\">Selectionner un tuteur existent</button>\n" +
+                  "                                                                  {#end autocomplet#}\n" +
+                  "                                                                  <div class=\"row\">\n" +
+                  "                                                                      <div class=\"col-sm-6\">\n" +
+                  "                                                                          <div class=\"form-group form-float\">\n" +
+                  "                                                                              <div class=\"form-line\">\n" +
+                  "                                                                                  <input type=\"text\" id=\"nompere\" value=\"{{ Alltuteur.nom }}\" class=\"form-control\" readonly>\n" +
+                  "                                                                                  <label class=\"form-label\">Nom*</label>\n" +
+                  "                                                                              </div>\n" +
+                  "                                                                          </div>\n" +
+                  "                                                                      </div>\n" +
+                  "                                                                      <div class=\"col-sm-6\">\n" +
+                  "                                                                          <div class=\"form-group form-float\">\n" +
+                  "                                                                              <div class=\"form-line\">\n" +
+                  "                                                                                  <input type=\"text\" id=\"prenompere\" value=\"{{ Alltuteur.prenom }}\" class=\"form-control\" readonly>\n" +
+                  "                                                                                  <label class=\"form-label\">Prenom*</label>\n" +
+                  "                                                                              </div>\n" +
+                  "                                                                          </div>\n" +
+                  "                                                                      </div>\n" +
+                  "                                                                  </div>\n" +
+                  "                                                                  <div class=\"row\">\n" +
+                  "                                                                      <div class=\"col-sm-6\">\n" +
+                  "                                                                          <div class=\"form-group form-float\">\n" +
+                  "                                                                              <div class=\"form-line\">\n" +
+                  "                                                                                  <input type=\"text\" id=\"domiciliepere\" value=\"{{ Alltuteur.domicile }}\" class=\"form-control\" readonly>\n" +
+                  "                                                                                  <label class=\"form-label\">Domicile*</label>\n" +
+                  "                                                                              </div>\n" +
+                  "                                                                          </div>\n" +
+                  "                                                                      </div>\n" +
+                  "                                                                      <div class=\"col-sm-6\">\n" +
+                  "                                                                          <div class=\"form-group form-float\">\n" +
+                  "                                                                              <div class=\"form-line\">\n" +
+                  "                                                                                  <input type=\"text\" id=\"professionpere\" value=\"{{ Alltuteur.profession }}\" class=\"form-control\" readonly>\n" +
+                  "                                                                                  <label class=\"form-label\">Profession*</label>\n" +
+                  "                                                                              </div>\n" +
+                  "                                                                          </div>\n" +
+                  "                                                                      </div>\n" +
+                  "                                                                  </div>\n" +
+                  "                                                                  <div class=\"row\">\n" +
+                  "                                                                      <div class=\"col-sm-6\">\n" +
+                  "                                                                          <div class=\"form-group form-float\">\n" +
+                  "                                                                              <div class=\"form-line\">\n" +
+                  "                                                                                  <input type=\"text\"  id=\"telpere\" value=\"{{ Alltuteur.tel }}\" class=\"form-control\" readonly>\n" +
+                  "                                                                                  <label class=\"form-label\">Télepone*</label>\n" +
+                  "                                                                              </div>\n" +
+                  "                                                                          </div>\n" +
+                  "                                                                      </div>\n" +
+                  "                                                                      <div class=\"col-sm-6\">\n" +
+                  "                                                                          <div class=\"form-group form-float\">\n" +
+                  "                                                                              <div class=\"form-line\">\n" +
+                  "                                                                                  <input  type=\"text\" id=\"portablepere\" value=\"{{ Alltuteur.telwhat }}\" class=\"form-control\" readonly>\n" +
+                  "                                                                                  <label class=\"form-label\">Portable*</label>\n" +
+                  "                                                                              </div>\n" +
+                  "                                                                          </div>\n" +
+                  "                                                                      </div>\n" +
+                  "                                                                  </div>\n" +
+                  "\n" +
+                  "                                                                  <div class=\"row\">\n" +
+                  "                                                                      <div class=\"col-sm-12\">\n" +
+                  "                                                                          <div class=\"form-group form-float\">\n" +
+                  "                                                                              <div class=\"form-line\">\n" +
+                  "                                                                                  <input type=\"email\" id=\"emailpere\" value=\"{{ Alltuteur.email }}\" class=\"form-control\" readonly>\n" +
+                  "                                                                                  <label class=\"form-label\">Email*</label>\n" +
+                  "                                                                              </div>\n" +
+                  "                                                                          </div>\n" +
+                  "                                                                      </div>\n" +
+                  "                                                                  </div>\n" +
+                  "                                                                 ")
+          }
+          {% endfor %}
+
+
+      }
+
+  </script>
+
+
+  <script type="text/javascript">
+      var new_mere = $('#new_mere')
+      new_mere.hide()
+      function validation_tuteur_mere_selecte() {
+          var new_mere = $('#new_mere')
+          new_mere.show()
+        var mere_existe  = $('#mere_existe');
+          var filemere  = $('#filemere');
+          var mereinfos  = $('#mereinfos');
+          //console.log( mere_existe.val());
+          {% for Alltuteur in Alltuteurs %}
+          if ( mere_existe.val() == {{ Alltuteur.id }}){
+              filemere.hide();
+              mereinfos.show();
+              mereinfos.html("<div class=\"row\">\n" +
+                  "                                                                      <div class=\"col-sm-6\">\n" +
+                  "                                                                          <div class=\"form-group form-float\">\n" +
+                  "                                                                              <div class=\"form-line\">\n" +
+                  "                                                                                  <input type=\"text\" id=\"nompere\" value=\"{{ Alltuteur.nom }}\" class=\"form-control\" readonly>\n" +
+                  "                                                                                  <label class=\"form-label\">Nom*</label>\n" +
+                  "                                                                              </div>\n" +
+                  "                                                                          </div>\n" +
+                  "                                                                      </div>\n" +
+                  "                                                                      <div class=\"col-sm-6\">\n" +
+                  "                                                                          <div class=\"form-group form-float\">\n" +
+                  "                                                                              <div class=\"form-line\">\n" +
+                  "                                                                                  <input type=\"text\" id=\"prenompere\" value=\"{{ Alltuteur.prenom }}\" class=\"form-control\" readonly>\n" +
+                  "                                                                                  <label class=\"form-label\">Prenom*</label>\n" +
+                  "                                                                              </div>\n" +
+                  "                                                                          </div>\n" +
+                  "                                                                      </div>\n" +
+                  "                                                                  </div>\n" +
+                  "                                                                  <div class=\"row\">\n" +
+                  "                                                                      <div class=\"col-sm-6\">\n" +
+                  "                                                                          <div class=\"form-group form-float\">\n" +
+                  "                                                                              <div class=\"form-line\">\n" +
+                  "                                                                                  <input type=\"text\" id=\"domiciliepere\" value=\"{{ Alltuteur.domicile }}\" class=\"form-control\" readonly>\n" +
+                  "                                                                                  <label class=\"form-label\">Domicile*</label>\n" +
+                  "                                                                              </div>\n" +
+                  "                                                                          </div>\n" +
+                  "                                                                      </div>\n" +
+                  "                                                                      <div class=\"col-sm-6\">\n" +
+                  "                                                                          <div class=\"form-group form-float\">\n" +
+                  "                                                                              <div class=\"form-line\">\n" +
+                  "                                                                                  <input type=\"text\" id=\"professionpere\" value=\"{{ Alltuteur.profession }}\" class=\"form-control\" readonly>\n" +
+                  "                                                                                  <label class=\"form-label\">Profession*</label>\n" +
+                  "                                                                              </div>\n" +
+                  "                                                                          </div>\n" +
+                  "                                                                      </div>\n" +
+                  "                                                                  </div>\n" +
+                  "                                                                  <div class=\"row\">\n" +
+                  "                                                                      <div class=\"col-sm-6\">\n" +
+                  "                                                                          <div class=\"form-group form-float\">\n" +
+                  "                                                                              <div class=\"form-line\">\n" +
+                  "                                                                                  <input type=\"text\"  id=\"telpere\" value=\"{{ Alltuteur.tel }}\" class=\"form-control\" readonly>\n" +
+                  "                                                                                  <label class=\"form-label\">Télepone*</label>\n" +
+                  "                                                                              </div>\n" +
+                  "                                                                          </div>\n" +
+                  "                                                                      </div>\n" +
+                  "                                                                      <div class=\"col-sm-6\">\n" +
+                  "                                                                          <div class=\"form-group form-float\">\n" +
+                  "                                                                              <div class=\"form-line\">\n" +
+                  "                                                                                  <input  type=\"text\" id=\"portablepere\" value=\"{{ Alltuteur.telwhat }}\" class=\"form-control\" readonly>\n" +
+                  "                                                                                  <label class=\"form-label\">Portable*</label>\n" +
+                  "                                                                              </div>\n" +
+                  "                                                                          </div>\n" +
+                  "                                                                      </div>\n" +
+                  "                                                                  </div>\n" +
+                  "\n" +
+                  "                                                                  <div class=\"row\">\n" +
+                  "                                                                      <div class=\"col-sm-12\">\n" +
+                  "                                                                          <div class=\"form-group form-float\">\n" +
+                  "                                                                              <div class=\"form-line\">\n" +
+                  "                                                                                  <input type=\"email\" id=\"emailpere\" value=\"{{ Alltuteur.email }}\" class=\"form-control\" readonly>\n" +
+                  "                                                                                  <label class=\"form-label\">Email*</label>\n" +
+                  "                                                                              </div>\n" +
+                  "                                                                          </div>\n" +
+                  "                                                                      </div>\n" +
+                  "                                                                  </div>\n" +
+                  "                                                                 ")
+          }
+          {% endfor %}
+
+
+      }
+
+  </script>
+
+    <script type="text/javascript">
+        var new_otherA = $('#new_otherA')
+        new_otherA.hide()
+      function validation_tuteur_tuteurotherA_selecte() {
+         var new_otherA = $('#new_otherA')
+          new_otherA.show()
+
+        var tuteurotherA_existe  = $('#tuteurotherA_existe');
+          var tuteurotherA  = $('#tuteurotherA');
+          var tuteurotherAinfos  = $('#tuteurotherAinfos');
+          {% for Alltuteur in Alltuteurs %}
+          if ( tuteurotherA_existe.val() == {{ Alltuteur.id }}){
+              tuteurotherA.hide();
+              tuteurotherAinfos.show();
+              tuteurotherAinfos.html(" <div class=\"form-group form-float\">\n" +
+                  "                    <div class=\"form-line\">\n" +
+                  "                        <input type=\"text\" id=\"nomfam1\" value=\"{{Alltuteur.nom}}\" class=\"form-control\" readonly>\n" +
+                  "                        <label class=\"form-label\">Nom*</label>\n" +
+                  "                    </div>\n" +
+                  "                </div>\n" +
+                  "                <div class=\"form-group form-float\">\n" +
+                  "                    <div class=\"form-line\">\n" +
+                  "                        <input type=\"text\" id=\"prenomfam1\" value=\"{{ Alltuteur.prenom }}\" class=\"form-control\" readonly>\n" +
+                  "                        <label class=\"form-label\">Prenom*</label>\n" +
+                  "                    </div>\n" +
+                  "                </div>\n" +
+                  "                <div class=\"form-group form-float\">\n" +
+                  "                    <div class=\"form-line\">\n" +
+                  "                        <input type=\"text\" id=\"domicilefam1\" value=\"{{ Alltuteur.domicile }}\" class=\"form-control\" readonly>\n" +
+                  "                        <label class=\"form-label\">Adresse*</label>\n" +
+                  "                    </div>\n" +
+                  "                </div>\n" +
+                  "                <div class=\"form-group form-float\">\n" +
+                  "                    <div class=\"form-line\">\n" +
+                  "                        <input  type=\"text\"  id=\"telfam1\" name=\"{{ Alltuteur.tel }}\" class=\"form-control\" readonly>\n" +
+                  "                        <label class=\"form-label\">Télephone*</label>\n" +
+                  "                    </div>\n" +
+                  "                </div>\n" +
+                  "                <div class=\"form-group form-float\">\n" +
+                  "                <div class=\"form-line\">\n" +
+                  "                    <select class=\"form-control\" name=\"data[fam1][lienfam1]\" id=\"lienfam1\" required>\n" +
+                  "                        <option value=\"Oncle\">Oncle</option>\n" +
+                  "                        <option value=\"Tante\">Tante</option>\n" +
+                  "                    </select>\n" +
+                  "                    <label class=\"form-label\">Lien de parenté*</label>\n" +
+                  "                </div>\n" +
+                  "            </div>")
+          }
+          {% endfor %}
+
+
+      }
+
+  </script>
+
+    <script type="text/javascript">
+
+        var new_otherB = $('#new_otherB')
+        new_otherB.hide()
+        function validation_tuteur_tuteurotherB_selecte() {
+
+            var new_otherB = $('#new_otherB')
+            new_otherB.show()
+
+
+            var tuteurotherB_existe  = $('#tuteurotherB_existe');
+          var tuteurotherB  = $('#tuteurotherB');
+          var tuteurotherBinfos  = $('#tuteurotherBinfos');
+          {% for Alltuteur in Alltuteurs %}
+          if ( tuteurotherB_existe.val() == {{ Alltuteur.id }}){
+              tuteurotherB.hide();
+              tuteurotherBinfos.show();
+              tuteurotherBinfos.html(" <div class=\"form-group form-float\">\n" +
+                  "                    <div class=\"form-line\">\n" +
+                  "                        <input type=\"text\" id=\"nomfam2\" value=\"{{Alltuteur.nom}}\" class=\"form-control\" readonly>\n" +
+                  "                        <label class=\"form-label\">Nom*</label>\n" +
+                  "                    </div>\n" +
+                  "                </div>\n" +
+                  "                <div class=\"form-group form-float\">\n" +
+                  "                    <div class=\"form-line\">\n" +
+                  "                        <input type=\"text\" id=\"prenomfam2\" value=\"{{ Alltuteur.prenom }}\" class=\"form-control\" readonly>\n" +
+                  "                        <label class=\"form-label\">Prenom*</label>\n" +
+                  "                    </div>\n" +
+                  "                </div>\n" +
+                  "                <div class=\"form-group form-float\">\n" +
+                  "                    <div class=\"form-line\">\n" +
+                  "                        <input type=\"text\" id=\"domicilefam2\" value=\"{{ Alltuteur.domicile }}\" class=\"form-control\" readonly>\n" +
+                  "                        <label class=\"form-label\">Adresse*</label>\n" +
+                  "                    </div>\n" +
+                  "                </div>\n" +
+                  "                <div class=\"form-group form-float\">\n" +
+                  "                    <div class=\"form-line\">\n" +
+                  "                        <input  type=\"text\"  id=\"telfam2\" name=\"{{ Alltuteur.tel }}\" class=\"form-control\" readonly>\n" +
+                  "                        <label class=\"form-label\">Télephone*</label>\n" +
+                  "                    </div>\n" +
+                  "                </div>\n" +
+                  "                <div class=\"form-group form-float\">\n" +
+                  "                <div class=\"form-line\">\n" +
+                  "                    <select class=\"form-control\" name=\"data[fam2][lienfam2]\" id=\"lienfam2\" required>\n" +
+                  "                        <option value=\"Frere\">Frère</option>\n" +
+                  "                        <option value=\"Soeur\">Soeur</option>\n" +
+                  "                    </select>\n" +
+                  "                    <label class=\"form-label\">Lien de parenté*</label>\n" +
+                  "                </div>\n" +
+                  "            </div>")
+          }
+          {% endfor %}
+
+
+      }
+
+  </script>
+
+    <script type="text/javascript">
+
+        var new_otherC = $('#new_otherC')
+        new_otherC.hide()
+     function validation_tuteur_tuteurotherC_selecte() {
+
+        var new_otherC = $('#new_otherC')
+        new_otherC.show()
+
+                var tuteurotherC_existe  = $('#tuteurotherC_existe');
+          var tuteurotherC  = $('#tuteurotherC');
+          var tuteurotherCinfos  = $('#tuteurotherCinfos');
+          {% for Alltuteur in Alltuteurs %}
+          if ( tuteurotherC_existe.val() == {{ Alltuteur.id }}){
+              tuteurotherC.hide();
+              tuteurotherCinfos.show();
+              tuteurotherCinfos.html(" <div

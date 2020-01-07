@@ -1,0 +1,26 @@
+.speckle-demo {
+	align-items: flex-start;
+	background-color: $color--light-dark;
+	color: $color--text-on-light-dark;
+	display: flex;
+	flex-flow: row;
+	height: 300px;
+	margin: 128px auto;
+	max-width: 600px;
+	position: relative;
+	width: 100%;
+
+	h3 {
+		background-color: $color--dark-light;
+		border-radius: 20px;
+		color: $color--text-on-dark-light;
+		display: inline-block;
+		font-family: sans-serif;
+		line-height: 1;
+		margin: 16px;
+		padding: 12px 16px;
+		position: relative;
+		z-index: 10;
+	}
+
+}

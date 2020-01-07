@@ -1,0 +1,130 @@
+{% extends '@App/user_base.html.twig' %}
+
+    {% block title %} {{ parent() }} Bienvenue {% endblock %}
+
+  {% block main %}
+<style>
+    .alert{
+        line-height: 0px;margin-bottom: 0px;color: red;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+            <div class="content-box">
+                <div class="head success-bg clearfix">
+                    <h5 class="content-title pull-left">Ajouter Tuteur</h5>
+                    <div class="functions-btns pull-right">
+                        <a class="refresh-btn" href="#"><i class="zmdi zmdi-refresh"></i></a>
+                        <a class="fullscreen-btn" href="#"><i class="zmdi zmdi-fullscreen"></i></a>
+                        <a class="close-btn" href="#"><i class="zmdi zmdi-close"></i></a>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <code>Les champs marqués * sont obligatoires</code>
+                    <form data-parsley-validate=""  action="{{ path('tuteur_new') }}" method="post" class="form-horizontal form-label-left" novalidate="" id="userprofileform">
+
+
+                        <div class="content item">
+                            <input type="file" name="tuteurfile" class="dropify" data-default-file="{{ asset('images/avatar.jpg') }}">
+                            <small class="text-danger tooltip help" >Name must be at least 2 words</small>
+                        </div>
+                        <div class="item">
+                            <span>Nom *</span>
+                            {{ form_widget(form.nom,{'class':'form-control col-md-6 col-xs-6 col-lg-6'}) }}
+                            <small class="text-danger tooltip help" >Name must be at least 2 words</small>
+                        </div>
+                        <div class="item">
+                            <span>Prenom *</span>
+                            {{ form_widget(form.prenom,{'class':'form-control col-md-6 col-xs-6 col-lg-6'}) }}
+                            <small class="text-danger tooltip help" >Name must be at least 2 words</small>
+                        </div>
+                        <div class="item">
+                            <span>Email *</span>
+                            {{ form_widget(form.email,{'class':'form-control col-md-6 col-xs-6 col-lg-6'}) }}
+                            <small class="text-danger tooltip help" >Name must be at least 2 words</small>
+                        </div>
+                        <div class="item">
+                            <span>Tel *</span>
+                            {{ form_widget(form.tel,{'class':'form-control col-md-6 col-xs-6 col-lg-6'}) }}
+                            <small class="text-danger tooltip help" >Name must be at least 2 words</small>
+                        </div>
+                        <div class="item">
+                            <span>Tel Whatsapp *</span>
+                            {{ form_widget(form.telwhat,{'class':'form-control col-md-6 col-xs-6 col-lg-6'}) }}
+                            <small class="text-danger tooltip help" >Name must be at least 2 words</small>
+                        </div>
+                        <div class="item">
+                            <span>Sexe *</span>
+                            {{ form_widget(form.sexe,{'class':'form-control col-md-6 col-xs-6 col-lg-6'}) }}
+                            <small class="text-danger tooltip help" >Name must be at least 2 words</small>
+                        </div>
+
+                        {{ form_rest(form) }}
+                        <br>
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                <button class="btn btn-primary" type="button"> {% trans  from 'user' into  app.session.get('Langue') %} Annuler  {% endtrans %}</button>
+                                <button class="btn btn-primary" type="reset"> {% trans  from 'user' into  app.session.get('Langue') %} Reset  {% endtrans %}</button>
+                                <button type="submit" id="Envoyer" class="btn btn-success"> {% trans  from 'user' into  app.session.get('Langue') %} Envoyer  {% endtrans %}</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+            <div class="col-md-2"></div>
+     </div>
+ </div>
+
+
+
+  {% endblock %}
+{% block javascripts %}
+
+    <script src="{{ asset('vendors/bower_components/validator/validator.js') }}"></script>
+
+    <script>
+        $('.dropify').dropify();
+
+        $(document).ready(function (){
+
+            $("#datetimepicker2").datetimepicker({
+                icons: {
+                    time: "zmdi zmdi-time",
+                    date: "zmdi zmdi-calendar",
+                    up: "zmdi zmdi-chevron-up",
+                    down: "zmdi zmdi-chevron-down",
+                    previous: "zmdi zmdi-chevron-left",
+                    next: "zmdi zmdi-chevron-right"
+                },
+                defaultDate: "02/10/2016",
+                disabledDates: [
+                    moment("02/19/2016"),
+                    moment("02/20/2016")
+                ]
+            });
+
+        });
+        var btnenfant = $("#EnvoyerEnfant");
+        var formenfant = $('#formenfant');
+        $('form').submit(function(e){
+            e.preventDefault();
+            var submit = true;
+            // you can put your own custom validations below
+
+            // check all the rerquired fields
+            if( !validator.checkAll( $(this) ) )
+                submit = false;
+
+            if( submit )
+                this.submit();
+
+            return false;
+        })
+    </script>
+{% endblock %}

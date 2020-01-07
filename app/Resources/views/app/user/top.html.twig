@@ -1,0 +1,136 @@
+<div class="nav_menu">
+    <nav>
+        <div class="nav toggle">
+            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+
+            <li role="presentation" class="dropdown" >
+                <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-sticky-note"></i>
+
+                </a>
+                <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                    <li>
+                        <a href="javascript:;" id="newNote">
+                            <i class=" pull-right fa fa-sticky-note"></i>
+                            <span>Add notes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" id="idHideCreated">
+                            <i class=" pull-right fa fa-eye-slash"></i>
+                            <span>caher notes</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a  href="javascript:;"  id="idShowCreated">
+                            <i class=" pull-right fa fa-eye"></i>
+                            <span>afficher notes</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="">
+                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="{% if userinfo.image is null %} {{ asset('images/user.png') }} {% else %} {{ asset('uploads/profile/'~userinfo.image.name) }} {% endif %}" alt="">{{ app.user.firstName }} {{ app.user.lastName }}
+                    <span class=" fa fa-angle-down"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li><a href="{{ path('user_profile') }}"> {% trans  from 'top' into app.session.get('Langue') %} Votre profil  {% endtrans %} {#{ app.session.get('Langue') }#}</a></li>
+                    {#<li>
+                        <a href="javascript:;">
+                            <span class="badge bg-red pull-right">50%</span>
+                            <span>Settings</span>
+                        </a>
+                    </li>#}
+
+
+                   {# <a href="#" id="newNote2">Create a new note and get id</a>
+                    <a href="#" id="idHideCreated">Hide created note</a>
+                    <a href="#" id="idShowCreated">Show created note</a>
+                    <a href="#" id="idDeleteCreated">Delete created note</a>#}
+
+                    <li><a
+                                {% if  app.session.get('Langue') == 'fr' %}
+                                    href="{{ path('changeLanguage', {'langue': 'en'}) }}"
+                                {% else %}
+                                    href="{{ path('changeLanguage', {'langue': 'fr'}) }}"
+                                {% endif %} >
+                            {% trans  from 'top' into  app.session.get('Langue') %} Language  {% endtrans %}  </a></li>
+                    <li><a href="{{ path('logout') }}"><i class="fa fa-sign-out pull-right"></i>{% trans  from 'top' into  app.session.get('Langue') %}  Déconnexion   {% endtrans %} </a></li>
+                </ul>
+            </li>
+            <li role="presentation" class="dropdown" >
+                <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-envelope-o"></i>
+                    <span class="badge bg-green">{{nbrnotif}}</span>
+                </a>
+                <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu" style="width: 418px;">
+                    {% for vaccinEnttent in vaccinEnttents %}
+                        <li>
+                            <a href="{{ path('enfant_show',{'id':vaccinEnttent.enfant.id}) }}">
+                                <span class="image"><img src="{% if vaccinEnttent.enfant.image is null %} {{ asset('images/user.png') }} {% else %} {{ asset('uploads/enfant/'~vaccinEnttent.enfant.image.name) }} {% endif %}" alt="Profile Image" /></span>
+                                <span>
+                          <span>{{ vaccinEnttent.enfant.nom ~" "~ vaccinEnttent.enfant.prenom }}</span>
+                          <span class="times">few mins ago</span>
+                        </span>
+                                <span class="message">
+                                    <i class="fa fa-warning red"></i> Vaccin restant:
+                            {% for vaccin in vaccinEnttent.vaccin_restant %}
+                               | {{ vaccin.name }}
+                            {% endfor %}
+                        </span>
+                            </a>
+                        </li>
+                    {% endfor %}
+                    {% for paiement_retard in paiement_retards %}
+                        <li>
+                            <a href="{{ path('paiement_new') }}">
+                                <span class="image"><img src="{% if paiement_retard.enfant.image is null %} {{ asset('images/user.png') }} {% else %} {{ asset('uploads/enfant/'~paiement_retard.enfant.image.name) }} {% endif %}" alt="Profile Image" /></span>
+                                <span>
+                          <span>{{ paiement_retard.enfant.nom ~" "~ paiement_retard.enfant.prenom }}</span>
+                          <span class="times">few mins ago</span>
+                        </span>
+                                <span class="message">
+                                    <i class="fa fa-warning red"></i> {{paiement_retard.Alert}}
+                        </span>
+                            </a>
+                        </li>
+                    {% endfor %}
+                    {% for scolarit_restant in scolarit_restants %}
+                        <li>
+                            <a href="{{ path('reglement',{'id':scolarit_restant.id}) }}">
+                                <span class="image"><img src="{% if scolarit_restant.enfant.image is null %} {{ asset('images/user.png') }} {% else %} {{ asset('uploads/enfant/'~scolarit_restant.enfant.image.name) }} {% endif %}" alt="Profile Image" /></span>
+                                <span>
+                          <span>{{ scolarit_restant.enfant.nom ~" "~ scolarit_restant.enfant.prenom }}</span>
+                          <span class="times">few mins ago</span>
+                        </span>
+                                <span class="message">
+                                    <i class="fa fa-warning red"></i> Rest à payer: {{scolarit_restant.restapayer}}
+                        </span>
+                            </a>
+                        </li>
+                    {% endfor %}
+                    {% for Lienfamilliale in Lienfamilliales %}
+                        <li>
+                            <a href="{{ path('tuteur_edit',{'id':Lienfamilliale.tuteur.id}) }}">
+                                <span class="image"><img src="{% if Lienfamilliale.tuteur.image is null %} {{ asset('images/user.png') }} {% else %} {{ asset('uploads/enfant/'~Lienfamilliale.tuteur.image.name) }} {% endif %}" alt="Profile Image" /></span>
+                                <span>
+                          <span>{{ Lienfamilliale.tuteur.nom ~" "~ Lienfamilliale.tuteur.prenom }}</span>
+                          <span class="times">few mins ago</span>
+                        </span>
+                                <span class="message">
+                                    <i class="fa fa-warning red"></i> Veillez completer les information de cet tuteur
+                        </span>
+                            </a>
+                        </li>
+                    {% endfor %}
+
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</div>

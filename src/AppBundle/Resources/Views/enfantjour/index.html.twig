@@ -1,0 +1,40 @@
+{% extends '@App/user_base.html.twig' %}
+
+    {% block title %} {{ parent() }} Bienvenue {% endblock %}
+  {% block main %}
+    <h1>Enfantjours list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for enfantjour in enfantjours %}
+            <tr>
+                <td><a href="{{ path('enfantjour_show', { 'id': enfantjour.id }) }}">{{ enfantjour.id }}</a></td>
+                <td>{{ enfantjour.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('enfantjour_show', { 'id': enfantjour.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('enfantjour_edit', { 'id': enfantjour.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('enfantjour_new') }}">Create a new enfantjour</a>
+        </li>
+    </ul>
+{% endblock %}

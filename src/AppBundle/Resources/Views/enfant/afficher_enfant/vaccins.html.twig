@@ -1,0 +1,68 @@
+<div class="x_panel" >
+    <div class="x_title">
+        <h2>Les vaccins</h2>
+        <ul class="nav navbar-right panel_toolbox">
+            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="t"><i class="fa fa-wrench"></i></a>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content" style="display: block;">
+        <br>
+        <form method="post" action="{{ path('vacciner_new') }}">
+        <div class="table-responsive">
+            <table class="table table-striped jambo_table bulk_action">
+                <thead>
+                <tr class="headings">
+                    <th>
+                        <input type="checkbox" id="check-all" class="flat">
+                    </th>
+                     <th class="column-title">Name</th>
+                     <th class="column-title">Période limite</th>
+                    <th class="bulk-actions" colspan="7">
+                        <a class="antoo" style="color:#fff; font-weight:500;">Nombre de vaccin éffectuer ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                    </th>
+                 </tr>
+            </thead>
+            <tbody>
+            {% for vaccin in allVaccins %}
+                {%  if lesvaccinsFaites is not empty  %}
+
+                            <tr class="even pointer">
+                                <td class="a-center ">
+                                    <input id="table_records" type="checkbox" class="flat" name="data[{{ vaccin.id }}]"
+                                            {% for enfantvac in lesvaccinsFaites %}{%  if vaccin.id == enfantvac.vaccin.id  %} checked {% endif %} {% endfor %}>
+                                </td>
+                                <th>
+                                    {{ vaccin.name }}
+                                </th>
+                                <th>
+                                    {{ vaccin.timeintervale~" "~ vaccin.libele }}
+                                </th>
+                            </tr>
+
+                {% else %}
+                    <tr class="even pointer">
+                        <td class="a-center ">
+                            <input id="table_records" type="checkbox" class="flat" name="data[{{ vaccin.id }}]">
+                        </td>
+                        <th>
+                            {{ vaccin.name }}
+                        </th>
+                        <th>
+                            {{ vaccin.timeintervale~" "~ vaccin.libele }}
+                        </th>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+            <input name="enfant" value="{{ enfant.id }}" class="hide">
+            <button class="btn btn-success" type="submit" ><i class="fa fa-plus-circle"></i> Modifier</button>
+        </div>
+        </form>
+    </div>
+</div >

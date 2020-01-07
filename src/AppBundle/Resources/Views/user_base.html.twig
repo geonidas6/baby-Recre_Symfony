@@ -1,0 +1,14 @@
+{% extends 'app/base.html.twig' %}
+
+{% block top %}
+    {{ render(controller('AppBundle\\Controller\\UserController::topRenderer')) }}
+    {#   {{ include('user/top.html.twig') }} #}
+{% endblock %}
+
+{% block aside %}
+    {{ render(controller('AppBundle\\Controller\\UserController::asideRenderer')) }}
+            {#    {{ include('user/aside.html.twig') }} #}
+{% endblock %}
+
+
+

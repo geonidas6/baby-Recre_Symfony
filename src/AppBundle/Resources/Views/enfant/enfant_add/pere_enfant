@@ -1,0 +1,75 @@
+<h3>Père</h3>
+<fieldset >
+    <div id="filepere">
+        {#autocomplet#}
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Selectionner un tuteur existent</button>
+        {#end autocomplet#}
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group form-float">
+                    <div class="form-line">
+                        <input type="text" id="nompere" name="data[pere][nompere]" class="form-control" required>
+                        <label class="form-label">Nom*</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group form-float">
+                    <div class="form-line">
+                        <input type="text" id="prenompere" name="data[pere][prenompere]" class="form-control" required>
+                        <label class="form-label">Prenom*</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group form-float">
+                    <div class="form-line">
+                        <input type="text" id="domiciliepere" name="data[pere][domiciliepere]" class="form-control" required>
+                        <label class="form-label">Domicile*</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group form-float">
+                    <div class="form-line">
+                        <input type="text" id="professionpere" name="data[pere][professionpere]" class="form-control" required>
+                        <label class="form-label">Profession*</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group form-float">
+                    <div class="form-line">
+                        <input type="text"  id="telpere" name="data[pere][telpere]" class="form-control" required>
+                        <label class="form-label">Télepone*</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group form-float">
+                    <div class="form-line">
+                        <input  type="text" id="portablepere" name="data[pere][portablepere]" class="form-control" required>
+                        <label class="form-label">Portable*</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group form-float">
+                    <div class="form-line">
+                        <input type="email" id="emailpere" name="data[pere][emailpere]" class="form-control" required>
+                        <label class="form-label">Email*</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="pereinfos"></div>
+    <button type="button" class="btn btn-warning" id="new_pere" onclick="return_new_pere();">Nouvelle utilisateur</button>
+</fieldset>

@@ -1,0 +1,128 @@
+<h3> Autorisation</h3>
+<fieldset>
+    <div class="row">
+        <div class="col-sm-4">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-smA">Selectionner un tuteur existent</button>
+            <div id="tuteurotherA">
+                <div class="form-group form-float">
+                    <div class="form-line">
+                        <input type="text" id="nomfam1" name="data[fam1][nomfam1]" class="form-control" required>
+                        <label class="form-label">Nom*</label>
+                    </div>
+                </div>
+                <div class="form-group form-float">
+                    <div class="form-line">
+                        <input type="text" id="prenomfam1" name="data[fam1][prenomfam1]" class="form-control" required>
+                        <label class="form-label">Prenom*</label>
+                    </div>
+                </div>
+                <div class="form-group form-float">
+                    <div class="form-line">
+                        <input type="text" id="domicilefam1" name="data[fam1][domicilefam1]" class="form-control" required>
+                        <label class="form-label">Adresse*</label>
+                    </div>
+                </div>
+                <div class="form-group form-float">
+                    <div class="form-line">
+                        <input  type="text"  id="telfam1" name="data[fam1][telfam1]" class="form-control" required>
+                        <label class="form-label">Télephone*</label>
+                    </div>
+                </div>
+                <div class="form-group form-float">
+                <div class="form-line">
+                    <select class="form-control" name="data[fam1][lienfam1]" id="lienfam1" required>
+                        <option value="Oncle">Oncle</option>
+                        <option value="Tante">Tante</option>
+                    </select>
+                    <label class="form-label">Lien de parenté*</label>
+                </div>
+            </div>
+            </div>
+            <div id="tuteurotherAinfos"></div>
+            <button type="button" class="btn btn-warning" id="new_otherA" onclick="return_new_otherA();">Nouvelle utilisateur</button>
+        </div>
+        <div class="col-sm-4">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-smB">Selectionner un tuteur existent</button>
+            <div id="tuteurotherB">
+                <div class="form-group form-float">
+                    <div class="form-line">
+                        <input type="text" id="nomfam2" name="data[fam2][nomfam2]" class="form-control" required>
+                        <label class="form-label">Nom*</label>
+                    </div>
+                </div>
+                <div class="form-group form-float">
+                    <div class="form-line">
+                        <input type="text" id="prenomfam2" name="data[fam2][prenomfam2]" class="form-control" required>
+                        <label class="form-label">Prenom*</label>
+                    </div>
+                </div>
+                <div class="form-group form-float">
+                    <div class="form-line">
+                        <input type="text" id="domicilefam2" name="data[fam2][domicilefam2]" class="form-control" required>
+                        <label class="form-label">Adresse*</label>
+                    </div>
+                </div>
+                <div class="form-group form-float">
+                    <div class="form-line">
+                        <input  type="text" id="telfam2" name="data[fam2][telfam2]" class="form-control" required>
+                        <label class="form-label">Télephone*</label>
+                    </div>
+                </div>
+                <div class="form-group form-float">
+                <div class="form-line">
+                    <select class="form-control" name="data[fam2][lienfam2]" id="lienfam2" required>
+                        <option value="Frere">Frère</option>
+                        <option value="Soeur">Soeur</option>
+                    </select>
+                    <label class="form-label">Lien de parenté*</label>
+                </div>
+            </div>
+            </div>
+            <div id="tuteurotherBinfos"></div>
+            <button type="button" class="btn btn-warning" id="new_otherB" onclick="return_new_otherB();">Nouvelle utilisateur</button>
+        </div>
+        <div class="col-sm-4">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-smC">Selectionner un tuteur existent</button>
+            <div id="tuteurotherC">
+                <div class="form-group form-float">
+                    <div class="form-line">
+                        <input type="text" id="nomfam3" name="data[fam3][nomfam3]" class="form-control" required>
+                        <label class="form-label">Nom*</label>
+                    </div>
+                </div>
+                <div class="form-group form-float">
+                    <div class="form-line">
+                        <input type="text" id="prenomfam3" name="data[fam3][prenomfam3]" class="form-control" required>
+                        <label class="form-label">Prenom*</label>
+                    </div>
+                </div>
+                <div class="form-group form-float">
+                    <div class="form-line">
+                        <input type="text" id="domicilefam3" name="data[fam3][domicilefam3]" class="form-control" required>
+                        <label class="form-label">Adresse*</label>
+                    </div>
+                </div>
+                <div class="form-group form-float">
+                    <div class="form-line">
+                        <input  type="text" id="telfam3" name="data[fam3][telfam3]" class="form-control" required>
+                        <label class="form-label">Télephone*</label>
+                    </div>
+                </div>
+                <div class="form-group form-float">
+                <div class="form-line">
+                    <select class="form-control" name="data[fam3][lienfam3]" id="lienfam3" required>
+                        <option value="Amis">Amis</option>
+                        <option value="GrangMere">Grand Mère</option>
+                        <option value="Autre">Autre</option>
+                    </select>
+                    <label class="form-label">Lien de parenté*</label>
+                </div>
+            </div>
+            </div>
+            <div id="tuteurotherCinfos"></div>
+            <button type="button" class="btn btn-warning" id="new_otherC" onclick="return_new_otherC();">Nouvelle utilisateur</button>
+        </div>
+    </div>
+
+
+</fieldset>

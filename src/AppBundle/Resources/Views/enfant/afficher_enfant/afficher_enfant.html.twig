@@ -1,0 +1,121 @@
+{% extends '@App/user_base.html.twig' %}
+
+{% block title %} {{ parent() }} {{ enfant.nom ~" "~ enfant.prenom }} {% endblock %}
+{% block main %}
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2></h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {% for flashMessage in app.session.flashbag.get('message') %}
+                        <div class="label-success">
+                            {{ flashMessage }}
+                        </div>
+
+                    {% endfor %}
+                </div>
+            </div>
+            {#les liste debuts #}
+            {% set tabNbr = {'tabNbr':enfantDetails} %}
+            {% include '@App/enfant/afficher_enfant/NbrTab.html.twig' with tabNbr %}
+            {#les listes fin#}
+            <div class="x_content">
+                {#avatar#}
+                <div class="col-md-2 col-sm-2 col-xs-11 profile_left">
+                    <div class="profile_img">
+                        <div id="crop-avatar">
+                            <!-- Current avatar -->
+                            <img id="profile-pic" align="center" class="img-responsive img-circle center-block"
+                                 src="{% if enfant.image is null %}
+                                    {{ asset('images/user.png') }}{% else %}
+                                    {{ asset('uploads/enfant/'~enfant.image.name) }} {% endif %}"
+                                 alt="user" title="Photo de profil">
+                        </div>
+                    </div>
+                    <h1>Nom:{{  enfant.nom}}</h1>
+                    <h2>Prenom:{{ enfant.prenom  }}</h2>
+
+                    <ul class="list-unstyled user_data">
+                        <li>
+                            <i class="fa fa-calendar"></i> Né le: {{  enfant.datenaissance | date("d-m-Y")  }}
+                        </li>
+                        <li>
+                            <i class="fa fa-calendar"></i> Age: {{ age ~''~ age_lib  }}
+                        </li>
+                        <li>
+                            <a class="btn btn-success" href="{{ path('enfant_edit',{'id':enfant.id}) }}"><i class="fa fa-edit"></i> Edite</a>
+                        </li>
+
+                    </ul>
+                    <br/><br/>
+                </div>
+                {#fin avatar#}
+                <div class="col-md-10 col-sm-10 col-xs-12 col_right">
+                    {#debut message#}
+                    {% set lienfamilliales = {'lienfamilliales':lienfamilliales} %}
+                    {% include '@App/enfant/afficher_enfant/tuteur.html.twig' with lienfamilliales %}
+                    {#debut classe#}
+
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 col_right">
+                    {#debut infoFiche#}
+                    {% set enfantDetails = {'enfantDetails':enfantDetails} %}
+                    {% include '@App/enfant/afficher_enfant/Infos.html.twig' with enfantDetails %}
+                    {#debut fiche#}
+
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 col_right">
+                    {#debut infoFiche#}
+                    {% set vaccins = {'allVaccins':allVaccins,'lesvaccinsFaites':lesvaccinsFaites} %}
+                    {% include '@App/enfant/afficher_enfant/vaccins.html.twig' with vaccins %}
+                    {#debut fiche#}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+
+        $(document).ready(function () {
+            var table =   $("#datansive").DataTable({
+                "scrollX":false,
+                "sScrollHead":false,
+                "scrollCollapse":false,
+                "paging":false,
+                "ordering":true,
+                "info":false,
+                "searching": false
+            });
+            var table =   $("#enfantDetails").DataTable({
+                "scrollX":false,
+                "sScrollHead":false,
+                "scrollCollapse":false,
+                "paging":false,
+                "ordering":true,
+                "info":false,
+                "searching": false
+            });
+            var table =   $("#vaccin").DataTable({
+                "scrollX":false,
+                "sScrollHead":false,
+                "scrollCollapse":false,
+                "paging":false,
+                "ordering":true,
+                "info":false,
+                "searching": false
+            });
+
+        });
+    </script>
+
+{% endblock %}

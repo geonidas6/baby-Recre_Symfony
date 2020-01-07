@@ -1,0 +1,128 @@
+{% extends '@App/user_base.html.twig' %}
+
+    {% block title %} {{ parent() }} Bienvenue {% endblock %}
+  {% block main %}
+
+
+      <div class="">
+          <div class="page-title">
+              <div class="title_left">
+                  <h3>Série</h3>
+              </div>
+          </div>
+          <div class="clearfix"></div>
+
+          <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="x_panel">
+                      <div class="x_title">
+                          <h2><i class="fa fa-bars"></i> Parametre <small>Admin panel</small></h2>
+                          <ul class="nav navbar-right panel_toolbox">
+                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                              </li>
+                              <li class="dropdown">
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                  <ul class="dropdown-menu" role="menu">
+                                      <a href="{{ path('enfant_index') }}">Liste Série</a>
+                                      </li>
+                                      <li><a href="#">Settings 2</a>
+                                      </li>
+                                  </ul>
+                              </li>
+                              <li><a class="close-link"><i class="fa fa-close"></i></a>
+                              </li>
+                          </ul>
+                          <div class="clearfix"></div>
+                          <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                              {{ knp_pagination_render(tab_photos) }}
+                          </div>
+                      </div>
+
+                      <div class="x_content">
+                          <div class="row">
+                              <form>
+                                  <div class="form-group">
+                                      <div class="col-sm-10">
+                                          <input class="form-control" id="path" type="text">
+                                      </div>
+                                      <div class="col-sm-2">
+                                          <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+                                              <span class="glyphicon glyphicon-folder-open"></span>
+                                          </button>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col-xs-6 col-md-3">
+                                          <img src="" class="img-responsive" id="image" alt="">
+                                      </div>
+                                  </div>
+                              </form>
+                              <!-- Modal -->
+                              <div class="modal  fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                  <div class="modal-dialog modal-lg" role="document">
+                                      <div class="modal-content">
+                                          <div class="modal-header">
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                                          aria-hidden="true">&times;</span></button>
+                                              <h4 class="modal-title" id="myModalLabel">File Manager</h4>
+                                          </div>
+                                          <div class="modal-body">
+                                              <iframe id="myframe" src="{{ path('file_manager', {module:1, conf:'button'}) }}" width="100%" height="500"
+                                                      frameborder="0"></iframe>
+                                          </div>
+                                          <div class="modal-footer">
+                                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+
+                      {#    <div class="body">
+                              <div id="aniimated-thumbnials" class="list-unstyled row clearfix">
+                                  {% for media in Enfant %}
+                                  <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                                      <a href=" {% if media.image is null %}
+                                    {{ asset('images/user.png') }}{% else %}
+                                    {{ asset('uploads/enfant/'~media.image.name) }} {% endif %}" data-sub-html="{{ media.nom ~" "~ media.prenom }}">
+                                          <img class="img-responsive thumbnail" src="{% if media.image is null %}
+                                    {{ asset('images/user.png') }}{% else %}
+                                    {{ asset('uploads/enfant/'~media.image.name) }} {% endif %}">
+                                      </a>
+                                  </div>
+                                  {% endfor %}
+                              </div>
+                          </div>#}
+
+                          <div class="body">
+                              <div id="aniimated-thumbnials" class="list-unstyled row clearfix">
+                                  {% for tab_photo in tab_photos %}
+                                  <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                                      <a href="{{ asset(tab_photo.link ~""~ tab_photo.name ) }} " data-sub-html="{{ tab_photo.name }}">
+                                          <img class="img-responsive thumbnail" src="{{ asset(tab_photo.link ~""~ tab_photo.name) }}">
+                                      </a>
+                                  </div>
+                                  {% endfor %}
+                              </div>
+                          </div>
+
+
+
+
+
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  {% endblock %}
+{% block javascripts %}
+
+
+
+    <script>
+
+
+    </script>
+{% endblock %}

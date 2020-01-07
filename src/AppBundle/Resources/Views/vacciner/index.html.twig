@@ -1,0 +1,38 @@
+{% extends '@App/user_base.html.twig' %}
+
+    {% block title %} {{ parent() }} Bienvenue {% endblock %}
+  {% block main %}
+    <h1>Vacciners list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vacciner in vacciners %}
+            <tr>
+                <td><a href="{{ path('vacciner_show', { 'id': vacciner.id }) }}">{{ vacciner.id }}</a></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('vacciner_show', { 'id': vacciner.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('vacciner_edit', { 'id': vacciner.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('vacciner_new') }}">Create a new vacciner</a>
+        </li>
+    </ul>
+{% endblock %}

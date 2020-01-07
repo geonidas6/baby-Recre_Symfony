@@ -1,0 +1,981 @@
+{% extends '@App/user_base.html.twig' %}
+
+    {% block title %} {{ parent() }} Bienvenue {% endblock %}
+
+  {% block main %}
+
+      <style>
+          .alert{
+              line-height: 0px;margin-bottom: 0px;color: red;
+          }
+      </style>
+
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="content-box">
+                      <div class="head warning-bg clearfix">
+                          <h5 class="content-title pull-left">CONTRAT D’ACCUEIL</h5>
+                          <div class="functions-btns pull-right">
+                              <a class="refresh-btn" href="#"><i class="zmdi zmdi-refresh"></i></a>
+                              <a class="fullscreen-btn" href="#"><i class="zmdi zmdi-fullscreen"></i></a>
+                              <a class="close-btn" href="#"><i class="zmdi zmdi-close"></i></a>
+                          </div>
+                      </div>
+
+                      <div class="content">
+                          <div class="row">
+                              <div class="col-sm-6">
+                                  <p  align="center">
+
+                                      <strong ><u>CONTRAT D’ACCUEIL</u></strong></p><br>
+                                  <p class="text-left">
+                                      Ce contrat d’accueil est conclu au bénéfice de l’ENFANT :
+                                      Nom……………………………………….Prénoms…………………………….……………
+                                      Date de naissance………………………… Accueilli à compter du :………………………………
+                                      <br>-	La crèche Baby Récré (Rue 177 Totsi face Hôtel Alma tél : 92 88 19 96,
+                                      Mail : babyrecre@gmail.com), représentée par Madame Aku Maglo Et
+                                      <br>-	Le(s) représentant(s) légal (aux)de l’enfant :
+                                      <br>o	Mère
+                                      <br>Nom et prénom :……………………………………………………………………………
+                                      <br>Domicilié :…………………………………………………………………………………
+                                      <br>Numéro de téléphone :…………………………Portable :………………………………
+                                      <br>Adresse mail :…………………………………………………………………………………
+                                      <br>Profession :………………………………………………………………………………
+
+                                      <br>o	Père
+                                      <br>Nom et prénom :…………………………………………………………………………….…
+                                      <br>Domicilié :…………………………………………………………………………………..…
+                                      <br>Numéro de téléphone :………………………………Portable :……………………
+                                      <br>Adresse mail :…………………………………………………………………………………
+                                      <br>Profession :……………………………………………………………………………………
+
+                                      <br><strong>Autre (à préciser)</strong>
+                                      <br>Il est convenu ce qui suit :
+                                      <br>1)	L’enfant est inscrit dans la structure pour la période du…….........……au……..…...…..
+                                      <br>    soit…………….mois la période ne doit pas être supérieur à 11 mois)
+                                      <br>2)	L’enfant sera accueilli dans la structure durant les créneaux suivants :
+                                  </p>
+                              </div>
+                              <div class="col-sm-6">
+                                  <p>
+                                      <br><strong><u> Heure d’ouverture de 06H30 à 19H00</u></strong>
+                                  <table class="table table-bordered">
+                                      <thead>
+                                      <tr>
+                                          <th></th>
+                                          <th>Heure d’arrivée</th>
+                                          <th>Heure de départ</th>
+                                      </tr>
+                                      </thead>
+                                      <tbody>
+                                      <tr>
+                                          <td>Lundi</td>
+                                          <td>.........</td>
+                                          <td>.........</td>
+                                      </tr>
+                                      <tr>
+                                          <td>Mardi</td>
+                                          <td>.........</td>
+                                          <td>.........</td>
+                                      </tr>
+                                      <tr>
+                                          <td>Mercredi</td>
+                                          <td>.........</td>
+                                          <td>.........</td>
+                                      </tr>
+                                      <tr>
+                                          <td>Jeudi</td>
+                                          <td>.........</td>
+                                          <td>.........</td>
+                                      </tr>
+                                      <tr>
+                                          <td>Vendredi</td>
+                                          <td>.........</td>
+                                          <td>.........</td>
+                                      </tr>
+                                      <tr>
+                                          <td>Samedi</td>
+                                          <td>.........</td>
+                                          <td>.........</td>
+                                      </tr>
+                                      <tr>
+                                          <td>Dimanche</td>
+                                          <td>.........</td>
+                                          <td>.........</td>
+                                      </tr>
+                                      </tbody>
+                                  </table>
+
+                                  Les parents s’engagent à régler le montant de la participation selon les modalités stipulées dans les règles de fonctionnement
+
+                                  <br><strong><u>Liste du matériel et d’affaires personnelles à fournir par les parents :</u></strong>
+
+                                  <br>Famille : ……………………………………………………………………………………………..
+                                  <br>Concernant l’enfant :…………………………………………………………………………..
+
+                                  <br><strong>Merci de penser à nous apporter :</strong>
+                                  <ul>
+                                      <li>Couche</li>
+                                      <li>Lait en Poudre ou en Brique</li>
+                                      <li>Nouveau change</li>
+                                      <li>Doudou ou Tétine (si besoin)</li>
+                                      <li>Antipyrétique (Doliprane ou Efféralgan avec Ordonnance du médecin)</li>
+                                      <li>Casquette, chapeaux ou Bob pour le soleil</li>
+                                      <li>2 Photos</li>
+                                      <li>Crème pour érythème fessier</li>
+                                      <li>Biberon pour la journée</li>
+                                  </ul>
+                                  </p>
+                              </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+
+
+                              <div class="col-sm-6">
+                                  <p>Autorisation de sortie
+
+
+                                      Famille :………………………………………………………………………………………..
+                                      Concernant l’enfant :…………………………………………………….…………………….
+
+
+                                      J’autorise mon enfant à sortir de la crèche Baby Récré de (joindre photocopie de la pièce d’identité)
+
+                                      M. Mme, Mlle (nom et prénom) :
+
+                                      Adresse
+                                      Numéro de téléphone:
+
+
+                                      M. Mme, Mlle (nom et prénom) :
+
+                                      Adresse
+                                      Numéro de téléphone:
+
+                                      M. Mme, Mlle (nom et prénom) :
+
+                                      Adresse
+                                      Numéro de téléphone:
+
+                                      Dès lors que l’enfant quitte la structure, il est sous l’entière responsabilité de la personne accompagnant l’enfant.
+
+
+                                      Fait à :………………… le……………
+
+                                      Signature des parents :
+                                  </p>
+                              </div>
+                              <div class="col-sm-6">
+                                  <p>
+                                      Autorisation de sortie extérieur
+
+                                      Pour mieux guider votre enfant dans l’apprentissage de son autonomie et le préserver dans une relation individuelle, les professionnels proposent des activités.
+
+                                      Des sorties telles que : pique-nique à l’extérieur, sortie à la bibliothèque, etc… sont proposés à vos enfants
+
+                                      Nous vous demandons donc votre autorisation :
+
+                                      Je soussigné(e) Mr, Mme :
+
+                                      Autorise mon enfant :…………………………………………………………………………
+
+                                      A sortir de la crèche Baby Récré, situé à Totsi Gblinkomé, accompagné d’un ou plusieurs professionnelles de la structure
+
+
+                                      Fait à…………… le………………
+
+                                      Signature des parents :
+
+                                  </p>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-sm-6">
+                                  <p>
+
+                                      Fiche de Renseignements
+
+
+                                      Nom et prénom de l’enfant :
+
+                                      Date de naissance :…………………/……………………. /20
+                                      Pour les bébés
+                                      •	Midi
+                                      Biberon ou bouillie : quantité………ML……………toutes les………………….heures
+                                      Repas mixé	:	Oui		Non	Repas mixé + biberon : 	Oui		Non
+                                      •	Gouter
+                                      Compote – Bouillie – Lait
+
+                                      Pour les moyens et les grands
+                                      •	Midi
+                                      Repas :	mixé – Morceau
+                                      •	Gouter
+                                      Compote – Lait – Fruit en morceau
+                                      Votre enfant-a-t-il déjà des problèmes ou allergies ? Précisez :
+
+                                      Votre enfant prend ses repas
+                                      Avec aide		sans aide
+                                      Mange-t-il : viande – poisson –œuf ?
+                                      Vos remarques, autres précisions, autres habitudes (culturelles, familiales, religieuses…)
+
+
+
+
+                                      La propreté
+                                      A la crèche, la pratique du pot ne commence pas avant que l’enfant puisse exprimer ses besoins et toujours en partenariat avec les parents.
+                                      Votre enfant porte-t-il des couches ?
+                                      A la journée		Oui		Non
+                                      A la sieste		Oui		Non
+                                      Avez-vous déjà proposé le pot à votre enfant
+                                      Oui		Non
+                                  </p>
+                              </div>
+                              <div class="col-sm-6">
+                                  <p>
+                                      Comment-a-t-il réagit ?
+
+
+
+                                      Et pour finir…
+                                      Quelles sont vos attentes ?
+
+
+
+                                      Quelles sont vos craintes ?
+
+
+
+                                      Que vous semble-t-il-important de nous dire pour mieux connaitre votre enfant ?
+
+
+
+
+
+
+                                  </p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="content-box">
+                      <div class="head warning-bg clearfix">
+                          <h5 class="content-title pull-left">CONTRAT D’ACCUEIL</h5>
+                          <div class="functions-btns pull-right">
+                              <a class="refresh-btn" href="#"><i class="zmdi zmdi-refresh"></i></a>
+                              <a class="fullscreen-btn" href="#"><i class="zmdi zmdi-fullscreen"></i></a>
+                              <a class="close-btn" href="#"><i class="zmdi zmdi-close"></i></a>
+                          </div>
+                      </div>
+
+                      <div class="content">
+                          <div class="row">
+                              <div class="col-sm-12">
+                                  <p>Ce contrat d’accueil est conclu au bénéfice de l’ENFANT :</p>
+                              </div>
+                              <div class="col-sm-3">
+                                  <h5>ENFANT</h5>
+                                  <p>Veillez saisirles information de l'enfant</p>
+                                  <form class="form-horizontal row-x-editable">
+                                      <div class="form-group">
+                                          <label class="col-sm-3 control-label">NOM :</label>
+                                          <div class="col-sm-6">
+                                              <a href="#" id="nomenfant" data-type="text" data-pk="1" data-placeholder="Required"
+                                                 data-title="Entrer le nom de l'enfant" class="editable editable-click">exmple : Jean</a>
+                                          </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label class="col-sm-3 control-label">Prénom</label>
+                                          <div class="col-sm-6">
+                                              <a href="#" id="prenomenfant" data-type="text" data-pk="1" data-placement="right"
+                                                 data-placeholder="Required" data-title="Entrer le prenom"
+                                                 class="editable editable-click editable-empty">eg : Bernard Georgette</a>
+                                          </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label class="col-sm-3 control-label">Sexe: </label>
+                                          <div class="col-sm-6">
+                                              <a href="#" id="sex" data-type="select" data-pk="1" data-value=""
+                                                 data-title="Select sex"
+                                                 data-placeholder="Required" class="editable editable-click" style=" color: rgb(128, 128, 128);">not selected</a>
+                                          </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label class="col-sm-3 control-label">Select, error while loading</label>
+                                          <div class="col-sm-6">
+                                              <a href="#" id="status" data-type="select" data-pk="1" data-value="0" data-source="/status" data-title="Select status" class="editable editable-click">Active</a>
+                                          </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label class="col-sm-3 control-label">Combodate</label>
+                                          <div class="col-sm-6">
+                                              <a href="#" id="dob" data-type="combodate" data-value="1984-05-15" data-format="YYYY-MM-DD" data-viewformat="DD/MM/YYYY" data-template="D / MMM / YYYY" data-pk="1" data-title="Select Date of birth" class="editable editable-click">15/05/1984</a>
+                                          </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label class="col-sm-3 control-label">Textarea, buttons below. Submit by <i>ctrl+enter</i></label>
+                                          <div class="col-sm-6">
+                                              <a href="#" id="comments" data-type="textarea" data-pk="1" data-placeholder="Your comments here..." data-title="Enter comments" class="editable editable-pre-wrapped editable-click">awesome user!</a>
+                                          </div>
+                                      </div>
+                                  </form>
+                              </div>
+                              <div class="col-sm-3">
+                                  <h5>Inline mode</h5>
+                                  <p>Editable elements with inline editor</p>
+                                  <form class="form-horizontal row-x-editable">
+                                      <div class="form-group">
+                                          <label class="col-sm-3 control-label">Simple Text Field</label>
+                                          <div class="col-sm-6">
+                                              <a href="#" id="inline-username" data-type="text" data-pk="1" data-title="Enter username" class="editable editable-click" style="display: inline-block;">superuser</a>
+                                          </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label class="col-sm-3 control-label">Empty text field, required</label>
+                                          <div class="col-sm-6">
+                                              <a href="#" id="inline-firstname" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Enter your firstname" class="editable editable-click editable-empty">Empty</a>
+                                          </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label class="col-sm-3 control-label">Select, local array, custom display</label>
+                                          <div class="col-sm-6">
+                                              <a href="#" id="inline-sex" data-type="select" data-pk="1" data-value="" data-title="Select sex" class="editable editable-click" style="color: rgb(128, 128, 128);">not selected</a>
+                                          </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label class="col-sm-3 control-label">Select, error while loading</label>
+                                          <div class="col-sm-6">
+                                              <a href="#" id="inline-status" data-type="select" data-pk="1" data-value="0" data-source="/status" data-title="Select status" class="editable editable-click">Active</a>
+                                          </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label class="col-sm-3 control-label">Combodate</label>
+                                          <div class="col-sm-6">
+                                              <a href="#" id="inline-dob" data-type="combodate" data-value="1984-05-15" data-format="YYYY-MM-DD" data-viewformat="DD/MM/YYYY" data-template="D / MMM / YYYY" data-pk="1" data-title="Select Date of birth" class="editable editable-click">15/05/1984</a>
+                                          </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label class="col-sm-3 control-label">Textarea, buttons below. Submit by <i>ctrl+enter</i></label>
+                                          <div class="col-sm-6">
+                                              <a href="#" id="inline-comments" data-type="textarea" data-pk="1" data-placeholder="Your comments here..." data-title="Enter comments" class="editable editable-pre-wrapped editable-click">awesome user!</a>
+                                          </div>
+                                      </div>
+                                  </form>
+                              </div>
+                              <div class="col-sm-3">
+                                  <h5>Inline mode</h5>
+                                  <p>Editable elements with inline editor</p>
+                                  <form class="form-horizontal row-x-editable">
+                                      <div class="form-group">
+                                          <label class="col-sm-3 control-label">Simple Text Field</label>
+                                          <div class="col-sm-6">
+                                              <a href="#" id="inline-username" data-type="text" data-pk="1" data-title="Enter username" class="editable editable-click" style="display: inline-block;">superuser</a>
+                                          </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label class="col-sm-3 control-label">Empty text field, required</label>
+                                          <div class="col-sm-6">
+                                              <a href="#" id="inline-firstname" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Enter your firstname" class="editable editable-click editable-empty">Empty</a>
+                                          </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label class="col-sm-3 control-label">Select, local array, custom display</label>
+                                          <div class="col-sm-6">
+                                              <a href="#" id="inline-sex" data-type="select" data-pk="1" data-value="" data-title="Select sex" class="editable editable-click" style="color: rgb(128, 128, 128);">not selected</a>
+                                          </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label class="col-sm-3 control-label">Select, error while loading</label>
+                                          <div class="col-sm-6">
+                                              <a href="#" id="inline-status" data-type="select" data-pk="1" data-value="0" data-source="/status" data-title="Select status" class="editable editable-click">Active</a>
+                                          </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label class="col-sm-3 control-label">Combodate</label>
+                                          <div class="col-sm-6">
+                                              <a href="#" id="inline-dob" data-type="combodate" data-value="1984-05-15" data-format="YYYY-MM-DD" data-viewformat="DD/MM/YYYY" data-template="D / MMM / YYYY" data-pk="1" data-title="Select Date of birth" class="editable editable-click">15/05/1984</a>
+                                          </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label class="col-sm-3 control-label">Textarea, buttons below. Submit by <i>ctrl+enter</i></label>
+                                          <div class="col-sm-6">
+                                              <a href="#" id="inline-comments" data-type="textarea" data-pk="1" data-placeholder="Your comments here..." data-title="Enter comments" class="editable editable-pre-wrapped editable-click">awesome user!</a>
+                                          </div>
+                                      </div>
+                                  </form>
+                              </div>
+                              <div class="col-sm-3">
+                                  <h5>Inline mode</h5>
+                                  <p>Editable elements with inline editor</p>
+                                  <form class="form-horizontal row-x-editable">
+                                      <div class="form-group">
+                                          <label class="col-sm-3 control-label">Simple Text Field</label>
+                                          <div class="col-sm-6">
+                                              <a href="#" id="inline-username" data-type="text" data-pk="1" data-title="Enter username" class="editable editable-click" style="display: inline-block;">superuser</a>
+                                          </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label class="col-sm-3 control-label">Empty text field, required</label>
+                                          <div class="col-sm-6">
+                                              <a href="#" id="inline-firstname" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Enter your firstname" class="editable editable-click editable-empty">Empty</a>
+                                          </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label class="col-sm-3 control-label">Select, local array, custom display</label>
+                                          <div class="col-sm-6">
+                                              <a href="#" id="inline-sex" data-type="select" data-pk="1" data-value="" data-title="Select sex" class="editable editable-click" style="color: rgb(128, 128, 128);">not selected</a>
+                                          </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label class="col-sm-3 control-label">Select, error while loading</label>
+                                          <div class="col-sm-6">
+                                              <a href="#" id="inline-status" data-type="select" data-pk="1" data-value="0" data-source="/status" data-title="Select status" class="editable editable-click">Active</a>
+                                          </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label class="col-sm-3 control-label">Combodate</label>
+                                          <div class="col-sm-6">
+                                              <a href="#" id="inline-dob" data-type="combodate" data-value="1984-05-15" data-format="YYYY-MM-DD" data-viewformat="DD/MM/YYYY" data-template="D / MMM / YYYY" data-pk="1" data-title="Select Date of birth" class="editable editable-click">15/05/1984</a>
+                                          </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label class="col-sm-3 control-label">Textarea, buttons below. Submit by <i>ctrl+enter</i></label>
+                                          <div class="col-sm-6">
+                                              <a href="#" id="inline-comments" data-type="textarea" data-pk="1" data-placeholder="Your comments here..." data-title="Enter comments" class="editable editable-pre-wrapped editable-click">awesome user!</a>
+                                          </div>
+                                      </div>
+                                  </form>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+
+      <!-- div class="container-fluid">
+          <div class="row" >
+              <div class="col-md-2"></div>
+              <div class="col-md-8 ">
+                  <div class="content-box">
+                      <div class="head success-bg clearfix">
+                          <h5 class="content-title pull-left">Wizard with Form validation</h5>
+                          <div class="functions-btns pull-right">
+                              <a class="refresh-btn" href="#"><i class="zmdi zmdi-refresh"></i></a>
+                              <a class="fullscreen-btn" href="#"><i class="zmdi zmdi-fullscreen"></i></a>
+                              <a class="close-btn" href="#"><i class="zmdi zmdi-close"></i></a>
+                          </div>
+                      </div>
+
+                      <div class="content">
+                          <form id="wizard-form" method="post" novalidate>
+                              <div id="root-wizard" class="form-wizard">
+                                  <ul class="nav nav-tabs fw-nav">
+                                      <li class="active">
+                                          <a href="#tab-41" data-toggle="tab">Enfant</a>
+                                      </li>
+                                      <li>
+                                          <a href="#tab-42" data-toggle="tab">Représentant légale</a>
+                                      </li>
+                                      <li>
+                                          <a href="#tab-43" data-toggle="tab">Mère</a>
+                                      </li>
+                                      <li>
+                                          <a href="#tab-43" data-toggle="tab">Autre</a>
+                                      </li>
+                                  </ul>
+                                  <div class="tab-content">
+                                      <div class=" tab-pane fade in active" id="tab-41">
+                                          <div class="container">
+                                              <div class="row">
+                                                  <div class="col-md-1"></div>
+                                                  <div class="col-md-8">
+                                                      <div >
+                                                          <p class="text-center">
+                                                              <img src="{{ asset('images/avatar.jpg') }}" id="preview" alt="..." width="85" height="85" class="img-circle img-thumbnail" style="cursor:pointer"/>
+                                                          </p>
+                                                          <input id="image" type="file" class="form-control fileInput hide" />
+                                                      </div>
+                                                      <div class="form-group">
+                                                          <label class="control-label">Nom</label>
+                                                          <input type="text" id="nomenfant" name="nomenfant" class="form-control" placeholder="eg: ABI">
+                                                      </div>
+                                                      <div class="form-group">
+                                                          <label class="control-label">Prenom</label>
+                                                          <input type="text" id="prenomenfant" name="prenomenfant" class="form-control" placeholder="eg: Patrice E">
+                                                      </div>
+                                                      <div class="form-group">
+                                                          <label class="control-label">Sexe</label>
+                                                          <div class="form-group">
+                                                              <div class="select">
+                                                                  <select class="form-control selectpicker">
+                                                                      <option value="Fille">Fille</option>
+                                                                      <option value="Garcon">Garçon</option>
+                                                                  </select>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="form-group">
+                                                          <label class="control-label">Allergie</label>
+                                                          <input type="text" id="allergie" name="allergie" class="form-control" placeholder="eg: Patrice E">
+                                                      </div>
+                                                      <div class="form-group">
+                                                          <div class="input-group date">
+                                                            <span class="input-group-addon">
+                                                                <span class="zmdi zmdi-calendar"></span>
+                                                            </span>
+                                                              <input id="datetimepicker1" type="text" class="form-control" placeholder="Click here..."/>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-md-2"></div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="tab-pane fade" id="tab-42">
+                                          <div class="row">
+                                              <div class="col-md-6 bs-container shadow-5" style="border-radius: 5px;">
+                                                  <h1 class="text-success" style="text-decoration: underline; ">PERE</h1>
+                                                  <div class="form-group">
+                                                      <label class="control-label">Nom</label>
+                                                      <input type="text" id="nompere" name="nompere" class="form-control">
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="control-label">Prénom</label>
+                                                      <input type="text" id="prenompere" name="prenompere" class="form-control">
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="control-label">Domicilé</label>
+                                                      <input type="text" id="domiciliepere" name="domiciliepere" class="form-control">
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="control-label">Domicilé</label>
+                                                      <input type="text" id="domiciliepere" name="domiciliepere" class="form-control">
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="control-label">Numéro de téléphone</label>
+                                                      <input type="text" id="domiciliepere" name="domiciliepere" class="form-control">
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="control-label">Portable</label>
+                                                      <input type="text" id="domiciliepere" name="domiciliepere" class="form-control">
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="control-label">Email :</label>
+                                                      <input type="text" id="domiciliepere" name="domiciliepere" class="form-control">
+                                                  </div>
+                                              </div>
+                                              <div class="col-md-6 bs-container shadow-5" style="border-radius: 5px;">
+                                                  <h1 class="text-info" style="text-decoration: underline">MERE</h1>
+                                                  <div class="form-group">
+                                                      <label class="control-label">Nom</label>
+                                                      <input type="text" id="nompere" name="nompere" class="form-control">
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="control-label">Prénom</label>
+                                                      <input type="text" id="prenompere" name="prenompere" class="form-control">
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="control-label">Domicilé</label>
+                                                      <input type="text" id="domiciliepere" name="domiciliepere" class="form-control">
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="control-label">Profession :</label>
+                                                      <input type="text" id="domiciliepere" name="domiciliepere" class="form-control">
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="control-label">Numéro de téléphone</label>
+                                                      <input type="text" id="domiciliepere" name="domiciliepere" class="form-control">
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="control-label">Portable</label>
+                                                      <input type="text" id="domiciliepere" name="domiciliepere" class="form-control">
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="control-label">Email :</label>
+                                                      <input type="text" id="domiciliepere" name="domiciliepere" class="form-control">
+                                                  </div>
+
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="tab-pane fade" id="tab-43">
+
+                                          <div class="form-group">
+                                              <label class="control-label">Nom</label>
+                                              <input type="text" id="nompere" name="nompere" class="form-control">
+                                          </div>
+                                          <div class="form-group">
+                                              <label class="control-label">Prénom</label>
+                                              <input type="text" id="prenompere" name="prenompere" class="form-control">
+                                          </div>
+                                          <div class="form-group">
+                                              <label class="control-label">Domicilé</label>
+                                              <input type="text" id="domiciliepere" name="domiciliepere" class="form-control">
+                                          </div>
+
+                                      </div>
+                                      <div class="tab-pane fade" id="tab-44">
+
+                                          <div class="form-group">
+                                              <div class="checkbox checkbox-success">
+                                                  <label><input type="checkbox">
+                                                      <i></i></label>
+                                                  <span class="m-l-5">Hide my email</span>
+                                              </div>
+                                          </div>
+                                          <div class="form-group">
+                                              <div class="checkbox checkbox-primary">
+                                                  <label><input type="checkbox">
+                                                      <i></i></label>
+                                                  <span class="m-l-5">Subscribe</span>
+                                              </div>
+                                          </div>
+                                          <div class="form-group">
+                                              <div class="checkbox checkbox-info">
+                                                  <label><input type="checkbox">
+                                                      <i></i></label>
+                                                  <span class="m-l-5">Remember me</span>
+                                              </div>
+                                          </div>
+
+                                      </div>
+                                      <br>
+                                      <div class="fw-footer">
+                                          <div class="pull-right">
+                                              <button type="button" class="btn btn-primary next" name="next" value="Next">Next</button>
+                                          </div>
+                                          <div class="pull-left">
+                                              <button type="button" class="btn btn-primary previous" name="previous" value="Previous">Previous</button>
+                                          </div>
+                                          <div class="clearfix"></div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-2"></div>
+          </div>
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="data-info">
+                      <table id="table2" class="display datatable">
+                          <thead>
+                          <tr>
+                              <th>Image </th>
+                              <th>Nom </th>
+                              <th>Prenom</th>
+                              <th>Date Naissance</th>
+                              <th>Accueilli à compter du :</th>
+                              <th >#Action</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          {% for list in listeEnfants %}
+                              <tr>
+                                  <td class="text-center">
+                                      <img style="width: 2%" alt="profile" class="img-circle" data-toggle="tooltip" data-placement="bottom" data-original-title="{{ list.nom ~" "~ list.prenom }}"
+                                           src="{% if list.image is null %}
+                                           {{ asset('images/img/contacts/5.jpg') }} {% else %} {{ asset('uploads/enfant/'~list.image.name) }}
+                                                                            {% endif %}">
+                                  </td>
+                                  <td>{{ list.nom  }}</td>
+                                  <td>{{ list.prenom }}</td>
+                                  <td>
+                                      {{ list.datenaissance |date('Y m d') }}
+                                  </td>
+                                  <td>
+                                      {{ list.dateinscription |date('Y-m-d H:m:s') }}
+                                  </td>
+                                  <td class="text-center">
+                                      <div class="btn-group">
+                                          <a   href="{{ path('enfant_edit',{'id':list.id}) }}" class=" btn-success"><i class="zmdi zmdi-edit"></i></a> |
+                                          <a href="{{ path('enfant_delete',{'id':list.id}) }}" class=" btn-success"><i class="zmdi zmdi-delete"></i></a>
+                                      </div>
+                                  </td>
+                              </tr>
+                          {% endfor %}
+
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div ---->
+
+
+
+
+
+
+  {% endblock %}
+{% block javascripts %}
+
+    <script src="{{ asset('js/net2all_script.js') }}"></script>
+    <script src="{{ asset('vendors/bower_components/validator/validator.js') }}"></script>
+    <script type="text/javascript">
+
+        $(function(){
+            $.fn.editableform.buttons =
+                '<button type="submit" class="btn btn-success editable-submit"><i class="zmdi zmdi-check"></i></button>' +
+                '<button type="button" class="btn btn-danger editable-cancel"><i class="zmdi zmdi-close"></i></button>';
+
+
+            //editables
+            $('#username').editable({
+                type: 'text',
+                pk: 1,
+                name: 'username',
+                title: 'Enter username'
+            });
+
+            $('#firstname').editable({
+                validate: function(value) {
+                    if($.trim(value) == '') return 'This field is required';
+                }
+            });
+
+            $('#sex').editable({
+                prepend: "not selected",
+                source: [
+                    {value: 1, text: 'Male'},
+                    {value: 2, text: 'Female'}
+                ],
+                display: function(value, sourceData) {
+                    var colors = {"": "gray", 1: "#aa66cc", 2: "#ffbb33"},
+                        elem = $.grep(sourceData, function(o){return o.value == value;});
+
+                    if(elem.length) {
+                        $(this).text(elem[0].text).css("color", colors[value]);
+                    } else {
+                        $(this).empty();
+                    }
+                }
+            });
+
+            $('#status').editable();
+
+            $('#group').editable({
+                showbuttons: false
+            });
+
+            $('#dob').editable();
+
+            $('#comments').editable({
+                showbuttons: 'bottom'
+            });
+
+
+
+            //inline
+
+
+            $('#inline-username').editable({
+                type: 'text',
+                pk: 1,
+                name: 'username',
+                title: 'Enter username',
+                mode: 'inline'
+            });
+
+            $('#inline-firstname').editable({
+                validate: function(value) {
+                    if($.trim(value) == '') return 'This field is required';
+                },
+                mode: 'inline'
+            });
+
+            $('#inline-sex').editable({
+                prepend: "not selected",
+                mode: 'inline',
+                source: [
+                    {value: 1, text: 'Male'},
+                    {value: 2, text: 'Female'}
+                ],
+                display: function(value, sourceData) {
+                    var colors = {"": "gray", 1: "#aa66cc", 2: "#ffbb33"},
+                        elem = $.grep(sourceData, function(o){return o.value == value;});
+
+                    if(elem.length) {
+                        $(this).text(elem[0].text).css("color", colors[value]);
+                    } else {
+                        $(this).empty();
+                    }
+                }
+            });
+
+            $('#inline-status').editable({mode: 'inline'});
+
+            $('#inline-group').editable({
+                showbuttons: false,
+                mode: 'inline'
+            });
+
+            $('#inline-dob').editable({mode: 'inline'});
+
+            $('#inline-comments').editable({
+                showbuttons: 'bottom',
+                mode: 'inline'
+            });
+
+
+        });
+
+        /*$(".color-picker").each(function(){
+            var colorOutput = $(this).closest(".cp-container").find(".cp-value");
+            $(this).farbtastic(colorOutput);
+        });
+
+        $("#datetimepicker1").datetimepicker({
+            icons: {
+                time: "zmdi zmdi-time",
+                date: "zmdi zmdi-calendar",
+                up: "zmdi zmdi-chevron-up",
+                down: "zmdi zmdi-chevron-down",
+                previous: "zmdi zmdi-chevron-left",
+                next: "zmdi zmdi-chevron-right"
+            }
+        });
+        $(document).ready(function() {
+            $('#basic-wizard').bootstrapWizard({
+                tabClass: 'fw-nav',
+                'nextSelector': '.next',
+                'previousSelector': '.previous',
+                'firstSelector': '.button-first',
+                'lastSelector': '.button-last'
+            });
+
+            $('#btn-wizard').bootstrapWizard({
+                tabClass: 'fw-nav',
+                'nextSelector': '.next',
+                'previousSelector': '.previous',
+                'firstSelector': '.button-first',
+                'lastSelector': '.button-last'
+            });
+
+            $('#progress-wizard').bootstrapWizard({onTabShow: function(tab, navigation, index) {
+                    var $total = navigation.find('li').length;
+                    var $current = index+1;
+                    var $percent = ($current/$total) * 100;
+                    $('#progressbar-wizard').find('.progress-bar').css({width:$percent+'%'});
+                },
+                'tabClass': 'fw-nav',
+                'nextSelector': '.next',
+                'previousSelector': '.previous'
+            });
+
+            $('#root-wizard').bootstrapWizard({
+                'tabClass': 'fw-nav',
+                'nextSelector': '.next',
+                'previousSelector': '.previous',
+                'onNext': function (tab, navigation, index) {
+                    var $valid = $("#wizard-form").valid();
+                    if (!$valid) {
+                        $validator.focusInvalid();
+                        return false;
+                    }
+                }
+            });
+
+            var $validator = $("#wizard-form").validate({
+                rules: {
+
+                    nomenfant: {
+                        required: true,
+                        minlength: 10
+                    },
+
+                },
+                messages: {
+
+
+                    nomenfant: {
+                        required: "Veillez entrer un ",
+                        minlength: "Your password must be at least 5 characters long",
+                        equalTo: "Please enter the same password as above"
+                    }
+                }
+            });
+
+            $('body').on('click', '.a-prevent', function(e){
+                e.preventDefault();
+            });
+        });
+
+
+        $('#table1').DataTable({
+            "dom": '<"toolbar tool1">rtip',
+            info: false,
+            paging: false,
+            responsive: true,
+        });
+
+        $("div.tool1").html('<h5 class="zero-m">Info table</h5>');
+
+        $('#table2').DataTable({
+            "dom": '<"toolbar tool2"><"clear-filter">frtip',
+            info: false,
+            paging: true,
+            sort: true,
+            responsive: true,
+            "sLengthMenu": "Show _MENU_ entries",
+            "oLanguage": { "sSearch": "" }
+        });
+
+        $("div.tool2").html('<h5 class="zero-m">Liste Enfant</h5>');
+
+        $('.dataTables_filter input').attr("placeholder", "Search");
+
+
+
+
+        $('.dropify').dropify();
+
+        $(document).ready(function (){
+
+            $("#datetimepicker2").datetimepicker({
+                icons: {
+                    time: "zmdi zmdi-time",
+                    date: "zmdi zmdi-calendar",
+                    up: "zmdi zmdi-chevron-up",
+                    down: "zmdi zmdi-chevron-down",
+                    previous: "zmdi zmdi-chevron-left",
+                    next: "zmdi zmdi-chevron-right"
+                },
+                defaultDate: "02/10/2016",
+                disabledDates: [
+                    moment("02/19/2016"),
+                    moment("02/20/2016")
+                ]
+            });
+
+        });
+var btnenfant = $("#EnvoyerEnfant");
+var formenfant = $('#formenfant');
+        $('form').submit(function(e){
+            e.preventDefault();
+            var submit = true;
+            // you can put your own custom validations below
+
+            // check all the rerquired fields
+            if( !validator.checkAll( $(this) ) )
+                submit = false;
+
+            if( submit )
+                this.submit();
+
+            return false;
+        })
+        */
+    </script>
+{% endblock %}

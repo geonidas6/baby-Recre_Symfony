@@ -1,0 +1,41 @@
+{% extends '@App/user_base.html.twig' %}
+
+    {% block title %} {{ parent() }} Bienvenue {% endblock %}
+  {% block main %}
+    <h1>Memo</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ memo.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ memo.titre }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ memo.description }}</td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{% if memo.etat %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('memo_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('memo_edit', { 'id': memo.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

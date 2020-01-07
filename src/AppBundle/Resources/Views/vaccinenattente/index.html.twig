@@ -1,0 +1,42 @@
+{% extends '@App/user_base.html.twig' %}
+
+    {% block title %} {{ parent() }} Bienvenue {% endblock %}
+  {% block main %}
+    <h1>Vaccinenattentes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Etat</th>
+                <th>Intervaletemps</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vaccinenattente in vaccinenattentes %}
+            <tr>
+                <td><a href="{{ path('vaccinenattente_show', { 'id': vaccinenattente.id }) }}">{{ vaccinenattente.id }}</a></td>
+                <td>{% if vaccinenattente.etat %}Yes{% else %}No{% endif %}</td>
+                <td>{{ vaccinenattente.intervaletemps }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('vaccinenattente_show', { 'id': vaccinenattente.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('vaccinenattente_edit', { 'id': vaccinenattente.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('vaccinenattente_new') }}">Create a new vaccinenattente</a>
+        </li>
+    </ul>
+{% endblock %}

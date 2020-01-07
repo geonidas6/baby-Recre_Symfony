@@ -1,0 +1,76 @@
+{% extends '@App/user_base.html.twig' %}
+
+    {% block title %} {{ parent() }} Vaccin {% endblock %}
+  {% block main %}
+
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Vaccin</h3>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2><i class="fa fa-bars"></i> Parametre <small>User panel</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ path('vaccin_new') }}">Ajouter vaccin</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content">
+
+    <table  id="vaccin" class="table table-striped table-bordered dt-responsive nowrap table-condensed" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>CODE VACCIN</th>
+                <th>Période limite</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vaccin in vaccins %}
+            <tr>
+                <td>{{ vaccin.name }}</td>
+                <td>{{ vaccin.timeintervale~" "~ vaccin.libele }}</td>
+                <td>
+                    <a class="btn btn-success fa fa-edit" href="{{ path('vaccin_edit', { 'id': vaccin.id }) }}">edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  {% endblock %}
+
+{% block javascripts %}
+    <script>
+
+        $(document).ready(function () {
+            var table =   $("#vaccin").DataTable({
+
+            });
+
+        });
+    </script>
+
+{% endblock %}

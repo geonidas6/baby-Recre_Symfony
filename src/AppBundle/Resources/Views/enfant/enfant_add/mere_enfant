@@ -1,0 +1,77 @@
+<h3>mère</h3>
+<fieldset>
+    {#autocomplet#}
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Selectionner un tuteur existent</button>
+    {#end autocomplet#}
+    <div id="filemere">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <input type="text" id="nommere" name="data[mere][nommere]" class="form-control" required>
+                    <label class="form-label">Nom*</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <input type="text" id="prenommere" name="data[mere][prenommere]" class="form-control" required>
+                    <label class="form-label">Prenom*</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <input type="text" id="domiciliemere" name="data[mere][domiciliemere]" class="form-control" required>
+                    <label class="form-label">Domicile*</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <input type="text" id="professionmere" name="data[mere][professionmere]" class="form-control" required>
+                    <label class="form-label">Profession*</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <input type="text" id="telmere" name="data[mere][telmere]" class="form-control" required>
+                    <label class="form-label">Télephone*</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <input  type="text" id="portablemere" name="data[mere][portablemere]" class="form-control" required>
+                    <label class="form-label">Portable*</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <input type="email" id="emailmere" name="data[mere][emailmere]" class="form-control" required>
+                    <label class="form-label">Email*</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div id="mereinfos"></div>
+    <button type="button" class="btn btn-warning" id="new_mere" onclick="return_new_mere();">Nouvelle utilisateur</button>
+
+</fieldset>

@@ -1,0 +1,92 @@
+<div class="x_panel" >
+    <div class="x_title">
+        <h2>enfantDetails</h2>
+        <ul class="nav navbar-right panel_toolbox">
+            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="t"><i class="fa fa-wrench"></i></a>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content" style="display: block;">
+        <br>
+        <table id="enfantDetails" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>{{ 'attente'|capitalize }}</th>
+                <th>{{ 'craintes'|capitalize }}</th>
+                <th>{{ 'remarque'|capitalize }}</th>
+                <th>{{ 'periode'|capitalize }}</th>
+                <th>{{ 'dateinscription'|capitalize }}</th>
+                <th>{{ 'allergie'|capitalize }}</th>
+                <th>{{ 'mangeavecaide'|capitalize }}</th>
+                <th>{{ 'oeuf'|capitalize }}</th>
+                <th>{{ 'poisson'|capitalize }}</th>
+                <th>{{ 'viande'|capitalize }}</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for enfantDetail in enfantDetails %}
+                <tr  >
+                    <td>#</td>
+                    <td>
+                        {{ enfantDetail.attente}}
+                    </td>
+                    <td>
+                        {{ enfantDetail.craintes }}
+                    </td>
+                    <td>
+                        {{ enfantDetail.remarque}}
+                    </td>
+                    <td>
+                        {{ enfantDetail.periode}}
+                    </td>
+                    <td>
+                        {{ enfantDetail.dateinscription | date("Y-m-d") }}
+                    </td>
+                    <td>
+                        {{ enfantDetail.allergie}}
+                    </td>
+                    <td>
+                        {% if  enfantDetail.mangeavecaide == false %}
+                            <i class="fa fa-ban red"></i>
+                        {% else %}
+                            <i class="fa fa-thumbs-o-up green"></i>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if  enfantDetail.oeuf == false %}
+                            <i class="fa fa-ban red"></i>
+                        {% else %}
+                            <i class="fa fa-thumbs-o-up green"></i>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if  enfantDetail.poisson == false %}
+                            <i class="fa fa-ban red"></i>
+                        {% else %}
+                            <i class="fa fa-thumbs-o-up green"></i>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if  enfantDetail.viande == false %}
+                            <i class="fa fa-ban red"></i>
+                        {% else %}
+                            <i class="fa fa-thumbs-o-up green"></i>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="#" class=" btn btn-info btn-xs"><i class="fa fa-edit"></i>  </a>
+                        <a href="#" class=" btn btn-danger btn-xs"><i class="fa fa-eye"></i>  </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+</div >

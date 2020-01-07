@@ -1,0 +1,151 @@
+{% extends '@App/user_base.html.twig' %}
+
+    {% block title %} {{ parent() }} Bienvenue {% endblock %}
+  {% block main %}
+
+
+      <div class="">
+          <div class="page-title">
+              <div class="title_left">
+                  <h3>{{ paiements.enfant.nom ~" "~ paiements.enfant.prenom }}</h3>
+              </div>
+          </div>
+          <div class="clearfix"></div>
+
+          <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="x_panel">
+                      <div class="x_title">
+                          <h2><i class="fa fa-bars"></i> Règlement pour paiement numéro : #{{ paiements.numeropaiement }}</h2><br>
+                          <h2>Période de {{ datedebut | date('Y-m-d') }} à {{ datefin | date('Y-m-d') }}</h2>
+                          <ul class="nav navbar-right panel_toolbox">
+                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                              </li>
+                              <li class="dropdown">
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                  <ul class="dropdown-menu" role="menu">
+                                      <li><a href="#">Settings 2</a>
+                                      </li>
+                                  </ul>
+                              </li>
+                              <li><a class="close-link"><i class="fa fa-close"></i></a>
+                              </li>
+                          </ul>
+                          <div class="clearfix"></div>
+                      </div>
+
+                      <div class="x_content">
+<div class="container">
+<div class="row">
+    <div class="col-sm-6">
+        <table  class="table table-striped ">
+            <tbody>
+
+            <tr>
+                <th>STATUS</th>
+
+                    {% if paiements.restapayer  == 0 %}<td class="green"> CLOTURER <i class="fa  fa-thumbs-up"></i> </td>{% else %}<td class="red"> ENCOURS <i class="fa  fa-thumbs-o-down"></i></td>{% endif %}
+
+            </tr>
+            {#<tr>
+                <th>Type</th>
+                <td> {{ paiements.type }}</td>
+            </tr>
+            <tr>
+                <th>Datepaiement</th>
+                <td>
+                    {% if paiements.datepaiement %}{{ paiements.datepaiement|date('Y-m-d H:i:s') }}{% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>Sommeapayer</th>
+                <td> {{ paiements.sommeapayer }}
+                </td>
+            <tr>
+            </tr>
+                <th>Montantregler</th>
+            <td>  {{ paiements.montantregler }}</td>
+            <tr>
+                <th>Restapayer</th>
+                <td>  {{ paiements.restapayer }} </td>
+            </tr>
+            <tr>
+            <th>Enfant</th>
+               <td> <a href="{{ path('enfant_show',{'id':paiements.enfant.id}) }}" >{{ paiements.enfant }}</a> </td>
+            </tr>#}
+            </tbody>
+        </table>
+    </div>
+    <div class="col-sm-6">
+
+        <table  id="paiementtable" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%" >
+            <thead>
+            <tr>
+                <th>Reste à payer</th>
+                <th>Montantregler</th>
+                <th>date paiement </th>
+                <th>Action </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for historique in Historiquepaiement %}
+                <tr>
+                    <td>{{ historique.rest }}</td>
+                    <td>{{ historique.montanregler }}</td>
+                    <td>{{ historique.datepaiement | date ('Y-m-d') }}</td>
+                    <td><a href="{{ path('paiement_show', { 'id': historique.paiement.id }) }}" class="btn btn-primary btn-xs" ><i class="fa fa-print"></i></a> |
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+
+                          <form method="post" action="{{ path('saveHistorique') }}" class="form col-sm-6">
+                              <fieldset>
+                                  <legend>Formulaire de Règlement</legend>
+                                  <label>Date: </label>
+                                  <input name="datereglement" id="datereglement" type="text" class="form-control " >
+                                  <input name="paiement" value="{{ paiements.id }}" type="text" class="form-control hide" >
+                                  <input name="datefin" type="text" value="{{ datedebut | date('Y-m-d')  }}" class="form-control hide" >
+                                  <input name="datedebut" value="{{ datefin | date('Y-m-d') }}" type="text" class="form-control hide" >
+                                  <label>Montant régler: </label>
+                                  <input name="montarégler" type="number" class="form-control" required>
+                                  <input type="submit" class="btn btn-success">
+                              </fieldset>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  {% endblock %}
+
+{% block javascripts %}
+    <script>
+
+        $(document).ready(function () {
+            $('#datereglement').datetimepicker({
+                format: 'YYYY/MM/DD',
+
+            });
+
+        })
+
+        $(document).ready(function () {
+            $("#paiementtable").DataTable({
+                "scrollX":false,
+                "sScrollHead":false,
+                "scrollCollapse":false,
+                "paging":false,
+                "ordering":true,
+                "info":false,
+                "searching":false
+            });
+
+        });
+    </script>
+
+{% endblock %}

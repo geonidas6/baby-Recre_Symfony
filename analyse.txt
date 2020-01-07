@@ -1,0 +1,4 @@
+PARENT 1,n -- inscrire -- 1,2 ENFANT
+PARENT 0,N -- deposer -- 1,1 DOSSIER_MEDICAL
+DOSSIER_MEDICAL 1,1 -- rediger -- 0,n CABINET_MEDICAL
+DOSSIER_MEDICAL 1,1 -- concerner -- 0,n ENFANT

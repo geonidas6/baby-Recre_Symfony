@@ -1,0 +1,148 @@
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Liste des tuteurs</h4>
+            </div>
+            <div class="modal-body">
+                <h4>Choisiez un tuteur</h4>
+                <div class="ui-widget" autocomplete="on">
+                    <label for="tags">Nom prenom: </label>
+                    <select id="pere_existe" name="data[pere_existe]" >
+                        <option>-</option>
+                        {% for Alltuteur in Alltuteurs %}
+                            <option value="{{ Alltuteur.id }}">{{Alltuteur.nom ~" "~ Alltuteur.prenom}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="validation_tuteur_selecte();">Appliquez</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Liste des tuteurs</h4>
+            </div>
+            <div class="modal-body">
+                <h4>Choisiez un tuteur</h4>
+                <div class="ui-widget" autocomplete="on">
+                    <label for="tags">Nom prenom: </label>
+                    <select id="mere_existe" name="data[mere_existe]" >
+                        <option>-</option>
+                        {% for Alltuteur in Alltuteurs %}
+                            <option value="{{ Alltuteur.id }}">{{Alltuteur.nom ~" "~ Alltuteur.prenom}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="validation_tuteur_mere_selecte();">Appliquez</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade bs-example-modal-smA" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Liste des tuteurs</h4>
+            </div>
+            <div class="modal-body">
+                <h4>Choisiez un tuteur</h4>
+                <div class="ui-widget" autocomplete="on">
+                    <label for="tags">Nom prenom: </label>
+                    <select id="tuteurotherA_existe" name="data[tuteurotherA_existe]" >
+                        <option>-</option>
+                        {% for Alltuteur in Alltuteurs %}
+                            <option value="{{ Alltuteur.id }}">{{Alltuteur.nom ~" "~ Alltuteur.prenom}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="validation_tuteur_tuteurotherA_selecte();">Appliquez</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade bs-example-modal-smB" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Liste des tuteurs</h4>
+            </div>
+            <div class="modal-body">
+                <h4>Choisiez un tuteur</h4>
+                <div class="ui-widget" autocomplete="on">
+                    <label for="tags">Nom prenom: </label>
+                    <select id="tuteurotherB_existe" name="data[tuteurotherB_existe]" >
+                        <option>-</option>
+                        {% for Alltuteur in Alltuteurs %}
+                            <option value="{{ Alltuteur.id }}">{{Alltuteur.nom ~" "~ Alltuteur.prenom}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="validation_tuteur_tuteurotherB_selecte();">Appliquez</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade bs-example-modal-smC" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Liste des tuteurs</h4>
+            </div>
+            <div class="modal-body">
+                <h4>Choisiez un tuteur</h4>
+                <div class="ui-widget" autocomplete="on">
+                    <label for="tags">Nom prenom: </label>
+                    <select id="tuteurotherC_existe" name="data[tuteurotherC_existe]" >
+                        <option>-</option>
+                        {% for Alltuteur in Alltuteurs %}
+                            <option value="{{ Alltuteur.id }}">{{Alltuteur.nom ~" "~ Alltuteur.prenom}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="validation_tuteur_tuteurotherC_selecte();">Appliquez</button>
+            </div>
+
+        </div>
+    </div>
+</div>

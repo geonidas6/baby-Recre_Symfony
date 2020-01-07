@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!-- CSS -->
+
+<link rel="stylesheet" href="dist/jquery.postitall.css">
+
+
+
+
+
+
+
+
+<!-- HTML -->
+<a href="#" id="newNote2">Create a new note and get id</a>
+<a href="#" id="idHideCreated">Hide created note</a>
+<a href="#" id="idShowCreated">Show created note</a>
+<a href="#" id="idDeleteCreated">Delete created note</a>
+
+
+<!-- JS -->
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="dist/jquery.postitall.js"></script>
+<!-- JS -->
+<script>
+    $(document).ready(function() {
+        var idNewNote = null;
+        $('#newNote2').click(function(e) {
+            if(idNewNote != null) {
+                $.PostItAll.destroy(idNewNote);
+                idNewNote = null;
+            }
+            $.PostItAll.new({
+                content: 'This is a <b>new</b> note!',
+                onCreated: function(id, options, obj) {
+                    idNewNote = id;
+                },
+                onDelete: function() {
+                    idNewNote = null;
+                }
+            });
+            e.preventDefault();
+        });
+        $('#idShowCreated').click(function(e) {
+            $.PostItAll.show(idNewNote);
+            e.preventDefault();
+        });
+        $('#idHideCreated').click(function(e) {
+            $.PostItAll.hide(idNewNote);
+            e.preventDefault();
+        });
+        $('#idDeleteCreated').click(function(e) {
+            $.PostItAll.remove(idNewNote);
+            e.preventDefault();
+        });
+    });
+</script>
+</body>
+</html>

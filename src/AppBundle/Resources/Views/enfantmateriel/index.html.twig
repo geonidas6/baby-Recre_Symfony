@@ -1,0 +1,40 @@
+{% extends '@App/user_base.html.twig' %}
+
+    {% block title %} {{ parent() }} Bienvenue {% endblock %}
+  {% block main %}
+    <h1>Enfantmateriels list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Quantite</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for enfantMateriel in enfantMateriels %}
+            <tr>
+                <td><a href="{{ path('enfantmateriel_show', { 'id': enfantMateriel.id }) }}">{{ enfantMateriel.id }}</a></td>
+                <td>{{ enfantMateriel.quantite }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('enfantmateriel_show', { 'id': enfantMateriel.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('enfantmateriel_edit', { 'id': enfantMateriel.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('enfantmateriel_new') }}">Create a new enfantMateriel</a>
+        </li>
+    </ul>
+{% endblock %}

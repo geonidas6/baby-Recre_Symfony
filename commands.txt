@@ -1,0 +1,49 @@
+{% trans  from 'aside' into  app.session.get('Langue') %} Bienvenue  {% endtrans %}
+
+
+
+php bin/console doctrine:generate:entity (ies) bundle:entité
+doctrine:create:database
+php bin/console doctrine:schema:update --dump-sql or (--force)
+php bin/console cache:clear
+php bin/console generate:doctrine:form AcmeBlogBundle:Post
+php bin/console fos:user:promote testuser ROLE_ADMIN
+php symfony new my_project_name 3.4
+php bin/console generate:bundle
+
+php bin/console doctrine:generate:entities AppBundle/Entity/Student
+
+php bin/console doctrine:schema:update --force 
+
+php bin/console doctrine:generate:entities AppBundle/Entity/Student
+
+Attempted to load class "GEOEcoleBundle" from namespace "GEO\EcoleBundle".
+Did you forget a "use" statement for another namespace?
+
+
+...
+"autoload": {
+    "psr-4": { "": "src/" },
+    ...
+"autoload-dev": {
+    "psr-4": { "": "src/" },
+...
+composer dump-autoload
+
+php bin/console generate:controller
+
+
+
+
+Ensuite tu feras
+ doctrine:database:drop —force
+
+doctrine:database:create 
+
+doctrine:schema:update —force
+
+php bin/console generate:doctrine:crud
+
+https://symfony.com/doc/master/bundles/SensioGeneratorBundle/commands/generate_doctrine_crud.html
+
+https://www.ssyoutube.com/watch?v=WGWruWXwGNQ&index=2&list=PL8QQLrWeUBt9nzN7YPqKN6ZTZywJwx4-f

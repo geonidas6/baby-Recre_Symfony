@@ -1,0 +1,44 @@
+{% extends '@App/user_base.html.twig' %}
+
+    {% block title %} {{ parent() }} Bienvenue {% endblock %}
+  {% block main %}
+    <h1>Medicaments list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Prescrption</th>
+                <th>Nbrcacherrestant</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for medicament in medicaments %}
+            <tr>
+                <td><a href="{{ path('medicament_show', { 'id': medicament.id }) }}">{{ medicament.id }}</a></td>
+                <td>{{ medicament.name }}</td>
+                <td>{{ medicament.prescrption }}</td>
+                <td>{{ medicament.nbrCacherRestant }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('medicament_show', { 'id': medicament.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('medicament_edit', { 'id': medicament.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('medicament_new') }}">Create a new medicament</a>
+        </li>
+    </ul>
+{% endblock %}

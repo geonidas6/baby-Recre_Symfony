@@ -1,0 +1,37 @@
+{% extends '@App/user_base.html.twig' %}
+
+    {% block title %} {{ parent() }} Bienvenue {% endblock %}
+  {% block main %}
+    <h1>Vaccinenattente</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ vaccinenattente.id }}</td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{% if vaccinenattente.etat %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Intervaletemps</th>
+                <td>{{ vaccinenattente.intervaletemps }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('vaccinenattente_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('vaccinenattente_edit', { 'id': vaccinenattente.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

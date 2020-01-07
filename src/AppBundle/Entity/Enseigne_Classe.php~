@@ -1,0 +1,103 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Enseigne_Classe
+ *
+ * @ORM\Table(name="enseigne_classe")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\Enseigne_ClasseRepository")
+ */
+class Enseigne_Classe
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Enseigne" )
+     * @ORM\JoinColumn(name="enseigne_id", referencedColumnName="id", nullable=false)
+     */
+    private $enseigne;
+
+
+    /**
+     * @var string
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Classe" )
+     * @ORM\JoinColumn(name="classe_id", referencedColumnName="id", nullable=false)
+     */
+    private $classe;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set enseigneId
+     *
+     * @param integer $enseigne
+     *
+     * @return Enseigne_Classe
+     */
+    public function setEnseigne($enseigne)
+    {
+        $this->enseigne = $enseigne;
+
+        return $this;
+    }
+
+    /**
+     * Get enseigne
+     *
+     * @return int
+     */
+    public function getEnseigne()
+    {
+        return $this->enseigne;
+    }
+
+
+
+
+    /**
+     * Set classe
+     *
+     * @param string $classe
+     *
+     * @return Enseigne_Classe
+     */
+    public function setClasse($classe)
+    {
+        $this->classe = $classe;
+
+        return $this;
+    }
+
+    /**
+     * Get classe
+     *
+     * @return string
+     */
+    public function getClasse()
+    {
+        return $this->classe;
+    }
+
+
+}
+

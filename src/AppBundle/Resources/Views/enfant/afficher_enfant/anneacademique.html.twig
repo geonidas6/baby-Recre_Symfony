@@ -1,0 +1,53 @@
+<div class="x_panel">
+    <div class="x_title">
+        <h2>Annee Académique</h2>
+        <ul class="nav navbar-right panel_toolbox">
+            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a id="affanneac">Cree Année Academique</a>
+                    </li>
+                    <li><a id="gsetionanneac">Gestion</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content" style="display: none;">
+
+        <br>
+        {% if anneacademik != null %}
+            <div id="gestionannee">
+                <form class="form-horizontal form-label-left" action="{{ path('ouverture_annee',{'id':enseigne.id}) }}" method="post">
+
+
+                    <div class="form-group">
+                        <div class="radio">
+                            <label>
+
+                                <input type="checkbox" class="js-switch"  name="data[ouvert]"  value="{{ anneacademik.id }}" id="optionsRadios1" name="optionsRadios"
+                                        {% if enseigne_anneacademik is not empty %}
+                                            {% if enseigne_anneacademik.anneeacademik.id ==  anneacademik.id %}
+                                                {% if enseigne_anneacademik.ouvert == true %}
+                                                    checked
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endif %}
+
+                                > {{ anneacademik.Anneedebut }} - {{ anneacademik.Anneefin }}
+
+                            </label>
+                        </div>
+                    </div>
+
+
+
+                    <input type="submit" class="submit btn btn-primary" value="Valider" id="ouvertureanne" />
+                </form>
+            </div>
+        {% endif %}
+    </div>
+</div>

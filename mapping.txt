@@ -1,0 +1,34 @@
+php bin/console make:entity
+
+Class name of the entity to create or update (e.g. BraveChef):
+> Product
+
+ to stop adding fields):
+> category
+
+Field type (enter ? to see all types) [string]:
+> relation
+
+What class should this entity be related to?:
+> Category
+
+Relation type? [ManyToOne, OneToMany, ManyToMany, OneToOne]:
+> ManyToOne
+
+Is the Product.category property allowed to be null (nullable)? (yes/no) [yes]:
+> no
+
+Do you want to add a new property to Category so that you can access/update
+getProducts()? (yes/no) [yes]:
+> yes
+
+New field name inside Category [products]:
+> products
+
+Do you want to automatically delete orphaned App\Entity\Product objects
+(orphanRemoval)? (yes/no) [no]:
+> no
+
+ to stop adding fields):
+>
+(press enter again to finish)

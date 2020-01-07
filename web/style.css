@@ -1,0 +1,201 @@
+/**/
+@media (min-width: 992px) {
+  .time {
+    font-size: 58px;
+  }
+}
+
+
+#preloader {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999999;
+}
+
+#preloader .refresh-preloader {
+  display: block;
+  z-index: 99;
+  -webkit-border-radius: 0;
+          border-radius: 0;
+}
+
+.refresh-preloader {
+  background: #f1f5f7;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  z-index: 10;
+  -webkit-border-radius: 3px;
+          border-radius: 3px;
+}
+
+.preloader {
+  position: absolute;
+  top: 50%;
+  margin-top: -25px;
+  height: 50px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.preloader i {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background: black;
+  -webkit-border-radius: 16px;
+          border-radius: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -8px 0 0 -8px;
+  opacity: 0;
+  -webkit-transform: translate3d(150px, 0, 0);
+          transform: translate3d(150px, 0, 0);
+  overflow: hidden;
+  text-indent: -9999px;
+}
+
+.preloader i:nth-child(1) {
+  background: #ff5f5f;
+  -webkit-animation: google 1.75s ease-in-out infinite;
+          animation: google 1.75s ease-in-out infinite;
+}
+
+.preloader i:nth-child(2) {
+  background: #ffbb33;
+  -webkit-animation: google 1.75s ease-in-out infinite .3s;
+          animation: google 1.75s ease-in-out infinite .3s;
+}
+
+.preloader i:nth-child(3) {
+  background: #49ceff;
+  -webkit-animation: google 1.75s ease-in-out infinite .6s;
+          animation: google 1.75s ease-in-out infinite .6s;
+}
+
+@-webkit-keyframes google {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(150px, 0, 0);
+            transform: translate3d(150px, 0, 0);
+  }
+  30% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+  70% {
+    opacity: 0.8;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translate3d(-300px, 0, 0);
+            transform: translate3d(-300px, 0, 0);
+  }
+}
+
+@keyframes google {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(150px, 0, 0);
+            transform: translate3d(150px, 0, 0);
+  }
+  30% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+  70% {
+    opacity: 0.8;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translate3d(-300px, 0, 0);
+            transform: translate3d(-300px, 0, 0);
+  }
+}
+
+@media (max-width: 480px) {
+  .time {
+    font-size: 48px;
+  }
+  .fc-toolbar .fc-left {
+    float: none;
+    text-align: center;
+    display: inline-block;
+  }
+  .fc .fc-toolbar > * > * {
+    margin-left: 0;
+    margin-top: 5px;
+  }
+  .navbar-container {
+    margin-left: 60px !important;
+  }
+  .navbar-container > .pull-right > .pull-left {
+    float: right !important;
+  }
+  .navbar-container > .pull-right > .pull-right {
+    float: left !important;
+    margin: 0;
+  }
+  .carousel-caption {
+    display: none;
+  }
+  .more-options.dropdown .dropdown-menu, .notification .dropdown-menu {
+    -webkit-transform-origin: center center !important;
+        -ms-transform-origin: center center !important;
+            transform-origin: center center !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .search-container {
+    width: 50px;
+  }
+  .search-container .searchbox-open, .search-container .searchbox {
+    -webkit-transition: none !important;
+    transition: none !important;
+    z-index: 2;
+  }
+  .search-container .searchbox-submit {
+    -webkit-transition: none !important;
+    transition: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 0 10px !important;
+  }
+  .right-menu {
+    line-height: 70px;
+  }
+  .right-menu > li button {
+    vertical-align: middle !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .time {
+    font-size: 58px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .full-toggle {
+    display: inline-block !important;
+  }
+}
+
+/*# sourceMappingURL=maps/style.css.map */
